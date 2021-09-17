@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace hMoney
 {
-    public class Globals
+    public static class Globals
     {
-        public String INI_FILE_NAME = "hMoney.ini";
+        public static String INI_FILE_NAME = "hMoney.ini";
 
-        public String getIniFileName()
-        {
-            return INI_FILE_NAME;
-        }
+        //public static String getIniFileName()
+        //{
+        //    return INI_FILE_NAME;
+        //}
     }
 }
