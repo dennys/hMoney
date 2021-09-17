@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace dMoney2
+namespace hMoney
 {
     static class Program
     {

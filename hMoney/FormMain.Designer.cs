@@ -1,5 +1,5 @@
 ﻿
-namespace dMoney2
+namespace hMoney
 {
     partial class FormMain
     {
