@@ -36,13 +36,17 @@ namespace hMoney
         private void generateAccountList(object sender, EventArgs e)
         {
 
+            Configuration config = new Configuration();
+            config.Init();
+            
+            
             //個人習慣會在一開始就開變數，可以無視
             string str = string.Empty;
 
-            //這裡才是SQLite重點
             //將Data Source指到檔案位置
             //用Directory.GetCurrentDirectory()可以簡易的取得根目錄
-            string path = @"Data Source = " + @"D:\Dennys\MMEX\dennys.mmb";
+            string path = @"Data Source = " + config.GetDbPath();
+
             //進行連線，用using可以避免忘了釋放
             using (SQLiteConnection conn = new SQLiteConnection(path))
             {
