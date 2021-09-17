@@ -38,16 +38,15 @@ namespace hMoney
             this.qqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelLeft = new System.Windows.Forms.Panel();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.panelRight = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelLeft.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -122,15 +121,15 @@ namespace hMoney
             this.cCToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.cCToolStripMenuItem.Text = "&About";
             // 
-            // panel1
+            // panelLeft
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.treeView1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(167, 527);
-            this.panel1.TabIndex = 3;
+            this.panelLeft.AutoScroll = true;
+            this.panelLeft.Controls.Add(this.treeView1);
+            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelLeft.Location = new System.Drawing.Point(0, 24);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(167, 527);
+            this.panelLeft.TabIndex = 3;
             // 
             // treeView1
             // 
@@ -139,35 +138,35 @@ namespace hMoney
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(167, 527);
             this.treeView1.TabIndex = 3;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            // 
+            // panelRight
+            // 
+            this.panelRight.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelRight.Location = new System.Drawing.Point(167, 24);
+            this.panelRight.Name = "panelRight";
+            this.panelRight.Size = new System.Drawing.Size(715, 41);
+            this.panelRight.TabIndex = 6;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(187, 40);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(167, 65);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(485, 243);
-            this.tabControl1.TabIndex = 5;
+            this.tabControl1.Size = new System.Drawing.Size(715, 486);
+            this.tabControl1.TabIndex = 7;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(477, 217);
+            this.tabPage1.Size = new System.Drawing.Size(707, 460);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(147, 41);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(182, 135);
-            this.panel2.TabIndex = 5;
             // 
             // tabPage2
             // 
@@ -185,18 +184,18 @@ namespace hMoney
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 573);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelRight);
+            this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.generateAccountList);
+            this.Text = "hMoney";
+            this.Load += new System.EventHandler(this.initial);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this.panelLeft.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,13 +210,13 @@ namespace hMoney
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem qqToolStripMenuItem;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cCToolStripMenuItem;
+        private System.Windows.Forms.Panel panelRight;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TabPage tabPage2;
     }
 }
