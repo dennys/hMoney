@@ -32,6 +32,11 @@ namespace hMoney
             string dbPath = data["DB"]["DB_PATH"];
             return dbPath;
         }
+        public string GetLanguage()
+        {
+            string language = data["UI"]["Language"];
+            return language;
+        }
 
     }
 }

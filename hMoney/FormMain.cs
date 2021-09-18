@@ -13,8 +13,15 @@ namespace hMoney
 {
     public partial class FormMain : Form
     {
+        Configuration config;
+
         public FormMain()
         {
+            config = new Configuration();
+            config.Init();
+            // Setup i18n
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(config.GetLanguage());
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(config.GetLanguage());
             InitializeComponent();
         }
 
@@ -36,6 +43,8 @@ namespace hMoney
         private void initial(object sender, EventArgs e)
         {
             DB db = new DB();
+
+            // Show account list
             var accountList = new SortedSet<string>();
             accountList = db.getAccountList();
 
