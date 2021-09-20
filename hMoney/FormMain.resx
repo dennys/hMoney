@@ -376,14 +376,20 @@
   <data name="ColumnExpense.HeaderText" xml:space="preserve">
     <value>Expense</value>
   </data>
+  <metadata name="ColumnNotes.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnNotes.HeaderText" xml:space="preserve">
+    <value>Notes</value>
+  </data>
   <data name="dataGridView1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 43</value>
+    <value>34, 39</value>
   </data>
   <data name="dataGridView1.Size" type="System.Drawing.Size, System.Drawing">
     <value>812, 382</value>
   </data>
   <data name="dataGridView1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;dataGridView1.Name" xml:space="preserve">
     <value>dataGridView1</value>
@@ -587,6 +593,12 @@
     <value>ColumnExpense</value>
   </data>
   <data name="&gt;&gt;ColumnExpense.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnNotes.Name" xml:space="preserve">
+    <value>ColumnNotes</value>
+  </data>
+  <data name="&gt;&gt;ColumnNotes.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

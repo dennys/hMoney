@@ -10,10 +10,23 @@ namespace hMoney
     {
         public DateTime Transdate;
         public int AccountId;
+        public int ToAccountId;
         public String AccountName;
+        public String ToAccountName;
         public String AccountType;
         public String AccountNum;
         public String Status;
+        public String Category;
+        public int CategoryId;
+        public String SubCategory;
+        public int SubCategoryId;
+        public String PayeeName;
+        public int PayeeId;
+        public int TransId;
+        public int TransAmount;
+        public int ToTransAmount;
+        public String TransCode;
+
         public String Notes;
         public String HeldAt;
     }

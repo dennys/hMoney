@@ -23,12 +23,14 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(path))
             {
                 // SQL command
-                string sql = " SELECT a.accountname, c.categname, sc.subcategname, t.* "
-                           + "   FROM checkingaccount_v1 t, accountlist_v1 a, category_v1 c, subcategory_v1 sc "
+                string sql = " SELECT a.accountname, c.categname, sc.subcategname, p.payeename, t.* "
+                           + "   FROM checkingaccount_v1 t, accountlist_v1 a, category_v1 c, subcategory_v1 sc, payee_v1 p "
                            + "  WHERE t.accountid = a.accountid "
                            + "    AND t.categid = c.CategID "
                            + "    AND t.subcategid = sc.subcategid "
-                           + "    AND t.accountid = @int1"; 
+                           + "    AND t.payeeid = p.payeeid "
+                           + "    AND t.accountid = @int1"
+                           + "  ORDER BY t.transdate "; 
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 cmd.Prepare();
@@ -42,6 +44,12 @@ namespace hMoney
                     trans.AccountId = Convert.ToInt32(reader["accountid"]);
                     trans.AccountName = reader["accountname"].ToString();
                     trans.Transdate = DateTime.Parse(reader["transdate"].ToString());
+                    trans.Category = reader["categname"].ToString();
+                    trans.SubCategory = reader["subcategname"].ToString();
+                    trans.PayeeName = reader["payeename"].ToString();
+                    trans.TransCode = reader["TransCode"].ToString();
+                    trans.TransAmount = Convert.ToInt32(reader["transamount"]);
+                    trans.Notes = reader["notes"].ToString();
                     result.Add(trans);
                 }
                 return result;
@@ -61,7 +69,8 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(path))
             {
                 // SQL command
-                string sql = "select * from accountlist_v1 where accounttype='Checking'";
+                //string sql = "select * from accountlist_v1 where accounttype='Checking' order by accountname";
+                string sql = "select * from accountlist_v1 order by accountname ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 SQLiteDataReader reader = cmd.ExecuteReader();

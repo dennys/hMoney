@@ -50,14 +50,15 @@ namespace hMoney
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPayee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnIncome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnExpense = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panelRight.SuspendLayout();
@@ -190,6 +191,12 @@ namespace hMoney
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // tabPage2
+            // 
+            resources.ApplyResources(this.tabPage2, "tabPage2");
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -199,20 +206,15 @@ namespace hMoney
             this.ColumnAccount,
             this.ColumnPayee,
             this.ColumnIncome,
-            this.ColumnExpense});
+            this.ColumnExpense,
+            this.ColumnNotes});
             resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             // 
-            // tabPage2
-            // 
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // ColumnDate
             // 
-            dataGridViewCellStyle1.Format = "yyyy/mm/dd";
+            dataGridViewCellStyle1.Format = "yyyy/MM/dd";
             dataGridViewCellStyle1.NullValue = null;
             this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.ColumnDate, "ColumnDate");
@@ -242,6 +244,11 @@ namespace hMoney
             // 
             resources.ApplyResources(this.ColumnExpense, "ColumnExpense");
             this.ColumnExpense.Name = "ColumnExpense";
+            // 
+            // ColumnNotes
+            // 
+            resources.ApplyResources(this.ColumnNotes, "ColumnNotes");
+            this.ColumnNotes.Name = "ColumnNotes";
             // 
             // FormMain
             // 
@@ -297,6 +304,7 @@ namespace hMoney
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayee;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIncome;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExpense;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNotes;
     }
 }
 

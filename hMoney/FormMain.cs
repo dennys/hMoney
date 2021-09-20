@@ -67,17 +67,28 @@ namespace hMoney
             // Show account list
             var transList = new List<CheckingAccount>();
             transList = db.getTransactionByAccountId(Convert.ToInt32(e.Node.Tag));
-
+            dataGridView1.Rows.Clear();
             int i = 0;
             foreach (CheckingAccount trans in transList)
             {
                 DataGridViewRow row = new DataGridViewRow();
                 dataGridView1.Rows.Add(row);
-                dataGridView1.Rows[i].Cells[0].Value = trans.Transdate;
-                dataGridView1.Rows[i].Cells[1].Value = trans.AccountId;
-                dataGridView1.Rows[i].Cells[2].Value = trans.AccountName;
+                int x = 0;
+                dataGridView1.Rows[i].Cells[x++].Value = trans.Transdate;
+                dataGridView1.Rows[i].Cells[x++].Value = trans.Category + ":" + trans.SubCategory;
+                dataGridView1.Rows[i].Cells[x++].Value = trans.AccountName;
+                dataGridView1.Rows[i].Cells[x++].Value = trans.PayeeName;
+                if (trans.TransCode == "Deposit") {
+                    dataGridView1.Rows[i].Cells[x++].Value = trans.TransAmount;
+                    x++;
+                } else {
+                    x++;
+                    dataGridView1.Rows[i].Cells[x++].Value = trans.TransAmount;
+                }
+                dataGridView1.Rows[i].Cells[x++].Value = trans.Notes;
                 i++;
             }
+            dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;  // Move to last row
         }
     }
 }
