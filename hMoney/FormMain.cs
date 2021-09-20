@@ -8,31 +8,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Serilog;
 
 namespace hMoney
 {
     public partial class FormMain : Form
     {
         Configuration config;
+        DB db;
 
         public FormMain()
         {
             config = new Configuration();
             config.Init();
+
+            // Setup log (Serilog)
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console()
+                .CreateLogger();
+
             // Setup i18n
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(config.GetLanguage());
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(config.GetLanguage());
             InitializeComponent();
+
+            // Enable DB
+            db = new DB();
+
+            Log.Information("Initial ...");
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void qqToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -42,8 +51,6 @@ namespace hMoney
 
         private void initial(object sender, EventArgs e)
         {
-            DB db = new DB();
-
             // Show account list
             var accountList = new List<Account>();
             accountList = db.getAccountList();
@@ -62,33 +69,36 @@ namespace hMoney
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            DB db = new DB();
-
             // Show account list
             var transList = new List<CheckingAccount>();
             transList = db.getTransactionByAccountId(Convert.ToInt32(e.Node.Tag));
-            dataGridView1.Rows.Clear();
+            gridTrans.Rows.Clear();
             int i = 0;
             foreach (CheckingAccount trans in transList)
             {
                 DataGridViewRow row = new DataGridViewRow();
-                dataGridView1.Rows.Add(row);
+                gridTrans.Rows.Add(row);
                 int x = 0;
-                dataGridView1.Rows[i].Cells[x++].Value = trans.Transdate;
-                dataGridView1.Rows[i].Cells[x++].Value = trans.Category + ":" + trans.SubCategory;
-                dataGridView1.Rows[i].Cells[x++].Value = trans.AccountName;
-                dataGridView1.Rows[i].Cells[x++].Value = trans.PayeeName;
+                gridTrans.Rows[i].Cells[x++].Value = trans.Transdate;
+                gridTrans.Rows[i].Cells[x++].Value = trans.Category + ":" + trans.SubCategory;
+                gridTrans.Rows[i].Cells[x++].Value = trans.AccountName;
+                gridTrans.Rows[i].Cells[x++].Value = trans.PayeeName;
                 if (trans.TransCode == "Deposit") {
-                    dataGridView1.Rows[i].Cells[x++].Value = trans.TransAmount;
+                    gridTrans.Rows[i].Cells[x++].Value = trans.TransAmount;
                     x++;
                 } else {
                     x++;
-                    dataGridView1.Rows[i].Cells[x++].Value = trans.TransAmount;
+                    gridTrans.Rows[i].Cells[x++].Value = trans.TransAmount;
                 }
-                dataGridView1.Rows[i].Cells[x++].Value = trans.Notes;
+                gridTrans.Rows[i].Cells[x++].Value = trans.Notes;
                 i++;
             }
-            dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;  // Move to last row
+            gridTrans.FirstDisplayedScrollingRowIndex = gridTrans.RowCount - 1;  // Move to last row
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            db.getAccountSummary();
         }
     }
 }

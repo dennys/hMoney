@@ -5,16 +5,31 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace hMoney
 {
     public class DB
     {
+
+        Configuration config;
+
+        public DB ()
+        {
+            // Setup log (Serilog)
+            Log.Logger = new LoggerConfiguration()
+                    .MinimumLevel.Debug()
+                    .WriteTo.Console()
+                    .CreateLogger();
+
+            // Setup configuration
+            config = new Configuration();
+            config.Init();
+        }
+
         public List<CheckingAccount> getTransactionByAccountId(int accountId)
         {
             var result = new List<CheckingAccount>();
-            Configuration config = new Configuration();
-            config.Init();
 
             // Get the path of database file
             string path = @"Data Source = " + config.GetDbPath();
@@ -23,18 +38,19 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(path))
             {
                 // SQL command
-                string sql = " SELECT a.accountname, c.categname, sc.subcategname, p.payeename, t.* "
-                           + "   FROM checkingaccount_v1 t, accountlist_v1 a, category_v1 c, subcategory_v1 sc, payee_v1 p "
-                           + "  WHERE t.accountid = a.accountid "
-                           + "    AND t.categid = c.CategID "
-                           + "    AND t.subcategid = sc.subcategid "
-                           + "    AND t.payeeid = p.payeeid "
-                           + "    AND t.accountid = @int1"
-                           + "  ORDER BY t.transdate "; 
+                string sql = @" SELECT a.accountname, c.categname, sc.subcategname, p.payeename, t.* 
+                                  FROM checkingaccount_v1 t, accountlist_v1 a
+								  LEFT OUTER JOIN category_v1 c      ON t.categid    = c.CategID
+								  LEFT OUTER JOIN subcategory_v1 sc  ON t.subcategid = sc.subcategid 
+								  LEFT OUTER JOIN payee_v1 p         ON t.payeeid       = p.payeeid 
+                                 WHERE t.accountid = a.accountid 
+                                   AND t.accountid = @int1
+                                 ORDER BY t.transdate "; 
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 cmd.Prepare();
                 cmd.Parameters.Add("@int1", DbType.Int32).Value = accountId;
+                Log.Debug("SQL:" + sql);
                 SQLiteDataReader reader = cmd.ExecuteReader();
 
                 //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
@@ -59,8 +75,6 @@ namespace hMoney
         public List<Account> getAccountList()
         {
             var result = new List<Account>();
-            Configuration config = new Configuration();
-            config.Init();
 
             // Get the path of database file
             string path = @"Data Source = " + config.GetDbPath();
@@ -70,7 +84,9 @@ namespace hMoney
             {
                 // SQL command
                 //string sql = "select * from accountlist_v1 where accounttype='Checking' order by accountname";
-                string sql = "select * from accountlist_v1 order by accountname ";
+                string sql = @"SELECT * 
+                                 FROM accountlist_v1
+                                ORDER BY accountname ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 SQLiteDataReader reader = cmd.ExecuteReader();
@@ -97,11 +113,9 @@ namespace hMoney
 
             }
         }
-        public SortedSet<string> getAccountNameList()
+        public int getAccountBalanceByAccountIdWithoutInitialBalance(int accountId)
         {
-            var result = new SortedSet<string>();
-            Configuration config = new Configuration();
-            config.Init();
+            int result = 0;
 
             // Get the path of database file
             string path = @"Data Source = " + config.GetDbPath();
@@ -110,7 +124,131 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(path))
             {
                 // SQL command
-                string sql = "select * from accountlist_v1 where accounttype='Checking'";
+                string sql = @"SELECT sum(amount) balance FROM (
+                                 SELECT CASE WHEN t.transcode = 'Deposit'  THEN t.transamount
+                                             WHEN t.transcode = 'Transfer' THEN t.transamount * -1
+	                                         ELSE t.transamount * -1
+	                                    END as amount
+                                   FROM checkingaccount_v1 t
+                                  WHERE accountid = @AccountId)";
+                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                conn.Open();
+                cmd.Prepare();
+                cmd.Parameters.Add("@AccountId", DbType.Int32).Value = accountId;
+                SQLiteDataReader reader = cmd.ExecuteReader();
+                Log.Debug("AccountId = " + accountId);
+
+                //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
+                // TODO: The SQL is not good, it will return 1 row even there is no data
+                while (reader.Read())
+                {
+                    if (String.IsNullOrEmpty(reader["balance"].ToString())) { return 0; }
+                    result = Convert.ToInt32(reader["balance"]);
+                }
+                return result;
+            }
+        }
+        public List<Account> getAccountBalanceByAccountType(String accountType)
+        {
+            var result = new List<Account>();
+
+            // Get the path of database file
+            string path = @"Data Source = " + config.GetDbPath();
+
+            //進行連線，用using可以避免忘了釋放
+            using (SQLiteConnection conn = new SQLiteConnection(path))
+            {
+                // SQL command
+                string sql = @"SELECT * 
+                                 FROM accountlist_v1
+                                WHERE accounttype = @AccountType
+                                ORDER BY accountname ";
+                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                conn.Open();
+                cmd.Prepare();
+                cmd.Parameters.Add("@AccountType", DbType.String).Value = accountType;
+                SQLiteDataReader reader = cmd.ExecuteReader();
+
+                //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
+                while (reader.Read())
+                {
+                    Account account = new Account();
+                    account.AccountId = Convert.ToInt32(reader["accountid"]);
+                    account.AccountName = reader["accountname"].ToString();
+                    account.Balance = account.InitialBal + this.getAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
+                    Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.Balance);
+                }
+                return result;
+            }
+        }
+        public List<Account> getAccountSummary()
+        {
+            List<String> accountTypes = new List<String>();
+            accountTypes.Add("Checking");
+            accountTypes.Add("Credit Card");
+            accountTypes.Add("Investment");
+            accountTypes.Add("Loan");
+            accountTypes.Add("Term");
+            accountTypes.Add("Shares");
+            accountTypes.Add("Asset");
+
+            List<Account> accountList = new List<Account>();
+
+            foreach (String accountType in accountTypes)
+            {
+                Log.Debug("Start to get AccountIdList of " + accountType);
+                getAccountBalanceByAccountType(accountType);
+            }
+            return null;
+        }
+        public SortedSet<int> getAccountIdListByAccountType(String accountType)
+        {
+            var result = new SortedSet<int>();
+            //Configuration config = new Configuration();
+            //config.Init();
+
+            // Get the path of database file
+            string path = @"Data Source = " + config.GetDbPath();
+
+            //進行連線，用using可以避免忘了釋放
+            using (SQLiteConnection conn = new SQLiteConnection(path))
+            {
+                // SQL command
+                string sql = @"SELECT * 
+                                 FROM accountlist_v1 
+                                WHERE accounttype = @AccountType ";
+                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                conn.Open();
+                cmd.Prepare();
+                cmd.Parameters.Add("@AccountType", DbType.String).Value = accountType;
+                SQLiteDataReader reader = cmd.ExecuteReader();
+
+                //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
+                while (reader.Read())
+                {
+                    result.Add(Convert.ToInt32(reader["accountid"]));
+                }
+                Log.Debug("Get " + result.Count + " accounts of " + accountType);
+                return result;
+            }
+
+        }
+        public SortedSet<string> getAccountNameList()
+        {
+            var result = new SortedSet<string>();
+            //Configuration config = new Configuration();
+            //config.Init();
+
+            // Get the path of database file
+            string path = @"Data Source = " + config.GetDbPath();
+
+            //進行連線，用using可以避免忘了釋放
+            using (SQLiteConnection conn = new SQLiteConnection(path))
+            {
+                // SQL command
+                string sql = @"SELECT * 
+                                 FROM accountlist_v1
+                                WHERE accounttype='Checking'";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 SQLiteDataReader reader = cmd.ExecuteReader();
