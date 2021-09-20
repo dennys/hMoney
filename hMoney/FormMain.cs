@@ -45,17 +45,39 @@ namespace hMoney
             DB db = new DB();
 
             // Show account list
-            var accountList = new SortedSet<string>();
+            var accountList = new List<Account>();
             accountList = db.getAccountList();
 
-            TreeNode nodeHome = treeView1.Nodes.Add("Home");
+            //TreeNode nodeHome = treeView1.Nodes.Add("Home");
             TreeNode nodeAccounts = treeView1.Nodes.Add("Accounts");
-            foreach (string account in accountList)
+            foreach (Account account in accountList)
             {
-                nodeAccounts.Nodes.Add(account);
+                TreeNode node = new TreeNode();
+                node.Tag = account.AccountId;
+                node.Text = account.AccountName;
+                nodeAccounts.Nodes.Add(node);
             }
             nodeAccounts.ExpandAll();
         }
 
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            DB db = new DB();
+
+            // Show account list
+            var transList = new List<CheckingAccount>();
+            transList = db.getTransactionByAccountId(Convert.ToInt32(e.Node.Tag));
+
+            int i = 0;
+            foreach (CheckingAccount trans in transList)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                dataGridView1.Rows.Add(row);
+                dataGridView1.Rows[i].Cells[0].Value = trans.Transdate;
+                dataGridView1.Rows[i].Cells[1].Value = trans.AccountId;
+                dataGridView1.Rows[i].Cells[2].Value = trans.AccountName;
+                i++;
+            }
+        }
     }
 }

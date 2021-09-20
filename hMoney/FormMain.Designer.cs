@@ -30,6 +30,7 @@ namespace hMoney
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,11 +50,20 @@ namespace hMoney
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPayee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIncome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnExpense = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panelRight.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -63,70 +73,70 @@ namespace hMoney
             // 
             // menuStrip1
             // 
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.ToolStripMenuItem,
             this.qqToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openFileToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
             // openFileToolStripMenuItem
             // 
-            resources.ApplyResources(this.openFileToolStripMenuItem, "openFileToolStripMenuItem");
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
+            resources.ApplyResources(this.openFileToolStripMenuItem, "openFileToolStripMenuItem");
             // 
             // exitToolStripMenuItem
             // 
-            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // ToolStripMenuItem
             // 
-            resources.ApplyResources(this.ToolStripMenuItem, "ToolStripMenuItem");
             this.ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem,
             this.languagesToolStripMenuItem});
             this.ToolStripMenuItem.Name = "ToolStripMenuItem";
+            resources.ApplyResources(this.ToolStripMenuItem, "ToolStripMenuItem");
             // 
             // optionsToolStripMenuItem
             // 
-            resources.ApplyResources(this.optionsToolStripMenuItem, "optionsToolStripMenuItem");
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            resources.ApplyResources(this.optionsToolStripMenuItem, "optionsToolStripMenuItem");
             // 
             // languagesToolStripMenuItem
             // 
-            resources.ApplyResources(this.languagesToolStripMenuItem, "languagesToolStripMenuItem");
             this.languagesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.englishToolStripMenuItem,
             this.traditionalChineseToolStripMenuItem});
             this.languagesToolStripMenuItem.Name = "languagesToolStripMenuItem";
+            resources.ApplyResources(this.languagesToolStripMenuItem, "languagesToolStripMenuItem");
             // 
             // englishToolStripMenuItem
             // 
-            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
+            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
             // 
             // traditionalChineseToolStripMenuItem
             // 
-            resources.ApplyResources(this.traditionalChineseToolStripMenuItem, "traditionalChineseToolStripMenuItem");
             this.traditionalChineseToolStripMenuItem.Name = "traditionalChineseToolStripMenuItem";
+            resources.ApplyResources(this.traditionalChineseToolStripMenuItem, "traditionalChineseToolStripMenuItem");
             // 
             // qqToolStripMenuItem
             // 
-            resources.ApplyResources(this.qqToolStripMenuItem, "qqToolStripMenuItem");
             this.qqToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem,
             this.cCToolStripMenuItem});
             this.qqToolStripMenuItem.Name = "qqToolStripMenuItem";
+            resources.ApplyResources(this.qqToolStripMenuItem, "qqToolStripMenuItem");
             this.qqToolStripMenuItem.Click += new System.EventHandler(this.qqToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
@@ -137,8 +147,8 @@ namespace hMoney
             // 
             // cCToolStripMenuItem
             // 
-            resources.ApplyResources(this.cCToolStripMenuItem, "cCToolStripMenuItem");
             this.cCToolStripMenuItem.Name = "cCToolStripMenuItem";
+            resources.ApplyResources(this.cCToolStripMenuItem, "cCToolStripMenuItem");
             // 
             // panelLeft
             // 
@@ -150,11 +160,14 @@ namespace hMoney
             // 
             resources.ApplyResources(this.treeView1, "treeView1");
             this.treeView1.Name = "treeView1";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeView1.Nodes")))});
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
             // panelRight
             // 
-            resources.ApplyResources(this.panelRight, "panelRight");
             this.panelRight.Controls.Add(this.label1);
+            resources.ApplyResources(this.panelRight, "panelRight");
             this.panelRight.Name = "panelRight";
             // 
             // label1
@@ -164,23 +177,71 @@ namespace hMoney
             // 
             // tabControl1
             // 
-            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.dataGridView1);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnDate,
+            this.ColumnCategory,
+            this.ColumnAccount,
+            this.ColumnPayee,
+            this.ColumnIncome,
+            this.ColumnExpense});
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
             // 
             // tabPage2
             // 
             resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // ColumnDate
+            // 
+            dataGridViewCellStyle1.Format = "yyyy/mm/dd";
+            dataGridViewCellStyle1.NullValue = null;
+            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle1;
+            resources.ApplyResources(this.ColumnDate, "ColumnDate");
+            this.ColumnDate.Name = "ColumnDate";
+            // 
+            // ColumnCategory
+            // 
+            resources.ApplyResources(this.ColumnCategory, "ColumnCategory");
+            this.ColumnCategory.Name = "ColumnCategory";
+            // 
+            // ColumnAccount
+            // 
+            resources.ApplyResources(this.ColumnAccount, "ColumnAccount");
+            this.ColumnAccount.Name = "ColumnAccount";
+            // 
+            // ColumnPayee
+            // 
+            resources.ApplyResources(this.ColumnPayee, "ColumnPayee");
+            this.ColumnPayee.Name = "ColumnPayee";
+            // 
+            // ColumnIncome
+            // 
+            resources.ApplyResources(this.ColumnIncome, "ColumnIncome");
+            this.ColumnIncome.Name = "ColumnIncome";
+            // 
+            // ColumnExpense
+            // 
+            resources.ApplyResources(this.ColumnExpense, "ColumnExpense");
+            this.ColumnExpense.Name = "ColumnExpense";
             // 
             // FormMain
             // 
@@ -200,6 +261,8 @@ namespace hMoney
             this.panelRight.ResumeLayout(false);
             this.panelRight.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,6 +290,13 @@ namespace hMoney
         private System.Windows.Forms.ToolStripMenuItem languagesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem traditionalChineseToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCategory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIncome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExpense;
     }
 }
 
