@@ -13,6 +13,7 @@ namespace hMoney
     {
 
         Configuration config;
+        String dbPath;
 
         public DB ()
         {
@@ -25,27 +26,27 @@ namespace hMoney
             // Setup configuration
             config = new Configuration();
             config.Init();
+
+            // Get the path of database file
+            dbPath = @"Data Source = " + config.GetDbPath();
         }
 
         public List<CheckingAccount> getTransactionByAccountId(int accountId)
         {
             var result = new List<CheckingAccount>();
 
-            // Get the path of database file
-            string path = @"Data Source = " + config.GetDbPath();
-
             //進行連線，用using可以避免忘了釋放
-            using (SQLiteConnection conn = new SQLiteConnection(path))
+            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
-                string sql = @" SELECT a.accountname, c.categname, sc.subcategname, p.payeename, t.* 
-                                  FROM checkingaccount_v1 t, accountlist_v1 a
-								  LEFT OUTER JOIN category_v1 c      ON t.categid    = c.CategID
-								  LEFT OUTER JOIN subcategory_v1 sc  ON t.subcategid = sc.subcategid 
-								  LEFT OUTER JOIN payee_v1 p         ON t.payeeid       = p.payeeid 
-                                 WHERE t.accountid = a.accountid 
-                                   AND t.accountid = @int1
-                                 ORDER BY t.transdate "; 
+                string sql = @"SELECT a.accountname, c.categname, sc.subcategname, p.payeename, t.* 
+                                 FROM checkingaccount_v1 t, accountlist_v1 a
+								 LEFT OUTER JOIN category_v1 c      ON t.categid    = c.CategID
+								 LEFT OUTER JOIN subcategory_v1 sc  ON t.subcategid = sc.subcategid 
+								 LEFT OUTER JOIN payee_v1 p         ON t.payeeid       = p.payeeid 
+                                WHERE t.accountid = a.accountid 
+                                  AND t.accountid = @int1
+                                ORDER BY t.transdate "; 
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 cmd.Prepare();
@@ -76,14 +77,10 @@ namespace hMoney
         {
             var result = new List<Account>();
 
-            // Get the path of database file
-            string path = @"Data Source = " + config.GetDbPath();
-
             //進行連線，用using可以避免忘了釋放
-            using (SQLiteConnection conn = new SQLiteConnection(path))
+            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
-                //string sql = "select * from accountlist_v1 where accounttype='Checking' order by accountname";
                 string sql = @"SELECT * 
                                  FROM accountlist_v1
                                 ORDER BY accountname ";
@@ -113,15 +110,12 @@ namespace hMoney
 
             }
         }
-        public int getAccountBalanceByAccountIdWithoutInitialBalance(int accountId)
+        public decimal getAccountBalanceByAccountIdWithoutInitialBalance(int accountId)
         {
-            int result = 0;
-
-            // Get the path of database file
-            string path = @"Data Source = " + config.GetDbPath();
+            decimal result = 0;
 
             //進行連線，用using可以避免忘了釋放
-            using (SQLiteConnection conn = new SQLiteConnection(path))
+            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
                 string sql = @"SELECT sum(amount) balance FROM (
@@ -143,7 +137,7 @@ namespace hMoney
                 while (reader.Read())
                 {
                     if (String.IsNullOrEmpty(reader["balance"].ToString())) { return 0; }
-                    result = Convert.ToInt32(reader["balance"]);
+                    result = Convert.ToDecimal(reader["balance"]);
                 }
                 return result;
             }
@@ -152,11 +146,8 @@ namespace hMoney
         {
             var result = new List<Account>();
 
-            // Get the path of database file
-            string path = @"Data Source = " + config.GetDbPath();
-
             //進行連線，用using可以避免忘了釋放
-            using (SQLiteConnection conn = new SQLiteConnection(path))
+            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
                 string sql = @"SELECT * 
@@ -204,14 +195,9 @@ namespace hMoney
         public SortedSet<int> getAccountIdListByAccountType(String accountType)
         {
             var result = new SortedSet<int>();
-            //Configuration config = new Configuration();
-            //config.Init();
-
-            // Get the path of database file
-            string path = @"Data Source = " + config.GetDbPath();
 
             //進行連線，用using可以避免忘了釋放
-            using (SQLiteConnection conn = new SQLiteConnection(path))
+            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
                 string sql = @"SELECT * 
@@ -236,14 +222,9 @@ namespace hMoney
         public SortedSet<string> getAccountNameList()
         {
             var result = new SortedSet<string>();
-            //Configuration config = new Configuration();
-            //config.Init();
-
-            // Get the path of database file
-            string path = @"Data Source = " + config.GetDbPath();
 
             //進行連線，用using可以避免忘了釋放
-            using (SQLiteConnection conn = new SQLiteConnection(path))
+            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
                 string sql = @"SELECT * 
@@ -259,17 +240,6 @@ namespace hMoney
                     result.Add(reader["accountname"].ToString());
                 }
                 return result;
-
-                //改用System.Data.SQLite後，要轉DataTable只要用Load()就行了
-                //DataTable dt = new DataTable();
-                //dt.Load(reader);
-
-                //如果是用adapter跟DataSet就更簡單了
-                //SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, conn); //似乎不能直接用cmd? 會有Exception
-                //DataSet ds = new DataSet();
-                //adapter.Fill(ds, "FirstTable"); //用 .Fill(ds) 就夠了，要重新命名TableName才需要放第二個參數
-                //接著只要 ds.Tables[0] 就能取出DataTable (當然... DataSet不止能這樣用)
-
             }
 
         }
