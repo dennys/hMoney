@@ -153,6 +153,45 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
+                string sql = @"SELECT (a.initialbal + x.amount) todaybal, a.* 
+                                 FROM accountlist_v1 a
+                                 LEFT OUTER JOIN (
+                                      SELECT accountid,
+                                             SUM(CASE WHEN t.transcode = 'Deposit'  THEN t.transamount
+                                                      WHEN t.transcode = 'Transfer' THEN t.transamount * -1
+	                                                  ELSE t.transamount * -1
+       	                                         END) as amount
+                                         FROM checkingaccount_v1 t
+                                        GROUP BY accountid ) x
+                                   ON a.accountid = x.accountid
+                                WHERE a.accounttype = @AccountType";
+                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                conn.Open();
+                cmd.Prepare();
+                cmd.Parameters.Add("@AccountType", DbType.String).Value = accountType;
+                SQLiteDataReader reader = cmd.ExecuteReader();
+
+                //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
+                while (reader.Read())
+                {
+                    Account account = new Account();
+                    account.AccountId = Convert.ToInt32(reader["accountid"]);
+                    account.AccountName = reader["accountname"].ToString();
+                    account.TodayBal = account.InitialBal + this.getAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
+                    result.Add(account);
+                    //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
+                }
+                return result;
+            }
+        }
+        public List<Account> getAccountBalanceByAccountTypeXXX(String accountType)
+        {
+            var result = new List<Account>();
+
+            //進行連線，用using可以避免忘了釋放
+            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            {
+                // SQL command
                 string sql = @"SELECT * 
                                  FROM accountlist_v1
                                 WHERE accounttype = @AccountType
@@ -169,8 +208,8 @@ namespace hMoney
                     Account account = new Account();
                     account.AccountId = Convert.ToInt32(reader["accountid"]);
                     account.AccountName = reader["accountname"].ToString();
-                    account.Balance = account.InitialBal + this.getAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
-                    Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.Balance);
+                    account.TodayBal = account.InitialBal + this.getAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
+                    //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
                 }
                 return result;
             }
@@ -178,21 +217,22 @@ namespace hMoney
         public List<Account> getAccountSummary()
         {
             List<String> accountTypes = new List<String>();
-            accountTypes.Add("Checking");
-            accountTypes.Add("Credit Card");
-            accountTypes.Add("Investment");
-            accountTypes.Add("Loan");
             accountTypes.Add("Term");
-            accountTypes.Add("Shares");
-            accountTypes.Add("Asset");
+            //accountTypes.Add("Credit Card");
+            //accountTypes.Add("Investment");
+            //accountTypes.Add("Loan");
+            //accountTypes.Add("Term");
+            //accountTypes.Add("Shares");
+            //accountTypes.Add("Asset");
 
             List<Account> accountList = new List<Account>();
 
             foreach (String accountType in accountTypes)
             {
-                getAccountBalanceByAccountType(accountType);
+                accountList = getAccountBalanceByAccountType(accountType);
+                //accountList.Add(getAccountBalanceByAccountType(accountType));
             }
-            return null;
+            return accountList;
         }
         public SortedSet<int> getAccountIdListByAccountType(String accountType)
         {

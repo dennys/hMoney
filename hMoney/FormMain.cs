@@ -88,7 +88,6 @@ namespace hMoney
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            // Show account list
             var transList = new List<CheckingAccount>();
             transList = db.getTransactionByAccountId(Convert.ToInt32(e.Node.Tag));
             gridTrans.Rows.Clear();
@@ -117,7 +116,23 @@ namespace hMoney
 
         private void button1_Click(object sender, EventArgs e)
         {
-            db.getAccountSummary();
+            List<Account> accountList = new List<Account>();
+            accountList = db.getAccountSummary();
+            gridSummary.Rows.Clear();
+            int i = 0;
+
+            foreach (Account account in accountList)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                gridSummary.Rows.Add(row);
+                int x = 0;
+                gridSummary.Rows[i].Cells[x++].Value = account.AccountName;
+                gridSummary.Rows[i].Cells[x++].Value = null;
+                gridSummary.Rows[i].Cells[x++].Value = account.TodayBal;
+                gridSummary.Rows[i].Cells[x++].Value = null;
+                i++;
+                //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
+            }
         }
     }
 }

@@ -15,7 +15,10 @@ namespace hMoney
         public String Status;
         public String Notes;
         public String HeldAt;
-        public decimal Balance;     // This field is calculated dynamically, not existed in database
         public decimal InitialBal;
+
+
+        public decimal TodayBal;     // This field is calculated dynamically, not existed in database
+        public decimal FutureBal;     // This field is calculated dynamically, not existed in database
     }
 }

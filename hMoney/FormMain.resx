@@ -454,23 +454,41 @@
   <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="gridSummary.ColumnHeadersHeight" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <metadata name="Column4.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Column4.HeaderText" xml:space="preserve">
+    <value>AccountName</value>
+  </data>
+  <data name="Column4.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
   <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="Column1.HeaderText" xml:space="preserve">
-    <value>Column1</value>
+    <value>Reconciled</value>
   </data>
   <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="Column2.HeaderText" xml:space="preserve">
-    <value>Column2</value>
+    <value>Today</value>
+  </data>
+  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Column3.HeaderText" xml:space="preserve">
+    <value>Future</value>
   </data>
   <data name="gridSummary.Location" type="System.Drawing.Point, System.Drawing">
     <value>31, 19</value>
   </data>
   <data name="gridSummary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 298</value>
+    <value>514, 422</value>
   </data>
   <data name="gridSummary.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -491,7 +509,7 @@
     <value>28, 32</value>
   </data>
   <data name="panelAccountSummary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>498, 344</value>
+    <value>548, 464</value>
   </data>
   <data name="panelAccountSummary.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -682,6 +700,12 @@
   <data name="&gt;&gt;ColumnNotes.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;Column4.Name" xml:space="preserve">
+    <value>Column4</value>
+  </data>
+  <data name="&gt;&gt;Column4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;Column1.Name" xml:space="preserve">
     <value>Column1</value>
   </data>
@@ -692,6 +716,12 @@
     <value>Column2</value>
   </data>
   <data name="&gt;&gt;Column2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Column3.Name" xml:space="preserve">
+    <value>Column3</value>
+  </data>
+  <data name="&gt;&gt;Column3.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
