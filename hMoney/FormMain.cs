@@ -51,20 +51,39 @@ namespace hMoney
 
         private void initial(object sender, EventArgs e)
         {
-            // Show account list
-            var accountList = new List<Account>();
-            accountList = db.getAccountList();
-
             //TreeNode nodeHome = treeView1.Nodes.Add("Home");
-            TreeNode nodeAccounts = treeView1.Nodes.Add("Accounts");
-            foreach (Account account in accountList)
+
+            List<String> accountTypes = new List<String>();
+            accountTypes.Add("Checking");
+            accountTypes.Add("Credit Card");
+            accountTypes.Add("Investment");
+            accountTypes.Add("Loan");
+            accountTypes.Add("Term");
+            accountTypes.Add("Shares");
+            accountTypes.Add("Asset");
+
+            List<Account> accountList = new List<Account>();
+
+            foreach (String accountType in accountTypes)
             {
-                TreeNode node = new TreeNode();
-                node.Tag = account.AccountId;
-                node.Text = account.AccountName;
-                nodeAccounts.Nodes.Add(node);
+                Log.Debug("Start to get AccountIdList of " + accountType);
+                // Show account list
+                accountList.Clear();
+                accountList = db.getAccountListByAccountType(accountType);
+
+                TreeNode nodeAccounts = treeView1.Nodes.Add(accountType);
+                foreach (Account account in accountList)
+                {
+                    TreeNode node = new TreeNode();
+                    node.Tag = account.AccountId;
+                    node.Text = account.AccountName;
+                    nodeAccounts.Nodes.Add(node);
+                }
+                nodeAccounts.ExpandAll();
             }
-            nodeAccounts.ExpandAll();
+
+            treeView1.SelectedNode = treeView1.Nodes[0];    // Select the Home node
+
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)

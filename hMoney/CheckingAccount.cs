@@ -23,8 +23,8 @@ namespace hMoney
         public String PayeeName;
         public int PayeeId;
         public int TransId;
-        public int TransAmount;
-        public int ToTransAmount;
+        public decimal TransAmount;
+        public decimal ToTransAmount;
         public String TransCode;
 
         public String Notes;

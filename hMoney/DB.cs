@@ -65,7 +65,7 @@ namespace hMoney
                     trans.SubCategory = reader["subcategname"].ToString();
                     trans.PayeeName = reader["payeename"].ToString();
                     trans.TransCode = reader["TransCode"].ToString();
-                    trans.TransAmount = Convert.ToInt32(reader["transamount"]);
+                    trans.TransAmount = Convert.ToDecimal(reader["transamount"]);
                     trans.Notes = reader["notes"].ToString();
                     result.Add(trans);
                 }
@@ -73,7 +73,7 @@ namespace hMoney
             }
         }
 
-        public List<Account> getAccountList()
+        public List<Account> getAccountListByAccountType(String accountType)
         {
             var result = new List<Account>();
 
@@ -83,9 +83,12 @@ namespace hMoney
                 // SQL command
                 string sql = @"SELECT * 
                                  FROM accountlist_v1
+                                WHERE accounttype = @AccountType
                                 ORDER BY accountname ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
+                cmd.Prepare();
+                cmd.Parameters.Add("@AccountType", DbType.String).Value = accountType;
                 SQLiteDataReader reader = cmd.ExecuteReader();
 
                 //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
@@ -187,7 +190,6 @@ namespace hMoney
 
             foreach (String accountType in accountTypes)
             {
-                Log.Debug("Start to get AccountIdList of " + accountType);
                 getAccountBalanceByAccountType(accountType);
             }
             return null;

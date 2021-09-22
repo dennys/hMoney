@@ -30,7 +30,7 @@ namespace hMoney
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +47,7 @@ namespace hMoney
             this.panelLeft = new System.Windows.Forms.Panel();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panelRight = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -60,10 +61,9 @@ namespace hMoney
             this.ColumnNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelAccountSummary = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gridSummary = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panelRight.SuspendLayout();
@@ -72,7 +72,7 @@ namespace hMoney
             ((System.ComponentModel.ISupportInitialize)(this.gridTrans)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panelAccountSummary.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -179,6 +179,13 @@ namespace hMoney
             resources.ApplyResources(this.panelRight, "panelRight");
             this.panelRight.Name = "panelRight";
             // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
@@ -216,9 +223,9 @@ namespace hMoney
             // 
             // ColumnDate
             // 
-            dataGridViewCellStyle3.Format = "yyyy/MM/dd";
-            dataGridViewCellStyle3.NullValue = null;
-            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "yyyy/MM/dd";
+            dataGridViewCellStyle1.NullValue = null;
+            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.ColumnDate, "ColumnDate");
             this.ColumnDate.Name = "ColumnDate";
             // 
@@ -261,19 +268,19 @@ namespace hMoney
             // 
             // panelAccountSummary
             // 
-            this.panelAccountSummary.Controls.Add(this.dataGridView1);
+            this.panelAccountSummary.Controls.Add(this.gridSummary);
             resources.ApplyResources(this.panelAccountSummary, "panelAccountSummary");
             this.panelAccountSummary.Name = "panelAccountSummary";
             // 
-            // dataGridView1
+            // gridSummary
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridSummary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
+            resources.ApplyResources(this.gridSummary, "gridSummary");
+            this.gridSummary.Name = "gridSummary";
+            this.gridSummary.RowTemplate.Height = 24;
             // 
             // Column1
             // 
@@ -286,13 +293,6 @@ namespace hMoney
             resources.ApplyResources(this.Column2, "Column2");
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormMain
             // 
@@ -316,7 +316,7 @@ namespace hMoney
             ((System.ComponentModel.ISupportInitialize)(this.gridTrans)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.panelAccountSummary.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,7 +353,7 @@ namespace hMoney
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExpense;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNotes;
         private System.Windows.Forms.Panel panelAccountSummary;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gridSummary;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.Button button1;
