@@ -34,7 +34,20 @@ namespace hMoney
         }
         public string GetLanguage()
         {
+            this.Init();
             string language = data["UI"]["Language"];
+            return language;
+        }
+        public string GetDateFormat()
+        {
+            this.Init();
+            string language = data["UI"]["DateFormat"];
+            return language;
+        }
+        public string GetNumberFormat()
+        {
+            this.Init();
+            string language = data["UI"]["NumberFormat"];
             return language;
         }
 

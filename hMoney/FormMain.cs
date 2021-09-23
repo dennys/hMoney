@@ -51,6 +51,8 @@ namespace hMoney
 
         private void initial(object sender, EventArgs e)
         {
+            this.configFormat();
+
             //TreeNode nodeHome = treeView1.Nodes.Add("Home");
 
             List<String> accountTypes = new List<String>();
@@ -134,5 +136,14 @@ namespace hMoney
                 //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
             }
         }
+
+        private void configFormat()
+        {
+            gridTrans.Columns[0].DefaultCellStyle.Format = config.GetDateFormat();
+            gridTrans.Columns[4].DefaultCellStyle.Format = config.GetNumberFormat();
+            gridTrans.Columns[5].DefaultCellStyle.Format = config.GetNumberFormat();
+            gridSummary.AlternatingRowsDefaultCellStyle.Format = config.GetNumberFormat();
+        }
+
     }
 }
