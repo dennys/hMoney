@@ -159,11 +159,16 @@ namespace hMoney
             gridTrans.Columns[4].DefaultCellStyle.Format = config.GetNumberFormat();
             gridTrans.Columns[5].DefaultCellStyle.Format = config.GetNumberFormat();
             gridSummary.AlternatingRowsDefaultCellStyle.Format = config.GetNumberFormat();
+            treeView1.Font = new Font(treeView1.Font.Name, 12);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -127,7 +127,7 @@ namespace hMoney
 	                                         ELSE t.transamount * -1
 	                                    END as amount
                                    FROM checkingaccount_v1 t
-                                  WHERE accountid = @AccountId)";
+                                  WHERE accountid = @AccountId) ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 cmd.Prepare();
@@ -245,7 +245,8 @@ namespace hMoney
                 // SQL command
                 string sql = @"SELECT * 
                                  FROM accountlist_v1 
-                                WHERE accounttype = @AccountType ";
+                                WHERE accounttype = @AccountType
+                                ORDER BY accountid ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 cmd.Prepare();
@@ -272,7 +273,8 @@ namespace hMoney
                 // SQL command
                 string sql = @"SELECT * 
                                  FROM accountlist_v1
-                                WHERE accounttype='Checking'";
+                                WHERE accounttype='Checking'
+                                ORDER BY accountname ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 SQLiteDataReader reader = cmd.ExecuteReader();

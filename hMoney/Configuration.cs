@@ -41,15 +41,20 @@ namespace hMoney
         public string GetDateFormat()
         {
             this.Init();
-            string language = data["UI"]["DateFormat"];
-            return language;
+            string dateFormat = data["UI"]["DateFormat"];
+            return dateFormat;
         }
         public string GetNumberFormat()
         {
             this.Init();
-            string language = data["UI"]["NumberFormat"];
-            return language;
+            string numberFormat = data["UI"]["NumberFormat"];
+            return numberFormat;
         }
-
+        public string GetTreeAccountFontSize()
+        {
+            this.Init();
+            string treeAccountFontSize = data["UI"]["TreeAccountFontSize"];
+            return treeAccountFontSize;
+        }
     }
 }
