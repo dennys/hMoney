@@ -50,11 +50,17 @@ namespace hMoney
             string numberFormat = data["UI"]["NumberFormat"];
             return numberFormat;
         }
-        public string GetTreeAccountFontSize()
+        public int GetTreeAccountFontSize()
         {
             this.Init();
-            string treeAccountFontSize = data["UI"]["TreeAccountFontSize"];
+            int treeAccountFontSize = Convert.ToInt32(data["UI"]["TreeAccountFontSize"]);
             return treeAccountFontSize;
+        }
+        public int GetFontSize()
+        {
+            this.Init();
+            int fontSize = Convert.ToInt32(data["UI"]["FontSize"]);
+            return fontSize;
         }
     }
 }
