@@ -9,6 +9,7 @@ namespace hMoney
     public static class Globals
     {
         public static String INI_FILE_NAME = "hMoney.ini";
+        public static String TREE_VIEW_HOME_NAME = "NodeHome";
 
         //public static String getIniFileName()
         //{

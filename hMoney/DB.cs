@@ -164,7 +164,8 @@ namespace hMoney
                                          FROM checkingaccount_v1 t
                                         GROUP BY accountid ) x
                                    ON a.accountid = x.accountid
-                                WHERE a.accounttype = @AccountType";
+                                WHERE a.accounttype = @AccountType
+                                ORDER BY a.accountname ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 cmd.Prepare();

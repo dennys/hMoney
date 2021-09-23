@@ -52,6 +52,7 @@ namespace hMoney
         private void initial(object sender, EventArgs e)
         {
             this.configFormat();
+            tabAccount.Hide();
 
             //TreeNode nodeHome = treeView1.Nodes.Add("Home");
 
@@ -90,8 +91,17 @@ namespace hMoney
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            if (e.Node.Name == Globals.TREE_VIEW_HOME_NAME)
+                this.showSummary();
+            else
+                this.showAccount(e.Node.Tag.ToString(), e.Node.Text);
+
+        }
+
+        private void showAccount(String accountId, String accountName)
+        {
             var transList = new List<CheckingAccount>();
-            transList = db.getTransactionByAccountId(Convert.ToInt32(e.Node.Tag));
+            transList = db.getTransactionByAccountId(Convert.ToInt32(accountId));
             gridTrans.Rows.Clear();
             int i = 0;
             foreach (CheckingAccount trans in transList)
@@ -103,10 +113,13 @@ namespace hMoney
                 gridTrans.Rows[i].Cells[x++].Value = trans.Category + ":" + trans.SubCategory;
                 gridTrans.Rows[i].Cells[x++].Value = trans.AccountName;
                 gridTrans.Rows[i].Cells[x++].Value = trans.PayeeName;
-                if (trans.TransCode == "Deposit") {
+                if (trans.TransCode == "Deposit")
+                {
                     gridTrans.Rows[i].Cells[x++].Value = trans.TransAmount;
                     x++;
-                } else {
+                }
+                else
+                {
                     x++;
                     gridTrans.Rows[i].Cells[x++].Value = trans.TransAmount;
                 }
@@ -114,9 +127,11 @@ namespace hMoney
                 i++;
             }
             gridTrans.FirstDisplayedScrollingRowIndex = gridTrans.RowCount - 1;  // Move to last row
-        }
 
-        private void button1_Click(object sender, EventArgs e)
+            tabControl1.SelectedTab = tabAccount;
+            tabAccount.Text = accountName;
+        }
+        private void showSummary()
         {
             List<Account> accountList = new List<Account>();
             accountList = db.getAccountSummary();
@@ -135,6 +150,7 @@ namespace hMoney
                 i++;
                 //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
             }
+            tabControl1.SelectedTab = tabHome;
         }
 
         private void configFormat()
@@ -145,5 +161,9 @@ namespace hMoney
             gridSummary.AlternatingRowsDefaultCellStyle.Format = config.GetNumberFormat();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

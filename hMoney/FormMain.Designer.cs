@@ -30,13 +30,13 @@ namespace hMoney
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +57,7 @@ namespace hMoney
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabAccount = new System.Windows.Forms.TabPage();
             this.gridTrans = new System.Windows.Forms.DataGridView();
             this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,7 +66,7 @@ namespace hMoney
             this.ColumnIncome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnExpense = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabHome = new System.Windows.Forms.TabPage();
             this.panelAccountSummary = new System.Windows.Forms.Panel();
             this.gridSummary = new System.Windows.Forms.DataGridView();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,9 +77,9 @@ namespace hMoney
             this.panelLeft.SuspendLayout();
             this.panelRight.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTrans)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.tabHome.SuspendLayout();
             this.panelAccountSummary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).BeginInit();
             this.SuspendLayout();
@@ -194,13 +194,13 @@ namespace hMoney
             resources.ApplyResources(this.button2, "button2");
             this.button2.Name = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -209,18 +209,18 @@ namespace hMoney
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabHome);
+            this.tabControl1.Controls.Add(this.tabAccount);
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
-            // tabPage1
+            // tabAccount
             // 
-            this.tabPage1.Controls.Add(this.gridTrans);
-            resources.ApplyResources(this.tabPage1, "tabPage1");
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabAccount.Controls.Add(this.gridTrans);
+            resources.ApplyResources(this.tabAccount, "tabAccount");
+            this.tabAccount.Name = "tabAccount";
+            this.tabAccount.UseVisualStyleBackColor = true;
             // 
             // gridTrans
             // 
@@ -239,8 +239,8 @@ namespace hMoney
             // 
             // ColumnDate
             // 
-            dataGridViewCellStyle1.NullValue = null;
-            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle29.NullValue = null;
+            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle29;
             resources.ApplyResources(this.ColumnDate, "ColumnDate");
             this.ColumnDate.Name = "ColumnDate";
             // 
@@ -261,15 +261,15 @@ namespace hMoney
             // 
             // ColumnIncome
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnIncome.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnIncome.DefaultCellStyle = dataGridViewCellStyle30;
             resources.ApplyResources(this.ColumnIncome, "ColumnIncome");
             this.ColumnIncome.Name = "ColumnIncome";
             // 
             // ColumnExpense
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnExpense.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnExpense.DefaultCellStyle = dataGridViewCellStyle31;
             resources.ApplyResources(this.ColumnExpense, "ColumnExpense");
             this.ColumnExpense.Name = "ColumnExpense";
             // 
@@ -278,12 +278,12 @@ namespace hMoney
             resources.ApplyResources(this.ColumnNotes, "ColumnNotes");
             this.ColumnNotes.Name = "ColumnNotes";
             // 
-            // tabPage2
+            // tabHome
             // 
-            this.tabPage2.Controls.Add(this.panelAccountSummary);
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabHome.Controls.Add(this.panelAccountSummary);
+            resources.ApplyResources(this.tabHome, "tabHome");
+            this.tabHome.Name = "tabHome";
+            this.tabHome.UseVisualStyleBackColor = true;
             // 
             // panelAccountSummary
             // 
@@ -293,8 +293,8 @@ namespace hMoney
             // 
             // gridSummary
             // 
-            dataGridViewCellStyle4.NullValue = null;
-            this.gridSummary.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle32.NullValue = null;
+            this.gridSummary.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle32;
             resources.ApplyResources(this.gridSummary, "gridSummary");
             this.gridSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridSummary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -315,27 +315,27 @@ namespace hMoney
             // 
             // Column1
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle33.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle33;
             resources.ApplyResources(this.Column1, "Column1");
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.NullValue = null;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle34.NullValue = null;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle34;
             resources.ApplyResources(this.Column2, "Column2");
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.NullValue = null;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle35.NullValue = null;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle35;
             resources.ApplyResources(this.Column3, "Column3");
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -358,9 +358,9 @@ namespace hMoney
             this.panelRight.ResumeLayout(false);
             this.panelRight.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.tabAccount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridTrans)).EndInit();
-            this.tabPage2.ResumeLayout(false);
+            this.tabHome.ResumeLayout(false);
             this.panelAccountSummary.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).EndInit();
             this.ResumeLayout(false);
@@ -383,8 +383,8 @@ namespace hMoney
         private System.Windows.Forms.ToolStripMenuItem cCToolStripMenuItem;
         private System.Windows.Forms.Panel panelRight;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabAccount;
+        private System.Windows.Forms.TabPage tabHome;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languagesToolStripMenuItem;
