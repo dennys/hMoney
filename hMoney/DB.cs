@@ -177,6 +177,14 @@ namespace hMoney
                     account.AccountType = reader["accounttype"].ToString();
                     account.AccountName = reader["accountname"].ToString();
                     account.TodayBal = account.InitialBal + this.getAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
+                    account.Status = reader["status"].ToString();
+                    account.Notes = reader["notes"].ToString();
+                    account.WebSite = reader["website"].ToString();
+                    account.CurrencyId = Convert.ToInt32(reader["CurrencyId"]);
+                    if (reader["FavoriteAcct"].ToString() == "TRUE")
+                        account.FavoriteAcct = true;
+                    else
+                        account.FavoriteAcct = false;
                     result.Add(account);
                     //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
                 }
@@ -208,6 +216,13 @@ namespace hMoney
                     account.AccountId = Convert.ToInt32(reader["accountid"]);
                     account.AccountName = reader["accountname"].ToString();
                     account.TodayBal = account.InitialBal + this.getAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
+                    account.Status = reader["status"].ToString();
+                    account.Notes = reader["notes"].ToString();
+                    account.WebSite = reader["website"].ToString();
+                    if (reader["website"].ToString() == "TRUE")
+                        account.FavoriteAcct = true;
+                    else
+                        account.FavoriteAcct = false;
                     //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
                 }
                 return result;

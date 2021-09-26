@@ -178,6 +178,7 @@ namespace hMoney
             // 
             // splitContainer1.Panel2
             // 
+            resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
             // 
             // treeView1

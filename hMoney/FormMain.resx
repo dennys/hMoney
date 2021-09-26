@@ -289,6 +289,12 @@
   <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="splitContainer1.Panel2.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="splitContainer1.Panel2.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 2000</value>
+  </data>
   <metadata name="Column4.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -296,7 +302,7 @@
     <value>AccountName</value>
   </data>
   <data name="Column4.Width" type="System.Int32, mscorlib">
-    <value>200</value>
+    <value>250</value>
   </data>
   <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -323,7 +329,7 @@
     <value>0, 0</value>
   </data>
   <data name="gridSummary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>548, 566</value>
+    <value>548, 1968</value>
   </data>
   <data name="gridSummary.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -347,7 +353,7 @@
     <value>3, 3</value>
   </data>
   <data name="panelAccountSummary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>548, 566</value>
+    <value>548, 1968</value>
   </data>
   <data name="panelAccountSummary.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -371,7 +377,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabHome.Size" type="System.Drawing.Size, System.Drawing">
-    <value>911, 572</value>
+    <value>992, 1974</value>
   </data>
   <data name="tabHome.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -494,7 +500,7 @@
     <value>0, 0</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>919, 598</value>
+    <value>1000, 2000</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
