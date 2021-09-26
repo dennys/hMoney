@@ -32,13 +32,32 @@ namespace hMoney
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabHome = new System.Windows.Forms.TabPage();
+            this.gridSummary = new System.Windows.Forms.DataGridView();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabAccount = new System.Windows.Forms.TabPage();
+            this.gridTrans = new System.Windows.Forms.DataGridView();
+            this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPayee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIncome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnExpense = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,37 +71,206 @@ namespace hMoney
             this.qqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabHome = new System.Windows.Forms.TabPage();
-            this.panelAccountSummary = new System.Windows.Forms.Panel();
-            this.gridSummary = new System.Windows.Forms.DataGridView();
-            this.tabAccount = new System.Windows.Forms.TabPage();
-            this.gridTrans = new System.Windows.Forms.DataGridView();
-            this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPayee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnIncome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnExpense = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabHome.SuspendLayout();
-            this.panelAccountSummary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).BeginInit();
             this.tabAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTrans)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // splitContainer1
+            // 
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
+            // 
+            // treeView1
+            // 
+            resources.ApplyResources(this.treeView1, "treeView1");
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeView1.Nodes")))});
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabHome);
+            this.tabControl1.Controls.Add(this.tabAccount);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            // 
+            // tabHome
+            // 
+            resources.ApplyResources(this.tabHome, "tabHome");
+            this.tabHome.Controls.Add(this.gridSummary);
+            this.tabHome.Name = "tabHome";
+            this.tabHome.UseVisualStyleBackColor = true;
+            // 
+            // gridSummary
+            // 
+            this.gridSummary.AllowUserToAddRows = false;
+            this.gridSummary.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.NullValue = null;
+            this.gridSummary.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridSummary.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSummary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.gridSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridSummary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column4,
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.ColumnAccountId});
+            resources.ApplyResources(this.gridSummary, "gridSummary");
+            this.gridSummary.MultiSelect = false;
+            this.gridSummary.Name = "gridSummary";
+            this.gridSummary.ReadOnly = true;
+            this.gridSummary.RowHeadersVisible = false;
+            this.gridSummary.RowTemplate.Height = 24;
+            this.gridSummary.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSummary_CellClick);
+            this.gridSummary.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSummary_CellMouseEnter);
+            this.gridSummary.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSummary_CellMouseLeave);
+            // 
+            // Column4
+            // 
+            this.Column4.FillWeight = 183.4862F;
+            resources.ApplyResources(this.Column4, "Column4");
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column1.FillWeight = 61.96669F;
+            resources.ApplyResources(this.Column1, "Column1");
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.NullValue = null;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column2.FillWeight = 72.83604F;
+            resources.ApplyResources(this.Column2, "Column2");
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.NullValue = null;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column3.FillWeight = 81.71102F;
+            resources.ApplyResources(this.Column3, "Column3");
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // ColumnAccountId
+            // 
+            resources.ApplyResources(this.ColumnAccountId, "ColumnAccountId");
+            this.ColumnAccountId.Name = "ColumnAccountId";
+            this.ColumnAccountId.ReadOnly = true;
+            // 
+            // tabAccount
+            // 
+            this.tabAccount.Controls.Add(this.gridTrans);
+            resources.ApplyResources(this.tabAccount, "tabAccount");
+            this.tabAccount.Name = "tabAccount";
+            this.tabAccount.UseVisualStyleBackColor = true;
+            // 
+            // gridTrans
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridTrans.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.gridTrans.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridTrans.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnDate,
+            this.ColumnCategory,
+            this.ColumnAccount,
+            this.ColumnPayee,
+            this.ColumnIncome,
+            this.ColumnExpense,
+            this.ColumnNotes});
+            resources.ApplyResources(this.gridTrans, "gridTrans");
+            this.gridTrans.Name = "gridTrans";
+            this.gridTrans.ReadOnly = true;
+            this.gridTrans.RowTemplate.Height = 24;
+            // 
+            // ColumnDate
+            // 
+            dataGridViewCellStyle7.NullValue = null;
+            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle7;
+            resources.ApplyResources(this.ColumnDate, "ColumnDate");
+            this.ColumnDate.Name = "ColumnDate";
+            this.ColumnDate.ReadOnly = true;
+            // 
+            // ColumnCategory
+            // 
+            resources.ApplyResources(this.ColumnCategory, "ColumnCategory");
+            this.ColumnCategory.Name = "ColumnCategory";
+            this.ColumnCategory.ReadOnly = true;
+            // 
+            // ColumnAccount
+            // 
+            resources.ApplyResources(this.ColumnAccount, "ColumnAccount");
+            this.ColumnAccount.Name = "ColumnAccount";
+            this.ColumnAccount.ReadOnly = true;
+            // 
+            // ColumnPayee
+            // 
+            resources.ApplyResources(this.ColumnPayee, "ColumnPayee");
+            this.ColumnPayee.Name = "ColumnPayee";
+            this.ColumnPayee.ReadOnly = true;
+            // 
+            // ColumnIncome
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnIncome.DefaultCellStyle = dataGridViewCellStyle8;
+            resources.ApplyResources(this.ColumnIncome, "ColumnIncome");
+            this.ColumnIncome.Name = "ColumnIncome";
+            this.ColumnIncome.ReadOnly = true;
+            // 
+            // ColumnExpense
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnExpense.DefaultCellStyle = dataGridViewCellStyle9;
+            resources.ApplyResources(this.ColumnExpense, "ColumnExpense");
+            this.ColumnExpense.Name = "ColumnExpense";
+            this.ColumnExpense.ReadOnly = true;
+            // 
+            // ColumnNotes
+            // 
+            resources.ApplyResources(this.ColumnNotes, "ColumnNotes");
+            this.ColumnNotes.Name = "ColumnNotes";
+            this.ColumnNotes.ReadOnly = true;
             // 
             // statusStrip1
             // 
@@ -167,195 +355,6 @@ namespace hMoney
             this.cCToolStripMenuItem.Name = "cCToolStripMenuItem";
             resources.ApplyResources(this.cCToolStripMenuItem, "cCToolStripMenuItem");
             // 
-            // splitContainer1
-            // 
-            resources.ApplyResources(this.splitContainer1, "splitContainer1");
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
-            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            // 
-            // treeView1
-            // 
-            resources.ApplyResources(this.treeView1, "treeView1");
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeView1.Nodes")))});
-            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabHome);
-            this.tabControl1.Controls.Add(this.tabAccount);
-            resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            // 
-            // tabHome
-            // 
-            this.tabHome.Controls.Add(this.panelAccountSummary);
-            resources.ApplyResources(this.tabHome, "tabHome");
-            this.tabHome.Name = "tabHome";
-            this.tabHome.UseVisualStyleBackColor = true;
-            // 
-            // panelAccountSummary
-            // 
-            this.panelAccountSummary.Controls.Add(this.gridSummary);
-            resources.ApplyResources(this.panelAccountSummary, "panelAccountSummary");
-            this.panelAccountSummary.Name = "panelAccountSummary";
-            // 
-            // gridSummary
-            // 
-            this.gridSummary.AllowUserToAddRows = false;
-            this.gridSummary.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.NullValue = null;
-            this.gridSummary.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.gridSummary.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridSummary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.gridSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridSummary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column4,
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            resources.ApplyResources(this.gridSummary, "gridSummary");
-            this.gridSummary.MultiSelect = false;
-            this.gridSummary.Name = "gridSummary";
-            this.gridSummary.ReadOnly = true;
-            this.gridSummary.RowHeadersVisible = false;
-            this.gridSummary.RowTemplate.Height = 24;
-            this.gridSummary.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridSummary_CellMouseClick);
-            this.gridSummary.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSummary_CellMouseEnter);
-            this.gridSummary.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSummary_CellMouseLeave);
-            // 
-            // tabAccount
-            // 
-            this.tabAccount.Controls.Add(this.gridTrans);
-            resources.ApplyResources(this.tabAccount, "tabAccount");
-            this.tabAccount.Name = "tabAccount";
-            this.tabAccount.UseVisualStyleBackColor = true;
-            // 
-            // gridTrans
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridTrans.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.gridTrans.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridTrans.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnDate,
-            this.ColumnCategory,
-            this.ColumnAccount,
-            this.ColumnPayee,
-            this.ColumnIncome,
-            this.ColumnExpense,
-            this.ColumnNotes});
-            resources.ApplyResources(this.gridTrans, "gridTrans");
-            this.gridTrans.Name = "gridTrans";
-            this.gridTrans.ReadOnly = true;
-            this.gridTrans.RowTemplate.Height = 24;
-            // 
-            // ColumnDate
-            // 
-            dataGridViewCellStyle7.NullValue = null;
-            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle7;
-            resources.ApplyResources(this.ColumnDate, "ColumnDate");
-            this.ColumnDate.Name = "ColumnDate";
-            this.ColumnDate.ReadOnly = true;
-            // 
-            // ColumnCategory
-            // 
-            resources.ApplyResources(this.ColumnCategory, "ColumnCategory");
-            this.ColumnCategory.Name = "ColumnCategory";
-            this.ColumnCategory.ReadOnly = true;
-            // 
-            // ColumnAccount
-            // 
-            resources.ApplyResources(this.ColumnAccount, "ColumnAccount");
-            this.ColumnAccount.Name = "ColumnAccount";
-            this.ColumnAccount.ReadOnly = true;
-            // 
-            // ColumnPayee
-            // 
-            resources.ApplyResources(this.ColumnPayee, "ColumnPayee");
-            this.ColumnPayee.Name = "ColumnPayee";
-            this.ColumnPayee.ReadOnly = true;
-            // 
-            // ColumnIncome
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnIncome.DefaultCellStyle = dataGridViewCellStyle8;
-            resources.ApplyResources(this.ColumnIncome, "ColumnIncome");
-            this.ColumnIncome.Name = "ColumnIncome";
-            this.ColumnIncome.ReadOnly = true;
-            // 
-            // ColumnExpense
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnExpense.DefaultCellStyle = dataGridViewCellStyle9;
-            resources.ApplyResources(this.ColumnExpense, "ColumnExpense");
-            this.ColumnExpense.Name = "ColumnExpense";
-            this.ColumnExpense.ReadOnly = true;
-            // 
-            // ColumnNotes
-            // 
-            resources.ApplyResources(this.ColumnNotes, "ColumnNotes");
-            this.ColumnNotes.Name = "ColumnNotes";
-            this.ColumnNotes.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 183.4862F;
-            resources.ApplyResources(this.Column4, "Column4");
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column1.FillWeight = 61.96669F;
-            resources.ApplyResources(this.Column1, "Column1");
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.NullValue = null;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column2.FillWeight = 72.83604F;
-            resources.ApplyResources(this.Column2, "Column2");
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.NullValue = null;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column3.FillWeight = 81.71102F;
-            resources.ApplyResources(this.Column3, "Column3");
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
@@ -366,18 +365,17 @@ namespace hMoney
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
             this.Load += new System.EventHandler(this.initial);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabHome.ResumeLayout(false);
-            this.panelAccountSummary.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).EndInit();
             this.tabAccount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridTrans)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,7 +400,6 @@ namespace hMoney
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabHome;
-        private System.Windows.Forms.Panel panelAccountSummary;
         private System.Windows.Forms.DataGridView gridSummary;
         private System.Windows.Forms.TabPage tabAccount;
         private System.Windows.Forms.DataGridView gridTrans;
@@ -417,6 +414,7 @@ namespace hMoney
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountId;
     }
 }
 

@@ -92,13 +92,13 @@ namespace hMoney
             if (e.Node.Name == Globals.TREE_VIEW_HOME_NAME)
                 this.showSummary();
             else
-                this.showAccount(e.Node.Tag.ToString(), e.Node.Text);
+                this.showAccount(Convert.ToInt32(e.Node.Tag.ToString()), e.Node.Text);
 
         }
-        private void showAccount(String accountId, String accountName)
+        private void showAccount(int accountId, String accountName)
         {
             var transList = new List<CheckingAccount>();
-            transList = db.getTransactionByAccountId(Convert.ToInt32(accountId));
+            transList = db.getTransactionByAccountId(accountId);
             gridTrans.Rows.Clear();
             int i = 0;
             foreach (CheckingAccount trans in transList)
@@ -155,6 +155,7 @@ namespace hMoney
                 gridSummary.Rows[i].Cells[x++].Value = null;                // Reconciled
                 gridSummary.Rows[i].Cells[x++].Value = account.TodayBal;    // Today balance
                 gridSummary.Rows[i].Cells[x++].Value = null;                // Future balance
+                gridSummary.Rows[i].Cells[x++].Value = account.AccountId;   // Account ID
                 i++;
                 //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
             }
@@ -186,9 +187,14 @@ namespace hMoney
             gridSummary.Cursor = Cursors.Default;
         }
 
-        private void gridSummary_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void gridSummary_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Log.Debug(e.);
+            int accountId = Convert.ToInt32(gridSummary.Rows[e.RowIndex].Cells[4].Value);
+            DataGridViewTextBoxCell cell = (DataGridViewTextBoxCell)gridSummary.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            Log.Debug("Cell.Value=" + cell.Value + ", account id = " + accountId);
+
+            if (e.ColumnIndex == 0)
+                this.showAccount(accountId, cell.Value.ToString());
         }
     }
 }

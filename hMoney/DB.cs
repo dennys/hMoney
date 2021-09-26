@@ -150,7 +150,7 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
-                string sql = @"SELECT (a.initialbal + x.amount) todaybal, a.* 
+                string sqlTodalBal = @"SELECT (a.initialbal + x.amount) todaybal, a.* 
                                  FROM accountlist_v1 a
                                  LEFT OUTER JOIN (
                                       SELECT accountid,
@@ -163,7 +163,7 @@ namespace hMoney
                                    ON a.accountid = x.accountid
                                 WHERE a.accounttype = @AccountType
                                 ORDER BY a.accountname ";
-                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                SQLiteCommand cmd = new SQLiteCommand(sqlTodalBal, conn);
                 conn.Open();
                 cmd.Prepare();
                 cmd.Parameters.Add("@AccountType", DbType.String).Value = accountType;
