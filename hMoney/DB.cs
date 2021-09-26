@@ -217,8 +217,8 @@ namespace hMoney
         {
             List<String> accountTypes = new List<String>();
             accountTypes.Add("Checking");
-            accountTypes.Add("Term");
             accountTypes.Add("Credit Card");
+            accountTypes.Add("Term");
             accountTypes.Add("Investment");
             accountTypes.Add("Loan");
             accountTypes.Add("Term");

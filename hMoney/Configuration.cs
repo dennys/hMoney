@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 using IniParser;
 using IniParser.Model;
 
@@ -61,6 +62,12 @@ namespace hMoney
             this.Init();
             int fontSize = Convert.ToInt32(data["UI"]["FontSize"]);
             return fontSize;
+        }
+        public Color GetAccountSummaryHeaderBackColor()
+        {
+            this.Init();
+            Color backColor = Color.FromName(data["UI"]["AccountSummaryHeaderBackColor"]);
+            return backColor;
         }
     }
 }

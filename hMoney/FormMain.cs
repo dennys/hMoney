@@ -144,6 +144,7 @@ namespace hMoney
                 {
                     gridSummary.Rows[i].Cells[0].Value = account.AccountType;
                     gridSummary.Rows[i].DefaultCellStyle.Font = new Font(gridSummary.Font, FontStyle.Bold);
+                    gridSummary.Rows[i].DefaultCellStyle.BackColor = config.GetAccountSummaryHeaderBackColor();
                     gridSummary.Rows[i].DefaultCellStyle.BackColor = Color.Cornsilk;
                     gridSummary.Rows.Add(new DataGridViewRow());
                     i++;
