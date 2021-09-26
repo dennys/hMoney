@@ -1,11 +1,8 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Serilog;
 
 namespace hMoney
 {
@@ -15,7 +12,7 @@ namespace hMoney
         Configuration config;
         String dbPath;
 
-        public DB ()
+        public DB()
         {
             // Setup log (Serilog)
             Log.Logger = new LoggerConfiguration()
@@ -46,7 +43,7 @@ namespace hMoney
 								 LEFT OUTER JOIN payee_v1 p         ON t.payeeid       = p.payeeid 
                                 WHERE t.accountid = a.accountid 
                                   AND t.accountid = @int1
-                                ORDER BY t.transdate "; 
+                                ORDER BY t.transdate ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 cmd.Prepare();
@@ -177,6 +174,7 @@ namespace hMoney
                 {
                     Account account = new Account();
                     account.AccountId = Convert.ToInt32(reader["accountid"]);
+                    account.AccountType = reader["accounttype"].ToString();
                     account.AccountName = reader["accountname"].ToString();
                     account.TodayBal = account.InitialBal + this.getAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
                     result.Add(account);
@@ -218,20 +216,19 @@ namespace hMoney
         public List<Account> getAccountSummary()
         {
             List<String> accountTypes = new List<String>();
+            accountTypes.Add("Checking");
             accountTypes.Add("Term");
-            //accountTypes.Add("Credit Card");
-            //accountTypes.Add("Investment");
-            //accountTypes.Add("Loan");
-            //accountTypes.Add("Term");
-            //accountTypes.Add("Shares");
-            //accountTypes.Add("Asset");
+            accountTypes.Add("Credit Card");
+            accountTypes.Add("Investment");
+            accountTypes.Add("Loan");
+            accountTypes.Add("Term");
+            accountTypes.Add("Shares");
+            accountTypes.Add("Asset");
 
             List<Account> accountList = new List<Account>();
-
             foreach (String accountType in accountTypes)
             {
-                accountList = getAccountBalanceByAccountType(accountType);
-                //accountList.Add(getAccountBalanceByAccountType(accountType));
+                accountList.AddRange(getAccountBalanceByAccountType(accountType));
             }
             return accountList;
         }

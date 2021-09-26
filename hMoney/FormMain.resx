@@ -316,11 +316,14 @@
   <data name="Column3.HeaderText" xml:space="preserve">
     <value>Future</value>
   </data>
+  <data name="gridSummary.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="gridSummary.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 19</value>
+    <value>0, 0</value>
   </data>
   <data name="gridSummary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>514, 422</value>
+    <value>548, 566</value>
   </data>
   <data name="gridSummary.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -337,11 +340,14 @@
   <data name="&gt;&gt;gridSummary.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="panelAccountSummary.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
   <data name="panelAccountSummary.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 32</value>
+    <value>3, 3</value>
   </data>
   <data name="panelAccountSummary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>548, 464</value>
+    <value>548, 566</value>
   </data>
   <data name="panelAccountSummary.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -365,7 +371,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabHome.Size" type="System.Drawing.Size, System.Drawing">
-    <value>911, 534</value>
+    <value>911, 572</value>
   </data>
   <data name="tabHome.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -437,7 +443,7 @@
     <value>22</value>
   </data>
   <data name="gridTrans.Size" type="System.Drawing.Size, System.Drawing">
-    <value>905, 528</value>
+    <value>905, 566</value>
   </data>
   <data name="gridTrans.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -461,7 +467,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabAccount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>911, 534</value>
+    <value>911, 572</value>
   </data>
   <data name="tabAccount.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -485,10 +491,10 @@
     <value>Fill</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 38</value>
+    <value>0, 0</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>919, 560</value>
+    <value>919, 598</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -504,114 +510,6 @@
   </data>
   <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="button2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>353, 7</value>
-  </data>
-  <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="button2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="button2.Text" xml:space="preserve">
-    <value>button2</value>
-  </data>
-  <data name="&gt;&gt;button2.Name" xml:space="preserve">
-    <value>button2</value>
-  </data>
-  <data name="&gt;&gt;button2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
-    <value>panelRight</value>
-  </data>
-  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>269, 9</value>
-  </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 19</value>
-  </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>button1</value>
-  </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
-  </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
-    <value>panelRight</value>
-  </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 4</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 12</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>panelRight</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="panelRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panelRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panelRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>919, 38</value>
-  </data>
-  <data name="panelRight.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;panelRight.Name" xml:space="preserve">
-    <value>panelRight</value>
-  </data>
-  <data name="&gt;&gt;panelRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelRight.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;panelRight.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
     <value>splitContainer1.Panel2</value>

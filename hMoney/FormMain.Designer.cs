@@ -71,10 +71,6 @@ namespace hMoney
             this.ColumnIncome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnExpense = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelRight = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -86,7 +82,6 @@ namespace hMoney
             ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).BeginInit();
             this.tabAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTrans)).BeginInit();
-            this.panelRight.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -184,7 +179,6 @@ namespace hMoney
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Panel2.Controls.Add(this.panelRight);
             // 
             // treeView1
             // 
@@ -233,6 +227,7 @@ namespace hMoney
             this.Column2,
             this.Column3});
             resources.ApplyResources(this.gridSummary, "gridSummary");
+            this.gridSummary.MultiSelect = false;
             this.gridSummary.Name = "gridSummary";
             this.gridSummary.ReadOnly = true;
             this.gridSummary.RowHeadersVisible = false;
@@ -350,31 +345,6 @@ namespace hMoney
             this.ColumnNotes.Name = "ColumnNotes";
             this.ColumnNotes.ReadOnly = true;
             // 
-            // panelRight
-            // 
-            this.panelRight.Controls.Add(this.button2);
-            this.panelRight.Controls.Add(this.button1);
-            this.panelRight.Controls.Add(this.label1);
-            resources.ApplyResources(this.panelRight, "panelRight");
-            this.panelRight.Name = "panelRight";
-            // 
-            // button2
-            // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
@@ -397,8 +367,6 @@ namespace hMoney
             ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).EndInit();
             this.tabAccount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridTrans)).EndInit();
-            this.panelRight.ResumeLayout(false);
-            this.panelRight.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,10 +406,6 @@ namespace hMoney
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIncome;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExpense;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNotes;
-        private System.Windows.Forms.Panel panelRight;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
     }
 }
 

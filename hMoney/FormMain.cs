@@ -19,6 +19,7 @@ namespace hMoney
 
         public FormMain()
         {
+            // Enable configuration
             config = new Configuration();
             config.Init();
 
@@ -35,8 +36,6 @@ namespace hMoney
 
             // Enable DB
             db = new DB();
-
-            Log.Information("Initial ...");
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -88,7 +87,6 @@ namespace hMoney
             treeView1.SelectedNode = treeView1.Nodes[0];    // Select the Home node
 
         }
-
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Node.Name == Globals.TREE_VIEW_HOME_NAME)
@@ -97,7 +95,6 @@ namespace hMoney
                 this.showAccount(e.Node.Tag.ToString(), e.Node.Text);
 
         }
-
         private void showAccount(String accountId, String accountName)
         {
             var transList = new List<CheckingAccount>();
@@ -133,44 +130,49 @@ namespace hMoney
         }
         private void showSummary()
         {
-            List<Account> accountList = new List<Account>();
-            accountList = db.getAccountSummary();
+            List<Account> accountList = db.getAccountSummary();
             gridSummary.Rows.Clear();
             int i = 0;
+            String accountType = "";
 
             foreach (Account account in accountList)
             {
-                DataGridViewRow row = new DataGridViewRow();
-                gridSummary.Rows.Add(row);
+                gridSummary.Rows.Add(new DataGridViewRow());
                 int x = 0;
-                gridSummary.Rows[i].Cells[x++].Value = account.AccountName;
+
+                if (accountType != account.AccountType) // New account type
+                {
+                    gridSummary.Rows[i].Cells[0].Value = account.AccountType;
+                    gridSummary.Rows[i].DefaultCellStyle.Font = new Font(gridSummary.Font, FontStyle.Bold);
+                    gridSummary.Rows[i].DefaultCellStyle.BackColor = Color.Cornsilk;
+                    gridSummary.Rows.Add(new DataGridViewRow());
+                    i++;
+                }
+                accountType = account.AccountType;
+
+                gridSummary.Rows[i].Cells[x++].Value = "  " + account.AccountName;
                 gridSummary.Rows[i].Cells[x++].Value = null;
                 gridSummary.Rows[i].Cells[x++].Value = account.TodayBal;
                 gridSummary.Rows[i].Cells[x++].Value = null;
                 i++;
                 //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
             }
+            gridSummary.ClearSelection();
             tabControl1.SelectedTab = tabHome;
         }
-
         private void configFormat()
         {
             gridTrans.Columns[0].DefaultCellStyle.Format = config.GetDateFormat();
             gridTrans.Columns[4].DefaultCellStyle.Format = config.GetNumberFormat();
             gridTrans.Columns[5].DefaultCellStyle.Format = config.GetNumberFormat();
-            gridSummary.AlternatingRowsDefaultCellStyle.Format = config.GetNumberFormat();
+            //gridSummary.AlternatingRowsDefaultCellStyle.Format = config.GetNumberFormat();
+            gridSummary.Columns[1].DefaultCellStyle.Format = config.GetNumberFormat();
+            gridSummary.Columns[2].DefaultCellStyle.Format = config.GetNumberFormat();
+            gridSummary.Columns[3].DefaultCellStyle.Format = config.GetNumberFormat();
             treeView1.Font = new Font(treeView1.Font.Name, config.GetTreeAccountFontSize());
             gridSummary.Font = new Font(treeView1.Font.Name, config.GetFontSize());
             gridTrans.Font = new Font(treeView1.Font.Name, config.GetFontSize());
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-        }
     }
 }
