@@ -236,6 +236,9 @@ namespace hMoney
             this.gridSummary.ReadOnly = true;
             this.gridSummary.RowHeadersVisible = false;
             this.gridSummary.RowTemplate.Height = 24;
+            this.gridSummary.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridSummary_CellMouseClick);
+            this.gridSummary.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSummary_CellMouseEnter);
+            this.gridSummary.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSummary_CellMouseLeave);
             // 
             // tabAccount
             // 

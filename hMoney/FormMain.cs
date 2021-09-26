@@ -175,5 +175,20 @@ namespace hMoney
             gridTrans.Font = new Font(treeView1.Font.Name, config.GetFontSize());
         }
 
+        private void gridSummary_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 1)
+                gridSummary.Cursor = Cursors.Hand;
+        }
+
+        private void gridSummary_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            gridSummary.Cursor = Cursors.Default;
+        }
+
+        private void gridSummary_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Log.Debug(e.);
+        }
     }
 }
