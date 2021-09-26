@@ -149,8 +149,38 @@ namespace hMoney
             //進行連線，用using可以避免忘了釋放
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
-                // SQL command
-                string sqlTodalBal = @"SELECT (a.initialbal + x.amount) todaybal, a.* 
+                // Save Reconciled data into a dictionary
+                string sqlReconciled = @"SELECT IFNULL ((a.initialbal + x.amount), 0) reconciled, a.* 
+                                 FROM accountlist_v1 a
+                                 LEFT OUTER JOIN (
+                                      SELECT accountid,
+                                             SUM(CASE WHEN t.transcode = 'Deposit'  THEN t.transamount
+                                                      WHEN t.transcode = 'Transfer' THEN t.transamount * -1
+	                                                  ELSE t.transamount * -1
+       	                                         END) as amount
+                                         FROM checkingaccount_v1 t
+                                        WHERE t.status = 'R'
+                                        GROUP BY accountid ) x
+                                   ON a.accountid = x.accountid
+                                WHERE a.accounttype = @AccountType
+                                ORDER BY a.accountname ";
+                SQLiteCommand cmd = new SQLiteCommand(sqlReconciled, conn);
+                conn.Open();
+                cmd.Prepare();
+                cmd.Parameters.Add("@AccountType", DbType.String).Value = accountType;
+                SQLiteDataReader reader = cmd.ExecuteReader();
+
+                Dictionary<int, int> reconciledDict = new Dictionary<int, int>();
+                while (reader.Read())
+                {
+                    int accountId = Convert.ToInt32(reader["accountid"]);
+                    int reconciled = Convert.ToInt32(reader["reconciled"]);
+                    reconciledDict.Add(Convert.ToInt32(reader["accountid"]), Convert.ToInt32(reader["reconciled"]));
+                }
+                conn.Close();
+
+                // Save Today Balance
+                string sqlTodayBal = @"SELECT (a.initialbal + x.amount) todaybal, a.* 
                                  FROM accountlist_v1 a
                                  LEFT OUTER JOIN (
                                       SELECT accountid,
@@ -163,11 +193,11 @@ namespace hMoney
                                    ON a.accountid = x.accountid
                                 WHERE a.accounttype = @AccountType
                                 ORDER BY a.accountname ";
-                SQLiteCommand cmd = new SQLiteCommand(sqlTodalBal, conn);
+                cmd = new SQLiteCommand(sqlTodayBal, conn);
                 conn.Open();
                 cmd.Prepare();
                 cmd.Parameters.Add("@AccountType", DbType.String).Value = accountType;
-                SQLiteDataReader reader = cmd.ExecuteReader();
+                reader = cmd.ExecuteReader();
 
                 //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
                 while (reader.Read())
@@ -177,6 +207,7 @@ namespace hMoney
                     account.AccountType = reader["accounttype"].ToString();
                     account.AccountName = reader["accountname"].ToString();
                     account.TodayBal = account.InitialBal + this.getAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
+                    account.Reconciled = reconciledDict[account.AccountId];
                     account.Status = reader["status"].ToString();
                     account.Notes = reader["notes"].ToString();
                     account.WebSite = reader["website"].ToString();

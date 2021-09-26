@@ -19,7 +19,7 @@ namespace hMoney
         public Boolean FavoriteAcct;
         public String HeldAt;
         public decimal InitialBal;
-
+        public decimal Reconciled;
 
         public decimal TodayBal;     // This field is calculated dynamically, not existed in database
         public decimal FutureBal;     // This field is calculated dynamically, not existed in database

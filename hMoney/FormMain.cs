@@ -152,7 +152,7 @@ namespace hMoney
                 accountType = account.AccountType;
 
                 gridSummary.Rows[i].Cells[x++].Value = "  " + account.AccountName;
-                gridSummary.Rows[i].Cells[x++].Value = null;                // Reconciled
+                gridSummary.Rows[i].Cells[x++].Value = account.Reconciled;  // Reconciled
                 gridSummary.Rows[i].Cells[x++].Value = account.TodayBal;    // Today balance
                 gridSummary.Rows[i].Cells[x++].Value = null;                // Future balance
                 gridSummary.Rows[i].Cells[x++].Value = account.AccountId;   // Account ID
@@ -161,6 +161,7 @@ namespace hMoney
             }
             gridSummary.ClearSelection();
             gridSummary.Height = gridSummary.Rows[0].Height * (gridSummary.Rows.Count + 1);     // Resize the grid height
+            gridSummary.Rows[0].Frozen = true;  // Does NOT work
             tabControl1.SelectedTab = tabHome;
         }
         private void configFormat()
