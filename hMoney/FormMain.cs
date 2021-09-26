@@ -152,13 +152,14 @@ namespace hMoney
                 accountType = account.AccountType;
 
                 gridSummary.Rows[i].Cells[x++].Value = "  " + account.AccountName;
-                gridSummary.Rows[i].Cells[x++].Value = null;
-                gridSummary.Rows[i].Cells[x++].Value = account.TodayBal;
-                gridSummary.Rows[i].Cells[x++].Value = null;
+                gridSummary.Rows[i].Cells[x++].Value = null;                // Reconciled
+                gridSummary.Rows[i].Cells[x++].Value = account.TodayBal;    // Today balance
+                gridSummary.Rows[i].Cells[x++].Value = null;                // Future balance
                 i++;
                 //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
             }
             gridSummary.ClearSelection();
+            gridSummary.Height = gridSummary.Rows[0].Height * (gridSummary.Rows.Count + 1);     // Resize the grid height
             tabControl1.SelectedTab = tabHome;
         }
         private void configFormat()
@@ -166,7 +167,6 @@ namespace hMoney
             gridTrans.Columns[0].DefaultCellStyle.Format = config.GetDateFormat();
             gridTrans.Columns[4].DefaultCellStyle.Format = config.GetNumberFormat();
             gridTrans.Columns[5].DefaultCellStyle.Format = config.GetNumberFormat();
-            //gridSummary.AlternatingRowsDefaultCellStyle.Format = config.GetNumberFormat();
             gridSummary.Columns[1].DefaultCellStyle.Format = config.GetNumberFormat();
             gridSummary.Columns[2].DefaultCellStyle.Format = config.GetNumberFormat();
             gridSummary.Columns[3].DefaultCellStyle.Format = config.GetNumberFormat();

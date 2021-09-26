@@ -310,6 +310,9 @@
   <data name="Column1.HeaderText" xml:space="preserve">
     <value>Reconciled</value>
   </data>
+  <data name="Column1.Width" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
   <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -322,14 +325,17 @@
   <data name="Column3.HeaderText" xml:space="preserve">
     <value>Future</value>
   </data>
-  <data name="gridSummary.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="Column3.Width" type="System.Int32, mscorlib">
+    <value>111</value>
   </data>
   <data name="gridSummary.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="gridSummary.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>None</value>
+  </data>
   <data name="gridSummary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>548, 1968</value>
+    <value>548, 1555</value>
   </data>
   <data name="gridSummary.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

@@ -212,8 +212,11 @@ namespace hMoney
             // 
             // gridSummary
             // 
+            this.gridSummary.AllowUserToAddRows = false;
+            this.gridSummary.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.NullValue = null;
             this.gridSummary.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridSummary.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -315,6 +318,7 @@ namespace hMoney
             // 
             // Column4
             // 
+            this.Column4.FillWeight = 183.4862F;
             resources.ApplyResources(this.Column4, "Column4");
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
@@ -324,6 +328,7 @@ namespace hMoney
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle3.NullValue = null;
             this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column1.FillWeight = 61.96669F;
             resources.ApplyResources(this.Column1, "Column1");
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -333,6 +338,7 @@ namespace hMoney
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle4.NullValue = null;
             this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column2.FillWeight = 72.83604F;
             resources.ApplyResources(this.Column2, "Column2");
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -342,6 +348,7 @@ namespace hMoney
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle5.NullValue = null;
             this.Column3.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column3.FillWeight = 81.71102F;
             resources.ApplyResources(this.Column3, "Column3");
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
