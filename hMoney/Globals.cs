@@ -6,10 +6,5 @@ namespace hMoney
     {
         public static readonly String INI_FILE_NAME = "hMoney.ini";
         public static readonly String TREE_VIEW_HOME_NAME = "NodeHome";
-
-        //public static String getIniFileName()
-        //{
-        //    return INI_FILE_NAME;
-        //}
     }
 }
