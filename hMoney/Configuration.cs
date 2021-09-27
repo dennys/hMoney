@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Drawing;
-using IniParser;
+﻿using IniParser;
 using IniParser.Model;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace hMoney
 {
@@ -21,10 +21,10 @@ namespace hMoney
             {
                 MessageBox.Show(ex.Message, "Cannot open INI file");
             }
-            
+
         }
 
-        public string GetDbPath ()
+        public string GetDbPath()
         {
             string dbPath = data["DB"]["DB_PATH"];
             return dbPath;

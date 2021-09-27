@@ -10,7 +10,7 @@ namespace hMoney
     {
         readonly String dbPath;
         const String FIELD_ACCOUNTTYPE = "AccountType";
-        const String FIELD_ACCOUNTID  = "AccountId";
+        const String FIELD_ACCOUNTID = "AccountId";
         const String FIELD_ACCOUNTNAME = "AccountName";
         const String FIELD_STATUS = "status";
         const String FIELD_NOTES = "notes";
@@ -24,7 +24,7 @@ namespace hMoney
         const String FIELD_PAYEENAME = "PayeeName";
         const String FIELD_BALANCE = "Balance";
         const String FIELD_FAVORITEACCT = "FavoriteAcct";
-        
+
 
         public DB()
         {
