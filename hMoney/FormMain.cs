@@ -48,9 +48,9 @@ namespace hMoney
 
         }
 
-        private void initial(object sender, EventArgs e)
+        private void Initial(object sender, EventArgs e)
         {
-            this.configFormat();
+            this.ConfigFormat();
             tabAccount.Hide();
 
             //TreeNode nodeHome = treeView1.Nodes.Add("Home");
@@ -71,7 +71,7 @@ namespace hMoney
                 Log.Debug("Start to get AccountIdList of " + accountType);
                 // Show account list
                 accountList.Clear();
-                accountList = db.getAccountListByAccountType(accountType);
+                accountList = db.GetAccountListByAccountType(accountType);
 
                 TreeNode nodeAccounts = treeView1.Nodes.Add(accountType);
                 foreach (Account account in accountList)
@@ -90,15 +90,15 @@ namespace hMoney
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Node.Name == Globals.TREE_VIEW_HOME_NAME)
-                this.showSummary();
+                this.ShowSummary();
             else
-                this.showAccount(Convert.ToInt32(e.Node.Tag.ToString()), e.Node.Text);
+                this.ShowAccount(Convert.ToInt32(e.Node.Tag.ToString()), e.Node.Text);
 
         }
-        private void showAccount(int accountId, String accountName)
+        private void ShowAccount(int accountId, String accountName)
         {
             var transList = new List<CheckingAccount>();
-            transList = db.getTransactionByAccountId(accountId);
+            transList = db.GetTransactionByAccountId(accountId);
             gridTrans.Rows.Clear();
             int i = 0;
             foreach (CheckingAccount trans in transList)
@@ -128,9 +128,9 @@ namespace hMoney
             tabControl1.SelectedTab = tabAccount;
             tabAccount.Text = accountName;
         }
-        private void showSummary()
+        private void ShowSummary()
         {
-            List<Account> accountList = db.getAccountSummary();
+            List<Account> accountList = db.GetAccountSummary();
             gridSummary.Rows.Clear();
             int i = 0;
             String accountType = "";
@@ -161,10 +161,9 @@ namespace hMoney
             }
             gridSummary.ClearSelection();
             gridSummary.Height = gridSummary.Rows[0].Height * (gridSummary.Rows.Count + 1);     // Resize the grid height
-            gridSummary.Rows[0].Frozen = true;  // Does NOT work
             tabControl1.SelectedTab = tabHome;
         }
-        private void configFormat()
+        private void ConfigFormat()
         {
             gridTrans.Columns[0].DefaultCellStyle.Format = config.GetDateFormat();
             gridTrans.Columns[4].DefaultCellStyle.Format = config.GetNumberFormat();
@@ -195,7 +194,8 @@ namespace hMoney
             Log.Debug("Cell.Value=" + cell.Value + ", account id = " + accountId);
 
             if (e.ColumnIndex == 0)
-                this.showAccount(accountId, cell.Value.ToString());
+                this.ShowAccount(accountId, cell.Value.ToString());
         }
+
     }
 }

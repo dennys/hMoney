@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using IniParser;
@@ -23,7 +19,7 @@ namespace hMoney
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Cannot open INI file");
+                MessageBox.Show(ex.Message, "Cannot open INI file");
             }
             
         }

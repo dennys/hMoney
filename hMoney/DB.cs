@@ -8,12 +8,11 @@ namespace hMoney
 {
     public class DB
     {
-
-        Configuration config;
         String dbPath;
 
         public DB()
         {
+            Configuration config;
             // Setup log (Serilog)
             Log.Logger = new LoggerConfiguration()
                     .MinimumLevel.Debug()
@@ -28,7 +27,7 @@ namespace hMoney
             dbPath = @"Data Source = " + config.GetDbPath();
         }
 
-        public List<CheckingAccount> getTransactionByAccountId(int accountId)
+        public List<CheckingAccount> GetTransactionByAccountId(int accountId)
         {
             var result = new List<CheckingAccount>();
 
@@ -36,7 +35,7 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
-                string sql = @"SELECT a.accountname, c.categname, sc.subcategname, p.payeename, t.* 
+                const string sql = @"SELECT a.accountname, c.categname, sc.subcategname, p.payeename, t.* 
                                  FROM checkingaccount_v1 t, accountlist_v1 a
 								 LEFT OUTER JOIN category_v1 c      ON t.categid    = c.CategID
 								 LEFT OUTER JOIN subcategory_v1 sc  ON t.subcategid = sc.subcategid 
@@ -70,7 +69,7 @@ namespace hMoney
             }
         }
 
-        public List<Account> getAccountListByAccountType(String accountType)
+        public List<Account> GetAccountListByAccountType(String accountType)
         {
             var result = new List<Account>();
 
@@ -78,7 +77,7 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
-                string sql = @"SELECT * 
+                const string sql = @"SELECT * 
                                  FROM accountlist_v1
                                 WHERE accounttype = @AccountType
                                 ORDER BY accountname ";
@@ -110,7 +109,7 @@ namespace hMoney
 
             }
         }
-        public decimal getAccountBalanceByAccountIdWithoutInitialBalance(int accountId)
+        public decimal GetAccountBalanceByAccountIdWithoutInitialBalance(int accountId)
         {
             decimal result = 0;
 
@@ -118,7 +117,7 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
-                string sql = @"SELECT sum(amount) balance FROM (
+                const string sql = @"SELECT sum(amount) balance FROM (
                                  SELECT CASE WHEN t.transcode = 'Deposit'  THEN t.transamount
                                              WHEN t.transcode = 'Transfer' THEN t.transamount * -1
 	                                         ELSE t.transamount * -1
@@ -142,7 +141,7 @@ namespace hMoney
                 return result;
             }
         }
-        public List<Account> getAccountBalanceByAccountType(String accountType)
+        public List<Account> GetAccountBalanceByAccountType(String accountType)
         {
             var result = new List<Account>();
 
@@ -150,7 +149,7 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // Save Reconciled data into a dictionary
-                string sqlReconciled = @"SELECT IFNULL ((a.initialbal + x.amount), 0) reconciled, a.* 
+                const string sqlReconciled = @"SELECT IFNULL ((a.initialbal + x.amount), 0) reconciled, a.* 
                                  FROM accountlist_v1 a
                                  LEFT OUTER JOIN (
                                       SELECT accountid,
@@ -173,14 +172,12 @@ namespace hMoney
                 Dictionary<int, int> reconciledDict = new Dictionary<int, int>();
                 while (reader.Read())
                 {
-                    int accountId = Convert.ToInt32(reader["accountid"]);
-                    int reconciled = Convert.ToInt32(reader["reconciled"]);
                     reconciledDict.Add(Convert.ToInt32(reader["accountid"]), Convert.ToInt32(reader["reconciled"]));
                 }
                 conn.Close();
 
                 // Save Today Balance
-                string sqlTodayBal = @"SELECT (a.initialbal + x.amount) todaybal, a.* 
+                const string sqlTodayBal = @"SELECT (a.initialbal + x.amount) todaybal, a.* 
                                  FROM accountlist_v1 a
                                  LEFT OUTER JOIN (
                                       SELECT accountid,
@@ -206,23 +203,20 @@ namespace hMoney
                     account.AccountId = Convert.ToInt32(reader["accountid"]);
                     account.AccountType = reader["accounttype"].ToString();
                     account.AccountName = reader["accountname"].ToString();
-                    account.TodayBal = account.InitialBal + this.getAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
+                    account.TodayBal = account.InitialBal + this.GetAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
                     account.Reconciled = reconciledDict[account.AccountId];
                     account.Status = reader["status"].ToString();
                     account.Notes = reader["notes"].ToString();
                     account.WebSite = reader["website"].ToString();
                     account.CurrencyId = Convert.ToInt32(reader["CurrencyId"]);
-                    if (reader["FavoriteAcct"].ToString() == "TRUE")
-                        account.FavoriteAcct = true;
-                    else
-                        account.FavoriteAcct = false;
+                    account.FavoriteAcct = (reader["FavoriteAcct"].ToString() == "TRUE");
                     result.Add(account);
                     //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
                 }
                 return result;
             }
         }
-        public List<Account> getAccountBalanceByAccountTypeXXX(String accountType)
+        public List<Account> GetAccountBalanceByAccountTypeXXX(String accountType)
         {
             var result = new List<Account>();
 
@@ -230,7 +224,7 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
-                string sql = @"SELECT * 
+                const string sql = @"SELECT * 
                                  FROM accountlist_v1
                                 WHERE accounttype = @AccountType
                                 ORDER BY accountname ";
@@ -246,20 +240,18 @@ namespace hMoney
                     Account account = new Account();
                     account.AccountId = Convert.ToInt32(reader["accountid"]);
                     account.AccountName = reader["accountname"].ToString();
-                    account.TodayBal = account.InitialBal + this.getAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
+                    account.TodayBal = account.InitialBal + this.GetAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
                     account.Status = reader["status"].ToString();
                     account.Notes = reader["notes"].ToString();
                     account.WebSite = reader["website"].ToString();
-                    if (reader["website"].ToString() == "TRUE")
-                        account.FavoriteAcct = true;
-                    else
-                        account.FavoriteAcct = false;
+                    account.FavoriteAcct = (reader["FavoriteAcct"].ToString() == "TRUE");
+                    //account.FavoriteAcct = (reader["FavoriteAcct"].ToString() == "TRUE") ? true : false;
                     //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
                 }
                 return result;
             }
         }
-        public List<Account> getAccountSummary()
+        public List<Account> GetAccountSummary()
         {
             List<String> accountTypes = new List<String>();
             accountTypes.Add("Checking");
@@ -274,11 +266,11 @@ namespace hMoney
             List<Account> accountList = new List<Account>();
             foreach (String accountType in accountTypes)
             {
-                accountList.AddRange(getAccountBalanceByAccountType(accountType));
+                accountList.AddRange(GetAccountBalanceByAccountType(accountType));
             }
             return accountList;
         }
-        public SortedSet<int> getAccountIdListByAccountType(String accountType)
+        public SortedSet<int> GetAccountIdListByAccountType(String accountType)
         {
             var result = new SortedSet<int>();
 
@@ -286,7 +278,7 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
-                string sql = @"SELECT * 
+                const string sql = @"SELECT * 
                                  FROM accountlist_v1 
                                 WHERE accounttype = @AccountType
                                 ORDER BY accountid ";
@@ -306,7 +298,7 @@ namespace hMoney
             }
 
         }
-        public SortedSet<string> getAccountNameList()
+        public SortedSet<string> GetAccountNameList()
         {
             var result = new SortedSet<string>();
 
