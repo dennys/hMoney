@@ -151,7 +151,8 @@ namespace hMoney
                 // TODO: The SQL is not good, it will return 1 row even there is no data
                 while (reader.Read())
                 {
-                    if (String.IsNullOrEmpty(reader[FIELD_BALANCE].ToString())) { return 0; }
+                    if (String.IsNullOrEmpty(reader[FIELD_BALANCE].ToString()))
+                        result = 0;
                     result = Convert.ToDecimal(reader[FIELD_BALANCE]);
                 }
                 return result;
