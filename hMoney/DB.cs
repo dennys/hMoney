@@ -147,13 +147,10 @@ namespace hMoney
                 SQLiteDataReader reader = cmd.ExecuteReader();
                 Log.Debug("AccountId = " + accountId);
 
-                //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
                 // TODO: The SQL is not good, it will return 1 row even there is no data
                 while (reader.Read())
                 {
-                    if (String.IsNullOrEmpty(reader[FIELD_BALANCE].ToString()))
-                        result = 0;
-                    result = Convert.ToDecimal(reader[FIELD_BALANCE]);
+                    result = String.IsNullOrEmpty(reader[FIELD_BALANCE].ToString()) ? 0 : Convert.ToInt32(reader[FIELD_BALANCE]);
                 }
                 return result;
             }
