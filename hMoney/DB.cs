@@ -9,6 +9,22 @@ namespace hMoney
     public class DB
     {
         readonly String dbPath;
+        const String FIELD_ACCOUNTTYPE = "AccountType";
+        const String FIELD_ACCOUNTID  = "AccountId";
+        const String FIELD_ACCOUNTNAME = "AccountName";
+        const String FIELD_STATUS = "status";
+        const String FIELD_NOTES = "notes";
+        const String FIELD_WEBSITE = "website";
+        const String FIELD_CURRENCYID = "CurrencyId";
+        const String FIELD_TRANSDATE = "TransDate";
+        const String FIELD_TRANSCODE = "TransCode";
+        const String FIELD_TRANSAMOUNT = "TransAmount";
+        const String FIELD_CATEGNAME = "CategName";
+        const String FIELD_SUBCATEGNAME = "SubCategName";
+        const String FIELD_PAYEENAME = "PayeeName";
+        const String FIELD_BALANCE = "Balance";
+        const String FIELD_FAVORITEACCT = "FavoriteAcct";
+        
 
         public DB()
         {
@@ -54,15 +70,15 @@ namespace hMoney
                 while (reader.Read())
                 {
                     CheckingAccount trans = new CheckingAccount();
-                    trans.AccountId = Convert.ToInt32(reader["accountid"]);
-                    trans.AccountName = reader["accountname"].ToString();
-                    trans.Transdate = DateTime.Parse(reader["transdate"].ToString());
-                    trans.Category = reader["categname"].ToString();
-                    trans.SubCategory = reader["subcategname"].ToString();
-                    trans.PayeeName = reader["payeename"].ToString();
-                    trans.TransCode = reader["TransCode"].ToString();
-                    trans.TransAmount = Convert.ToDecimal(reader["transamount"]);
-                    trans.Notes = reader["notes"].ToString();
+                    trans.AccountId = Convert.ToInt32(reader[FIELD_ACCOUNTID]);
+                    trans.AccountName = reader[FIELD_ACCOUNTNAME].ToString();
+                    trans.Transdate = DateTime.Parse(reader[FIELD_TRANSDATE].ToString());
+                    trans.Category = reader[FIELD_CATEGNAME].ToString();
+                    trans.SubCategory = reader[FIELD_SUBCATEGNAME].ToString();
+                    trans.PayeeName = reader[FIELD_PAYEENAME].ToString();
+                    trans.TransCode = reader[FIELD_TRANSCODE].ToString();
+                    trans.TransAmount = Convert.ToDecimal(reader[FIELD_TRANSAMOUNT]);
+                    trans.Notes = reader[FIELD_NOTES].ToString();
                     result.Add(trans);
                 }
                 return result;
@@ -91,8 +107,8 @@ namespace hMoney
                 while (reader.Read())
                 {
                     Account account = new Account();
-                    account.AccountId = Convert.ToInt32(reader["accountid"]);
-                    account.AccountName = reader["accountname"].ToString();
+                    account.AccountId = Convert.ToInt32(reader[FIELD_ACCOUNTID]);
+                    account.AccountName = reader[FIELD_ACCOUNTNAME].ToString();
                     result.Add(account);
                 }
                 return result;
@@ -135,8 +151,8 @@ namespace hMoney
                 // TODO: The SQL is not good, it will return 1 row even there is no data
                 while (reader.Read())
                 {
-                    if (String.IsNullOrEmpty(reader["balance"].ToString())) { return 0; }
-                    result = Convert.ToDecimal(reader["balance"]);
+                    if (String.IsNullOrEmpty(reader[FIELD_BALANCE].ToString())) { return 0; }
+                    result = Convert.ToDecimal(reader[FIELD_BALANCE]);
                 }
                 return result;
             }
@@ -172,7 +188,7 @@ namespace hMoney
                 Dictionary<int, int> reconciledDict = new Dictionary<int, int>();
                 while (reader.Read())
                 {
-                    reconciledDict.Add(Convert.ToInt32(reader["accountid"]), Convert.ToInt32(reader["reconciled"]));
+                    reconciledDict.Add(Convert.ToInt32(reader[FIELD_ACCOUNTID]), Convert.ToInt32(reader["reconciled"]));
                 }
                 conn.Close();
 
@@ -200,16 +216,16 @@ namespace hMoney
                 while (reader.Read())
                 {
                     Account account = new Account();
-                    account.AccountId = Convert.ToInt32(reader["accountid"]);
-                    account.AccountType = reader["accounttype"].ToString();
-                    account.AccountName = reader["accountname"].ToString();
+                    account.AccountId = Convert.ToInt32(reader[FIELD_ACCOUNTID]);
+                    account.AccountType = reader[FIELD_ACCOUNTTYPE].ToString();
+                    account.AccountName = reader[FIELD_ACCOUNTNAME].ToString();
                     account.TodayBal = account.InitialBal + this.GetAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
                     account.Reconciled = reconciledDict[account.AccountId];
-                    account.Status = reader["status"].ToString();
-                    account.Notes = reader["notes"].ToString();
-                    account.WebSite = reader["website"].ToString();
-                    account.CurrencyId = Convert.ToInt32(reader["CurrencyId"]);
-                    account.FavoriteAcct = (reader["FavoriteAcct"].ToString() == "TRUE");
+                    account.Status = reader[FIELD_STATUS].ToString();
+                    account.Notes = reader[FIELD_NOTES].ToString();
+                    account.WebSite = reader[FIELD_WEBSITE].ToString();
+                    account.CurrencyId = Convert.ToInt32(reader[FIELD_CURRENCYID]);
+                    account.FavoriteAcct = (reader[FIELD_FAVORITEACCT].ToString() == "TRUE");
                     result.Add(account);
                     //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
                 }
@@ -238,13 +254,13 @@ namespace hMoney
                 while (reader.Read())
                 {
                     Account account = new Account();
-                    account.AccountId = Convert.ToInt32(reader["accountid"]);
-                    account.AccountName = reader["accountname"].ToString();
+                    account.AccountId = Convert.ToInt32(reader[FIELD_ACCOUNTID]);
+                    account.AccountName = reader[FIELD_ACCOUNTNAME].ToString();
                     account.TodayBal = account.InitialBal + this.GetAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
-                    account.Status = reader["status"].ToString();
-                    account.Notes = reader["notes"].ToString();
-                    account.WebSite = reader["website"].ToString();
-                    account.FavoriteAcct = (reader["FavoriteAcct"].ToString() == "TRUE");
+                    account.Status = reader[FIELD_STATUS].ToString();
+                    account.Notes = reader[FIELD_NOTES].ToString();
+                    account.WebSite = reader[FIELD_WEBSITE].ToString();
+                    account.FavoriteAcct = (reader[FIELD_FAVORITEACCT].ToString() == "TRUE");
                     //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
                 }
                 return result;
@@ -290,7 +306,7 @@ namespace hMoney
                 //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
                 while (reader.Read())
                 {
-                    result.Add(Convert.ToInt32(reader["accountid"]));
+                    result.Add(Convert.ToInt32(reader[FIELD_ACCOUNTID]));
                 }
                 Log.Debug("Get " + result.Count + " accounts of " + accountType);
                 return result;
@@ -316,7 +332,7 @@ namespace hMoney
                 //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
                 while (reader.Read())
                 {
-                    result.Add(reader["accountname"].ToString());
+                    result.Add(reader[FIELD_ACCOUNTNAME].ToString());
                 }
                 return result;
             }
