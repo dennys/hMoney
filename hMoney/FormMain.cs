@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SQLite;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Serilog;
 
@@ -14,8 +8,8 @@ namespace hMoney
 {
     public partial class FormMain : Form
     {
-        Configuration config;
-        DB db;
+        readonly Configuration config;
+        readonly DB db;
 
         public FormMain()
         {
@@ -36,16 +30,6 @@ namespace hMoney
 
             // Enable DB
             db = new DB();
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Initial(object sender, EventArgs e)

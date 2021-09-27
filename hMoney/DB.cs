@@ -8,7 +8,7 @@ namespace hMoney
 {
     public class DB
     {
-        String dbPath;
+        readonly String dbPath;
 
         public DB()
         {
@@ -216,7 +216,7 @@ namespace hMoney
                 return result;
             }
         }
-        public List<Account> GetAccountBalanceByAccountTypeXXX(String accountType)
+        public List<Account> GetAccountBalanceByAccountTypeXxx(String accountType)
         {
             var result = new List<Account>();
 
@@ -245,7 +245,6 @@ namespace hMoney
                     account.Notes = reader["notes"].ToString();
                     account.WebSite = reader["website"].ToString();
                     account.FavoriteAcct = (reader["FavoriteAcct"].ToString() == "TRUE");
-                    //account.FavoriteAcct = (reader["FavoriteAcct"].ToString() == "TRUE") ? true : false;
                     //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
                 }
                 return result;
@@ -306,7 +305,7 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
-                string sql = @"SELECT * 
+                const string sql = @"SELECT * 
                                  FROM accountlist_v1
                                 WHERE accounttype='Checking'
                                 ORDER BY accountname ";
