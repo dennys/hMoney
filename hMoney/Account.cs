@@ -20,7 +20,7 @@ namespace hMoney
         private decimal todayBal;     // This field is calculated dynamically, not existed in database
         private decimal futureBal;     // This field is calculated dynamically, not existed in database
 
-        public int AccountId { get; set; }
+        public int AccountId { get => accountId; set => accountId = value; }
         public int CurrencyId { get; set; }
         public string AccountName { get; set; }
         public string AccountType { get; set; }
