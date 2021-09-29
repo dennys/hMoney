@@ -81,8 +81,7 @@ namespace hMoney
         }
         private void ShowAccount(int accountId, String accountName)
         {
-            var transList = new List<CheckingAccount>();
-            transList = db.GetTransactionByAccountId(accountId);
+            var transList = db.GetTransactionByAccountId(accountId);
             gridTrans.Rows.Clear();
             int i = 0;
             foreach (CheckingAccount trans in transList)
