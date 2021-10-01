@@ -68,14 +68,14 @@ namespace hMoney
                 // SQL command
                 const string sql = @"SELECT a.accountname, c.categname, sc.subcategname,
                                             CASE WHEN t.toaccountid = @accountId THEN '< '||a.accountname
-								            	 ELSE p.payeename
-									              END AS payeename, t.*
+                                                 ELSE p.payeename
+                                            END AS payeename, t.*
                                        FROM checkingaccount_v1 t
-								       LEFT OUTER JOIN accountlist_v1 a   ON t.accountid = a.accountid 
-								       LEFT OUTER JOIN accountlist_v1 ta  ON t.toaccountid = ta.accountid 
-								       LEFT OUTER JOIN category_v1 c      ON t.categid    = c.CategID
-								       LEFT OUTER JOIN subcategory_v1 sc  ON t.subcategid = sc.subcategid 
-								       LEFT OUTER JOIN payee_v1 p         ON t.payeeid       = p.payeeid 
+                                       LEFT OUTER JOIN accountlist_v1 a   ON t.accountid = a.accountid 
+                                       LEFT OUTER JOIN accountlist_v1 ta  ON t.toaccountid = ta.accountid 
+                                       LEFT OUTER JOIN category_v1 c      ON t.categid    = c.CategID
+                                       LEFT OUTER JOIN subcategory_v1 sc  ON t.subcategid = sc.subcategid 
+                                       LEFT OUTER JOIN payee_v1 p         ON t.payeeid       = p.payeeid 
                                       WHERE (t.accountid = @accountId OR t.toaccountid = @accountId)
                                       ORDER BY t.transdate  ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
@@ -156,8 +156,8 @@ namespace hMoney
                 const string sql = @"SELECT sum(amount) balance
                                        FROM (SELECT CASE WHEN t.transcode = 'Deposit'  THEN t.transamount
                                                     WHEN t.transcode = 'Transfer' THEN t.transamount * -1
-	                                                ELSE t.transamount * -1
-	                                                END as amount
+                                                    ELSE t.transamount * -1
+                                                    END as amount
                                                FROM checkingaccount_v1 t
                                               WHERE accountid = @AccountId) ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
@@ -189,8 +189,8 @@ namespace hMoney
                                       SELECT accountid,
                                              SUM(CASE WHEN t.transcode = 'Deposit'  THEN t.transamount
                                                       WHEN t.transcode = 'Transfer' THEN t.transamount * -1
-	                                                  ELSE t.transamount * -1
-       	                                         END) as amount
+                                                      ELSE t.transamount * -1
+                                                    END) as amount
                                          FROM checkingaccount_v1 t
                                         WHERE t.status = 'R'
                                         GROUP BY accountid ) x
@@ -217,8 +217,8 @@ namespace hMoney
                                       SELECT accountid,
                                              SUM(CASE WHEN t.transcode = 'Deposit'  THEN t.transamount
                                                       WHEN t.transcode = 'Transfer' THEN t.transamount * -1
-	                                                  ELSE t.transamount * -1
-       	                                         END) as amount
+                                                      ELSE t.transamount * -1
+                                                    END) as amount
                                          FROM checkingaccount_v1 t
                                         GROUP BY accountid ) x
                                    ON a.accountid = x.accountid
@@ -404,11 +404,11 @@ namespace hMoney
                 // SQL command
                 const string sql = @"SELECT a.accountname, ta.accountname, p.payeename, c.categname, sc.subcategname, b.*
                                  FROM billsdeposits_v1 b
-								 LEFT OUTER JOIN accountlist_v1 a ON b.accountid = a.accountid
-								 LEFT OUTER JOIN accountlist_v1 ta ON b.toaccountid = ta.accountid
-								 LEFT OUTER JOIN payee_v1 p ON b.payeeid = p.payeeid
-								 LEFT OUTER JOIN category_v1 c ON b.categid = c.categid
-								 LEFT OUTER JOIN subcategory_v1 sc ON b.subcategid = sc.subcategid
+                                 LEFT OUTER JOIN accountlist_v1 a ON b.accountid = a.accountid
+                                 LEFT OUTER JOIN accountlist_v1 ta ON b.toaccountid = ta.accountid
+                                 LEFT OUTER JOIN payee_v1 p ON b.payeeid = p.payeeid
+                                 LEFT OUTER JOIN category_v1 c ON b.categid = c.categid
+                                 LEFT OUTER JOIN subcategory_v1 sc ON b.subcategid = sc.subcategid
                                  FROM billsdeposits_v1
                                 WHERE accountid = @accountId ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
