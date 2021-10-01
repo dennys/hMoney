@@ -51,13 +51,6 @@ namespace hMoney
             this.ColumnAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabAccount = new System.Windows.Forms.TabPage();
             this.gridTrans = new System.Windows.Forms.DataGridView();
-            this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPayee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnIncome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnExpense = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,6 +64,14 @@ namespace hMoney
             this.qqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPayee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIncome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnExpense = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -202,6 +203,8 @@ namespace hMoney
             // 
             // gridTrans
             // 
+            this.gridTrans.AllowUserToAddRows = false;
+            this.gridTrans.AllowUserToDeleteRows = false;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -218,59 +221,12 @@ namespace hMoney
             this.ColumnPayee,
             this.ColumnIncome,
             this.ColumnExpense,
+            this.ColumnStatus,
             this.ColumnNotes});
             resources.ApplyResources(this.gridTrans, "gridTrans");
             this.gridTrans.Name = "gridTrans";
             this.gridTrans.ReadOnly = true;
             this.gridTrans.RowTemplate.Height = 24;
-            // 
-            // ColumnDate
-            // 
-            dataGridViewCellStyle7.NullValue = null;
-            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle7;
-            resources.ApplyResources(this.ColumnDate, "ColumnDate");
-            this.ColumnDate.Name = "ColumnDate";
-            this.ColumnDate.ReadOnly = true;
-            // 
-            // ColumnCategory
-            // 
-            resources.ApplyResources(this.ColumnCategory, "ColumnCategory");
-            this.ColumnCategory.Name = "ColumnCategory";
-            this.ColumnCategory.ReadOnly = true;
-            // 
-            // ColumnAccount
-            // 
-            resources.ApplyResources(this.ColumnAccount, "ColumnAccount");
-            this.ColumnAccount.Name = "ColumnAccount";
-            this.ColumnAccount.ReadOnly = true;
-            // 
-            // ColumnPayee
-            // 
-            resources.ApplyResources(this.ColumnPayee, "ColumnPayee");
-            this.ColumnPayee.Name = "ColumnPayee";
-            this.ColumnPayee.ReadOnly = true;
-            // 
-            // ColumnIncome
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnIncome.DefaultCellStyle = dataGridViewCellStyle8;
-            resources.ApplyResources(this.ColumnIncome, "ColumnIncome");
-            this.ColumnIncome.Name = "ColumnIncome";
-            this.ColumnIncome.ReadOnly = true;
-            // 
-            // ColumnExpense
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnExpense.DefaultCellStyle = dataGridViewCellStyle9;
-            resources.ApplyResources(this.ColumnExpense, "ColumnExpense");
-            this.ColumnExpense.Name = "ColumnExpense";
-            this.ColumnExpense.ReadOnly = true;
-            // 
-            // ColumnNotes
-            // 
-            resources.ApplyResources(this.ColumnNotes, "ColumnNotes");
-            this.ColumnNotes.Name = "ColumnNotes";
-            this.ColumnNotes.ReadOnly = true;
             // 
             // statusStrip1
             // 
@@ -353,6 +309,60 @@ namespace hMoney
             this.cCToolStripMenuItem.Name = "cCToolStripMenuItem";
             resources.ApplyResources(this.cCToolStripMenuItem, "cCToolStripMenuItem");
             // 
+            // ColumnDate
+            // 
+            dataGridViewCellStyle7.NullValue = null;
+            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle7;
+            resources.ApplyResources(this.ColumnDate, "ColumnDate");
+            this.ColumnDate.Name = "ColumnDate";
+            this.ColumnDate.ReadOnly = true;
+            // 
+            // ColumnCategory
+            // 
+            resources.ApplyResources(this.ColumnCategory, "ColumnCategory");
+            this.ColumnCategory.Name = "ColumnCategory";
+            this.ColumnCategory.ReadOnly = true;
+            // 
+            // ColumnAccount
+            // 
+            resources.ApplyResources(this.ColumnAccount, "ColumnAccount");
+            this.ColumnAccount.Name = "ColumnAccount";
+            this.ColumnAccount.ReadOnly = true;
+            // 
+            // ColumnPayee
+            // 
+            resources.ApplyResources(this.ColumnPayee, "ColumnPayee");
+            this.ColumnPayee.Name = "ColumnPayee";
+            this.ColumnPayee.ReadOnly = true;
+            // 
+            // ColumnIncome
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnIncome.DefaultCellStyle = dataGridViewCellStyle8;
+            resources.ApplyResources(this.ColumnIncome, "ColumnIncome");
+            this.ColumnIncome.Name = "ColumnIncome";
+            this.ColumnIncome.ReadOnly = true;
+            // 
+            // ColumnExpense
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnExpense.DefaultCellStyle = dataGridViewCellStyle9;
+            resources.ApplyResources(this.ColumnExpense, "ColumnExpense");
+            this.ColumnExpense.Name = "ColumnExpense";
+            this.ColumnExpense.ReadOnly = true;
+            // 
+            // ColumnStatus
+            // 
+            resources.ApplyResources(this.ColumnStatus, "ColumnStatus");
+            this.ColumnStatus.Name = "ColumnStatus";
+            this.ColumnStatus.ReadOnly = true;
+            // 
+            // ColumnNotes
+            // 
+            resources.ApplyResources(this.ColumnNotes, "ColumnNotes");
+            this.ColumnNotes.Name = "ColumnNotes";
+            this.ColumnNotes.ReadOnly = true;
+            // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
@@ -401,18 +411,19 @@ namespace hMoney
         private System.Windows.Forms.DataGridView gridSummary;
         private System.Windows.Forms.TabPage tabAccount;
         private System.Windows.Forms.DataGridView gridTrans;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayee;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIncome;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExpense;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNotes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountId;
     }
 }
 

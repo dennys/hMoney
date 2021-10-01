@@ -93,7 +93,7 @@ namespace hMoney
                 gridTrans.Rows[i].Cells[x++].Value = trans.Category + ":" + trans.SubCategory;
                 gridTrans.Rows[i].Cells[x++].Value = trans.AccountName;
                 gridTrans.Rows[i].Cells[x++].Value = trans.PayeeName;
-                if (trans.TransCode == "Deposit")
+                if (trans.TransCode == "Deposit" || trans.TransCode == "Transfer")
                 {
                     gridTrans.Rows[i].Cells[x++].Value = trans.TransAmount;
                     x++;
@@ -103,6 +103,7 @@ namespace hMoney
                     x++;
                     gridTrans.Rows[i].Cells[x++].Value = trans.TransAmount;
                 }
+                gridTrans.Rows[i].Cells[x++].Value = trans.Status;
                 gridTrans.Rows[i].Cells[x++].Value = trans.Notes;
                 i++;
             }

@@ -12,9 +12,9 @@ namespace hMoney
         private String accountType;
         private String accountNum;
         private String status;
-        private String category;
+        private String category;        //This field is mapped dynamically, not existed in database
         private int categoryId;
-        private String subCategory;
+        private String subCategory;     //This field is mapped dynamically, not existed in database
         private int subCategoryId;
         private String payeeName;
         private int payeeId;

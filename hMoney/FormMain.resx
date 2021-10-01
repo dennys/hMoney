@@ -298,6 +298,12 @@
   <data name="ColumnExpense.HeaderText" xml:space="preserve">
     <value>Expense</value>
   </data>
+  <metadata name="ColumnStatus.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnStatus.HeaderText" xml:space="preserve">
+    <value>Status</value>
+  </data>
   <metadata name="ColumnNotes.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -577,48 +583,6 @@
   <data name="&gt;&gt;ColumnAccountId.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ColumnDate.Name" xml:space="preserve">
-    <value>ColumnDate</value>
-  </data>
-  <data name="&gt;&gt;ColumnDate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnCategory.Name" xml:space="preserve">
-    <value>ColumnCategory</value>
-  </data>
-  <data name="&gt;&gt;ColumnCategory.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnAccount.Name" xml:space="preserve">
-    <value>ColumnAccount</value>
-  </data>
-  <data name="&gt;&gt;ColumnAccount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnPayee.Name" xml:space="preserve">
-    <value>ColumnPayee</value>
-  </data>
-  <data name="&gt;&gt;ColumnPayee.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnIncome.Name" xml:space="preserve">
-    <value>ColumnIncome</value>
-  </data>
-  <data name="&gt;&gt;ColumnIncome.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnExpense.Name" xml:space="preserve">
-    <value>ColumnExpense</value>
-  </data>
-  <data name="&gt;&gt;ColumnExpense.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnNotes.Name" xml:space="preserve">
-    <value>ColumnNotes</value>
-  </data>
-  <data name="&gt;&gt;ColumnNotes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
     <value>fileToolStripMenuItem</value>
   </data>
@@ -684,6 +648,54 @@
   </data>
   <data name="&gt;&gt;cCToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnDate.Name" xml:space="preserve">
+    <value>ColumnDate</value>
+  </data>
+  <data name="&gt;&gt;ColumnDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCategory.Name" xml:space="preserve">
+    <value>ColumnCategory</value>
+  </data>
+  <data name="&gt;&gt;ColumnCategory.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnAccount.Name" xml:space="preserve">
+    <value>ColumnAccount</value>
+  </data>
+  <data name="&gt;&gt;ColumnAccount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnPayee.Name" xml:space="preserve">
+    <value>ColumnPayee</value>
+  </data>
+  <data name="&gt;&gt;ColumnPayee.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnIncome.Name" xml:space="preserve">
+    <value>ColumnIncome</value>
+  </data>
+  <data name="&gt;&gt;ColumnIncome.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnExpense.Name" xml:space="preserve">
+    <value>ColumnExpense</value>
+  </data>
+  <data name="&gt;&gt;ColumnExpense.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnStatus.Name" xml:space="preserve">
+    <value>ColumnStatus</value>
+  </data>
+  <data name="&gt;&gt;ColumnStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnNotes.Name" xml:space="preserve">
+    <value>ColumnNotes</value>
+  </data>
+  <data name="&gt;&gt;ColumnNotes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormMain</value>

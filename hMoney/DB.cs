@@ -51,18 +51,22 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
-                const string sql = @"SELECT a.accountname, c.categname, sc.subcategname, p.payeename, t.* 
-                                 FROM checkingaccount_v1 t, accountlist_v1 a
-								 LEFT OUTER JOIN category_v1 c      ON t.categid    = c.CategID
-								 LEFT OUTER JOIN subcategory_v1 sc  ON t.subcategid = sc.subcategid 
-								 LEFT OUTER JOIN payee_v1 p         ON t.payeeid       = p.payeeid 
-                                WHERE t.accountid = a.accountid 
-                                  AND t.accountid = @int1
-                                ORDER BY t.transdate ";
+                const string sql = @"SELECT a.accountname, c.categname, sc.subcategname,
+                                            CASE WHEN t.toaccountid = @accountId THEN '< '||a.accountname
+								            	 ELSE p.payeename
+									              END AS payeename, t.*
+                                       FROM checkingaccount_v1 t
+								       LEFT OUTER JOIN accountlist_v1 a   ON t.accountid = a.accountid 
+								       LEFT OUTER JOIN accountlist_v1 ta  ON t.toaccountid = ta.accountid 
+								       LEFT OUTER JOIN category_v1 c      ON t.categid    = c.CategID
+								       LEFT OUTER JOIN subcategory_v1 sc  ON t.subcategid = sc.subcategid 
+								       LEFT OUTER JOIN payee_v1 p         ON t.payeeid       = p.payeeid 
+                                      WHERE (t.accountid = @accountId OR t.toaccountid = @accountId)
+                                      ORDER BY t.transdate  ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 cmd.Prepare();
-                cmd.Parameters.Add("@int1", DbType.Int32).Value = accountId;
+                cmd.Parameters.Add("@accountId", DbType.Int32).Value = accountId;
                 Log.Debug("SQL:" + sql);
                 SQLiteDataReader reader = cmd.ExecuteReader();
 
@@ -78,6 +82,7 @@ namespace hMoney
                     trans.PayeeName = reader[FIELD_PAYEENAME].ToString();
                     trans.TransCode = reader[FIELD_TRANSCODE].ToString();
                     trans.TransAmount = Convert.ToDecimal(reader[FIELD_TRANSAMOUNT]);
+                    trans.Status = reader[FIELD_STATUS].ToString();
                     trans.Notes = reader[FIELD_NOTES].ToString();
                     result.Add(trans);
                 }
@@ -94,9 +99,9 @@ namespace hMoney
             {
                 // SQL command
                 const string sql = @"SELECT * 
-                                 FROM accountlist_v1
-                                WHERE accounttype = @AccountType
-                                ORDER BY accountname ";
+                                       FROM accountlist_v1
+                                      WHERE accounttype = @AccountType
+                                      ORDER BY accountname ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 cmd.Prepare();
@@ -133,13 +138,13 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
-                const string sql = @"SELECT sum(amount) balance FROM (
-                                 SELECT CASE WHEN t.transcode = 'Deposit'  THEN t.transamount
-                                             WHEN t.transcode = 'Transfer' THEN t.transamount * -1
-	                                         ELSE t.transamount * -1
-	                                    END as amount
-                                   FROM checkingaccount_v1 t
-                                  WHERE accountid = @AccountId) ";
+                const string sql = @"SELECT sum(amount) balance
+                                       FROM (SELECT CASE WHEN t.transcode = 'Deposit'  THEN t.transamount
+                                                    WHEN t.transcode = 'Transfer' THEN t.transamount * -1
+	                                                ELSE t.transamount * -1
+	                                                END as amount
+                                               FROM checkingaccount_v1 t
+                                              WHERE accountid = @AccountId) ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 cmd.Prepare();
