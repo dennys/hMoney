@@ -8,7 +8,8 @@ namespace hMoney
 {
     public partial class FormMain : Form
     {
-        const String CONST_WITHDRAWAL = "Withdrawal";
+        const String TRANSCODE_WITHDRAWAL = "Withdrawal";
+        const String TRANSCODE_TRANSFER = "Transfer";
         readonly Configuration config;
         readonly DB db;
 
@@ -96,13 +97,19 @@ namespace hMoney
                 gridTrans.Rows[i].Cells[x++].Value = trans.CategName + ":" + trans.SubCategName;
                 gridTrans.Rows[i].Cells[x++].Value = trans.AccountName;
                 gridTrans.Rows[i].Cells[x++].Value = trans.PayeeName;
-                if (trans.TransCode == CONST_WITHDRAWAL)
+                if (trans.TransCode == TRANSCODE_WITHDRAWAL) //Withdrawal
                 {
                     gridTrans.Rows[i].Cells[x++].Value = trans.TransAmount;
                     balance -= trans.TransAmount;
                     x++;
                 }
-                else
+                else if (trans.TransCode == TRANSCODE_TRANSFER && trans.AccountId == accountId) //Transfer out
+                {
+                    gridTrans.Rows[i].Cells[x++].Value = trans.TransAmount;
+                    balance -= trans.TransAmount;
+                    x++;
+                }
+                else // Transfer in or deposit
                 {
                     x++;
                     gridTrans.Rows[i].Cells[x++].Value = trans.TransAmount;

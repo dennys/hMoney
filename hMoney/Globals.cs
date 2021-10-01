@@ -6,6 +6,16 @@ namespace hMoney
     {
         public static readonly String INI_FILE_NAME = "hMoney.ini";
         public static readonly String TREE_VIEW_HOME_NAME = "NodeHome";
+        public static class AccountType
+        {
+            public const String Checking = "Checking";
+            public const String Credit_Card = "Credit Card";
+            public const String Term = "Term";
+            public const String Investment = "Investment";
+            public const String Loan = "Loan";
+            public const String Shares = "Shares";
+            public const String Asset = "Asset";
+        }
 
         enum REPEAT_TYPE
         {
