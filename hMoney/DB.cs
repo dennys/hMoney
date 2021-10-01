@@ -92,8 +92,8 @@ namespace hMoney
                     trans.AccountId = Convert.ToInt32(reader[FIELD_ACCOUNTID]);
                     trans.AccountName = reader[FIELD_ACCOUNTNAME].ToString();
                     trans.Transdate = DateTime.Parse(reader[FIELD_TRANSDATE].ToString());
-                    trans.Category = reader[FIELD_CATEGNAME].ToString();
-                    trans.SubCategory = reader[FIELD_SUBCATEGNAME].ToString();
+                    trans.CategName = reader[FIELD_CATEGNAME].ToString();
+                    trans.SubCategName = reader[FIELD_SUBCATEGNAME].ToString();
                     trans.PayeeName = reader[FIELD_PAYEENAME].ToString();
                     trans.TransCode = reader[FIELD_TRANSCODE].ToString();
                     trans.TransAmount = Convert.ToDecimal(reader[FIELD_TRANSAMOUNT]);

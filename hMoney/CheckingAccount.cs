@@ -12,10 +12,10 @@ namespace hMoney
         private String accountType;
         private String accountNum;
         private String status;
-        private String category;        //This field is mapped dynamically, not existed in database
-        private int categoryId;
-        private String subCategory;     //This field is mapped dynamically, not existed in database
-        private int subCategoryId;
+        private String categName;        //This field is mapped dynamically, not existed in database
+        private int categId;
+        private String subCategName;     //This field is mapped dynamically, not existed in database
+        private int subCategId;
         private String payeeName;
         private int payeeId;
         private int transId;
@@ -34,10 +34,10 @@ namespace hMoney
         public string AccountType { get => accountType; set => accountType = value; }
         public string AccountNum { get => accountNum; set => accountNum = value; }
         public string Status { get => status; set => status = value; }
-        public string Category { get => category; set => category = value; }
-        public int CategoryId { get => categoryId; set => categoryId = value; }
-        public string SubCategory { get => subCategory; set => subCategory = value; }
-        public int SubCategoryId { get => subCategoryId; set => subCategoryId = value; }
+        public string CategName { get => categName; set => categName = value; }
+        public int CategId { get => categId; set => categId = value; }
+        public string SubCategName { get => subCategName; set => subCategName = value; }
+        public int SubCategId { get => subCategId; set => subCategId = value; }
         public string PayeeName { get => payeeName; set => payeeName = value; }
         public int PayeeId { get => payeeId; set => payeeId = value; }
         public int TransId { get => transId; set => transId = value; }

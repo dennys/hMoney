@@ -93,7 +93,7 @@ namespace hMoney
                 gridTrans.Rows.Add(row);
                 int x = 0;
                 gridTrans.Rows[i].Cells[x++].Value = trans.Transdate;
-                gridTrans.Rows[i].Cells[x++].Value = trans.Category + ":" + trans.SubCategory;
+                gridTrans.Rows[i].Cells[x++].Value = trans.CategName + ":" + trans.SubCategName;
                 gridTrans.Rows[i].Cells[x++].Value = trans.AccountName;
                 gridTrans.Rows[i].Cells[x++].Value = trans.PayeeName;
                 if (trans.TransCode == CONST_WITHDRAWAL)
