@@ -5,15 +5,17 @@ namespace hMoney
     public class Account
     {
         private int accountId;
-        private int currencyId;
         private String accountName;
         private String accountType;
         private String accountNum;
         private String status;
         private String notes;
-        private String webSite;
-        private Boolean favoriteAcct;
         private String heldAt;
+        private String webSite;
+        private String contactInfo;
+        private String accessInfo;
+        private Boolean favoriteAcct;
+        private int currencyId;
         private decimal initialBal;
         private decimal reconciled;
 
@@ -34,5 +36,7 @@ namespace hMoney
         public decimal Reconciled { get => reconciled; set => reconciled = value; }
         public decimal TodayBal { get => todayBal; set => todayBal = value; }
         public decimal FutureBal { get => futureBal; set => futureBal = value; }
+        public string ContactInfo { get => contactInfo; set => contactInfo = value; }
+        public string AccessInfo { get => accessInfo; set => accessInfo = value; }
     }
 }

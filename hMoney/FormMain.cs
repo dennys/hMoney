@@ -8,6 +8,7 @@ namespace hMoney
 {
     public partial class FormMain : Form
     {
+        const String CONST_WITHDRAWAL = "Withdrawal";
         readonly Configuration config;
         readonly DB db;
 
@@ -81,9 +82,11 @@ namespace hMoney
         }
         private void ShowAccount(int accountId, String accountName)
         {
-            var transList = db.GetTransactionByAccountId(accountId);
+            Account account = db.GetAccountByAccountId(accountId);
+            List<CheckingAccount> transList = db.GetTransactionByAccountId(accountId);
             gridTrans.Rows.Clear();
             int i = 0;
+            decimal balance = account.InitialBal;
             foreach (CheckingAccount trans in transList)
             {
                 DataGridViewRow row = new DataGridViewRow();
@@ -93,16 +96,19 @@ namespace hMoney
                 gridTrans.Rows[i].Cells[x++].Value = trans.Category + ":" + trans.SubCategory;
                 gridTrans.Rows[i].Cells[x++].Value = trans.AccountName;
                 gridTrans.Rows[i].Cells[x++].Value = trans.PayeeName;
-                if (trans.TransCode == "Deposit" || trans.TransCode == "Transfer")
+                if (trans.TransCode == CONST_WITHDRAWAL)
                 {
                     gridTrans.Rows[i].Cells[x++].Value = trans.TransAmount;
+                    balance -= trans.TransAmount;
                     x++;
                 }
                 else
                 {
                     x++;
                     gridTrans.Rows[i].Cells[x++].Value = trans.TransAmount;
+                    balance += trans.TransAmount;
                 }
+                gridTrans.Rows[i].Cells[x++].Value = balance;
                 gridTrans.Rows[i].Cells[x++].Value = trans.Status;
                 gridTrans.Rows[i].Cells[x++].Value = trans.Notes;
                 i++;
@@ -152,6 +158,7 @@ namespace hMoney
             gridTrans.Columns[0].DefaultCellStyle.Format = config.GetDateFormat();
             gridTrans.Columns[4].DefaultCellStyle.Format = config.GetNumberFormat();
             gridTrans.Columns[5].DefaultCellStyle.Format = config.GetNumberFormat();
+            gridTrans.Columns[6].DefaultCellStyle.Format = config.GetNumberFormat();
             gridSummary.Columns[1].DefaultCellStyle.Format = config.GetNumberFormat();
             gridSummary.Columns[2].DefaultCellStyle.Format = config.GetNumberFormat();
             gridSummary.Columns[3].DefaultCellStyle.Format = config.GetNumberFormat();

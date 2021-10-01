@@ -142,7 +142,7 @@
 </value>
   </data>
   <data name="treeView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 598</value>
+    <value>195, 598</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="treeView1.TabIndex" type="System.Int32, mscorlib">
@@ -286,17 +286,23 @@
   <data name="ColumnPayee.HeaderText" xml:space="preserve">
     <value>Payee</value>
   </data>
+  <metadata name="ColumnExpense.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnExpense.HeaderText" xml:space="preserve">
+    <value>Expense</value>
+  </data>
   <metadata name="ColumnIncome.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="ColumnIncome.HeaderText" xml:space="preserve">
     <value>Income</value>
   </data>
-  <metadata name="ColumnExpense.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="ColumnBalance.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="ColumnExpense.HeaderText" xml:space="preserve">
-    <value>Expense</value>
+  <data name="ColumnBalance.HeaderText" xml:space="preserve">
+    <value>Balance</value>
   </data>
   <metadata name="ColumnStatus.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -320,7 +326,7 @@
     <value>22</value>
   </data>
   <data name="gridTrans.Size" type="System.Drawing.Size, System.Drawing">
-    <value>905, 566</value>
+    <value>927, 566</value>
   </data>
   <data name="gridTrans.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -344,7 +350,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabAccount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>911, 572</value>
+    <value>933, 572</value>
   </data>
   <data name="tabAccount.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -371,7 +377,7 @@
     <value>0, 0</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>919, 598</value>
+    <value>941, 598</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -401,10 +407,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1114, 598</value>
+    <value>1140, 598</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>191</value>
+    <value>195</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -428,7 +434,7 @@
     <value>0, 622</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1114, 22</value>
+    <value>1140, 22</value>
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -518,7 +524,7 @@
     <value>0, 0</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1114, 24</value>
+    <value>1140, 24</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -548,7 +554,7 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1114, 644</value>
+    <value>1140, 644</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>hMoney</value>
@@ -673,16 +679,22 @@
   <data name="&gt;&gt;ColumnPayee.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ColumnExpense.Name" xml:space="preserve">
+    <value>ColumnExpense</value>
+  </data>
+  <data name="&gt;&gt;ColumnExpense.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ColumnIncome.Name" xml:space="preserve">
     <value>ColumnIncome</value>
   </data>
   <data name="&gt;&gt;ColumnIncome.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ColumnExpense.Name" xml:space="preserve">
-    <value>ColumnExpense</value>
+  <data name="&gt;&gt;ColumnBalance.Name" xml:space="preserve">
+    <value>ColumnBalance</value>
   </data>
-  <data name="&gt;&gt;ColumnExpense.Type" xml:space="preserve">
+  <data name="&gt;&gt;ColumnBalance.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ColumnStatus.Name" xml:space="preserve">

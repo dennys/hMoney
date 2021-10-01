@@ -12,6 +12,7 @@ namespace hMoney
         const String FIELD_ACCOUNTTYPE = "AccountType";
         const String FIELD_ACCOUNTID = "AccountId";
         const String FIELD_ACCOUNTNAME = "AccountName";
+        const String FIELD_ACCOUNTNUM = "AccountNum";
         const String FIELD_STATUS = "status";
         const String FIELD_NOTES = "notes";
         const String FIELD_WEBSITE = "website";
@@ -24,7 +25,10 @@ namespace hMoney
         const String FIELD_PAYEENAME = "PayeeName";
         const String FIELD_BALANCE = "Balance";
         const String FIELD_FAVORITEACCT = "FavoriteAcct";
-
+        const String FIELD_INITIALBAL = "InitialBal";
+        const String FIELD_HELDAT = "HeldAt";
+        const String FIELD_CONTACTINFO = "ContactInfo";
+        const String FIELD_ACCESSINFO = "AccessInfo";
 
         public DB()
         {
@@ -228,11 +232,49 @@ namespace hMoney
                     account.Notes = reader[FIELD_NOTES].ToString();
                     account.WebSite = reader[FIELD_WEBSITE].ToString();
                     account.CurrencyId = Convert.ToInt32(reader[FIELD_CURRENCYID]);
-                    account.FavoriteAcct = (reader[FIELD_FAVORITEACCT].ToString() == "TRUE");
+                    account.FavoriteAcct = reader[FIELD_FAVORITEACCT].ToString() == "TRUE";
                     result.Add(account);
                     //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
                 }
                 return result;
+            }
+        }
+        public Account GetAccountByAccountId(int accountId)
+        {
+            Account account = new Account();
+            //進行連線，用using可以避免忘了釋放
+            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            {
+                // SQL command
+                const string sql = @"SELECT * 
+                                 FROM accountlist_v1
+                                WHERE accountid = @accountId ";
+                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                conn.Open();
+                cmd.Prepare();
+                cmd.Parameters.Add("@accountId", DbType.Int32).Value = accountId;
+                SQLiteDataReader reader = cmd.ExecuteReader();
+
+                //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
+                while (reader.Read())
+                {
+                    account.AccountId = Convert.ToInt32(reader[FIELD_ACCOUNTID]);
+                    account.AccountName = reader[FIELD_ACCOUNTNAME].ToString();
+                    account.AccountType = reader[FIELD_ACCOUNTTYPE].ToString();
+                    account.AccountNum = reader[FIELD_ACCOUNTNUM].ToString();
+                    account.Status = reader[FIELD_STATUS].ToString();
+                    account.Notes = reader[FIELD_NOTES].ToString();
+                    account.HeldAt = reader[FIELD_HELDAT].ToString();
+                    account.WebSite = reader[FIELD_WEBSITE].ToString();
+                    account.ContactInfo = reader[FIELD_CONTACTINFO].ToString();
+                    account.AccessInfo = reader[FIELD_ACCESSINFO].ToString();
+                    account.InitialBal = Convert.ToDecimal(reader[FIELD_INITIALBAL]);
+                    account.FavoriteAcct = reader[FIELD_FAVORITEACCT].ToString() == "TRUE";
+                    account.CurrencyId = Convert.ToInt32(reader[FIELD_CURRENCYID]);
+                    account.TodayBal = account.InitialBal + this.GetAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
+                    //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
+                }
+                return account;
             }
         }
         public List<Account> GetAccountBalanceByAccountTypeXxx(String accountType)
@@ -259,6 +301,7 @@ namespace hMoney
                     Account account = new Account();
                     account.AccountId = Convert.ToInt32(reader[FIELD_ACCOUNTID]);
                     account.AccountName = reader[FIELD_ACCOUNTNAME].ToString();
+                    account.InitialBal = Convert.ToDecimal(reader[FIELD_INITIALBAL]);
                     account.TodayBal = account.InitialBal + this.GetAccountBalanceByAccountIdWithoutInitialBalance(account.AccountId);
                     account.Status = reader[FIELD_STATUS].ToString();
                     account.Notes = reader[FIELD_NOTES].ToString();

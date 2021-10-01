@@ -39,6 +39,7 @@ namespace hMoney
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -68,8 +69,9 @@ namespace hMoney
             this.ColumnCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPayee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnIncome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnExpense = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIncome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -219,8 +221,9 @@ namespace hMoney
             this.ColumnCategory,
             this.ColumnAccount,
             this.ColumnPayee,
-            this.ColumnIncome,
             this.ColumnExpense,
+            this.ColumnIncome,
+            this.ColumnBalance,
             this.ColumnStatus,
             this.ColumnNotes});
             resources.ApplyResources(this.gridTrans, "gridTrans");
@@ -335,21 +338,29 @@ namespace hMoney
             this.ColumnPayee.Name = "ColumnPayee";
             this.ColumnPayee.ReadOnly = true;
             // 
-            // ColumnIncome
+            // ColumnExpense
             // 
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnIncome.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ColumnExpense.DefaultCellStyle = dataGridViewCellStyle8;
+            resources.ApplyResources(this.ColumnExpense, "ColumnExpense");
+            this.ColumnExpense.Name = "ColumnExpense";
+            this.ColumnExpense.ReadOnly = true;
+            // 
+            // ColumnIncome
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnIncome.DefaultCellStyle = dataGridViewCellStyle9;
             resources.ApplyResources(this.ColumnIncome, "ColumnIncome");
             this.ColumnIncome.Name = "ColumnIncome";
             this.ColumnIncome.ReadOnly = true;
             // 
-            // ColumnExpense
+            // ColumnBalance
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnExpense.DefaultCellStyle = dataGridViewCellStyle9;
-            resources.ApplyResources(this.ColumnExpense, "ColumnExpense");
-            this.ColumnExpense.Name = "ColumnExpense";
-            this.ColumnExpense.ReadOnly = true;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnBalance.DefaultCellStyle = dataGridViewCellStyle10;
+            resources.ApplyResources(this.ColumnBalance, "ColumnBalance");
+            this.ColumnBalance.Name = "ColumnBalance";
+            this.ColumnBalance.ReadOnly = true;
             // 
             // ColumnStatus
             // 
@@ -420,8 +431,9 @@ namespace hMoney
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayee;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIncome;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExpense;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIncome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBalance;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNotes;
     }
