@@ -11,6 +11,7 @@ namespace hMoney
         readonly String dbPath;
         const String FIELD_ACCOUNTTYPE = "AccountType";
         const String FIELD_ACCOUNTID = "AccountId";
+        const String FIELD_TOACCOUNTID = "ToAccountId";
         const String FIELD_ACCOUNTNAME = "AccountName";
         const String FIELD_ACCOUNTNUM = "AccountNum";
         const String FIELD_STATUS = "status";
@@ -29,6 +30,16 @@ namespace hMoney
         const String FIELD_HELDAT = "HeldAt";
         const String FIELD_CONTACTINFO = "ContactInfo";
         const String FIELD_ACCESSINFO = "AccessInfo";
+        const String FIELD_BDID = "AccessInfo";
+        const String FIELD_PAYEEID = "PayeeId";
+        const String FIELD_TRANSACTIONNUMBER = "TransActionNumber";
+        const String FIELD_CATEGID = "CategId";
+        const String FIELD_SUBCATEGID = "SubCategId";
+        const String FIELD_FOLLOWUPID = "FollowUpId";
+        const String FIELD_TOTRANSAMOUNT = "ToTransAmount";
+        const String FIELD_REPEATS = "Repeats";
+        const String FIELD_NEXTOCCURRENCEDATE = "NextOccurrenceDate";
+        const String FIELD_NUMOCCURRENCE = "NumOccurrence";
 
         public DB()
         {
@@ -49,7 +60,7 @@ namespace hMoney
 
         public List<CheckingAccount> GetTransactionByAccountId(int accountId)
         {
-            var result = new List<CheckingAccount>();
+            List<CheckingAccount> result = new List<CheckingAccount>();
 
             //進行連線，用using可以避免忘了釋放
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
@@ -96,7 +107,7 @@ namespace hMoney
 
         public List<Account> GetAccountListByAccountType(String accountType)
         {
-            var result = new List<Account>();
+            List<Account> result = new List<Account>();
 
             //進行連線，用using可以避免忘了釋放
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
@@ -166,7 +177,7 @@ namespace hMoney
         }
         public List<Account> GetAccountBalanceByAccountType(String accountType)
         {
-            var result = new List<Account>();
+            List<Account> result = new List<Account>();
 
             //進行連線，用using可以避免忘了釋放
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
@@ -279,7 +290,7 @@ namespace hMoney
         }
         public List<Account> GetAccountBalanceByAccountTypeXxx(String accountType)
         {
-            var result = new List<Account>();
+            List<Account> result = new List<Account>();
 
             //進行連線，用using可以避免忘了釋放
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
@@ -333,7 +344,7 @@ namespace hMoney
         }
         public SortedSet<int> GetAccountIdListByAccountType(String accountType)
         {
-            var result = new SortedSet<int>();
+            SortedSet<int> result = new SortedSet<int>();
 
             //進行連線，用using可以避免忘了釋放
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
@@ -361,7 +372,7 @@ namespace hMoney
         }
         public SortedSet<string> GetAccountNameList()
         {
-            var result = new SortedSet<string>();
+            SortedSet<string> result = new SortedSet<string>();
 
             //進行連線，用using可以避免忘了釋放
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
@@ -383,6 +394,52 @@ namespace hMoney
                 return result;
             }
 
+        }
+        public BillsDeposits GetBillsDepositsByAccountId(int accountId)
+        {
+            BillsDeposits billsDeposits = new BillsDeposits();
+            //進行連線，用using可以避免忘了釋放
+            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            {
+                // SQL command
+                const string sql = @"SELECT a.accountname, ta.accountname, p.payeename, c.categname, sc.subcategname, b.*
+                                 FROM billsdeposits_v1 b
+								 LEFT OUTER JOIN accountlist_v1 a ON b.accountid = a.accountid
+								 LEFT OUTER JOIN accountlist_v1 ta ON b.toaccountid = ta.accountid
+								 LEFT OUTER JOIN payee_v1 p ON b.payeeid = p.payeeid
+								 LEFT OUTER JOIN category_v1 c ON b.categid = c.categid
+								 LEFT OUTER JOIN subcategory_v1 sc ON b.subcategid = sc.subcategid
+                                 FROM billsdeposits_v1
+                                WHERE accountid = @accountId ";
+                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                conn.Open();
+                cmd.Prepare();
+                cmd.Parameters.Add("@accountId", DbType.Int32).Value = accountId;
+                SQLiteDataReader reader = cmd.ExecuteReader();
+
+                //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
+                while (reader.Read())
+                {
+                    billsDeposits.BdId = Convert.ToInt32(reader[FIELD_BDID]);
+                    billsDeposits.AccountId = Convert.ToInt32(reader[FIELD_ACCOUNTID]);
+                    billsDeposits.ToAccountId = Convert.ToInt32(reader[FIELD_TOACCOUNTID]);
+                    billsDeposits.PayeeId = Convert.ToInt32(reader[FIELD_PAYEEID]);
+                    billsDeposits.TransCode = reader[FIELD_TRANSCODE].ToString();
+                    billsDeposits.TransAmount = Convert.ToDecimal(reader[FIELD_TRANSAMOUNT]);
+                    billsDeposits.Status = reader[FIELD_STATUS].ToString();
+                    billsDeposits.TransActionNumber = reader[FIELD_TRANSACTIONNUMBER].ToString();
+                    billsDeposits.Notes = reader[FIELD_NOTES].ToString();
+                    billsDeposits.CategoryId = Convert.ToInt32(reader[FIELD_CATEGID]);
+                    billsDeposits.SubCategoryId = Convert.ToInt32(reader[FIELD_SUBCATEGID]);
+                    billsDeposits.TransDate = DateTime.Parse(reader[FIELD_TRANSDATE].ToString());
+                    billsDeposits.FollowUpId = Convert.ToInt32(reader[FIELD_FOLLOWUPID]);
+                    billsDeposits.ToTransAmount = Convert.ToDecimal(reader[FIELD_TOTRANSAMOUNT]);
+                    billsDeposits.Repeats = Convert.ToInt32(reader[FIELD_REPEATS]);
+                    billsDeposits.NextOccurrenceDate = DateTime.Parse(reader[FIELD_NEXTOCCURRENCEDATE].ToString());
+                    billsDeposits.NumOccurrence = Convert.ToInt32(reader[FIELD_NUMOCCURRENCE]);
+                }
+                return billsDeposits;
+            }
         }
 
     }

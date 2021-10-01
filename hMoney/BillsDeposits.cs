@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace hMoney
 {
-    internal class BillsDeposits
+    public class BillsDeposits
     {
         private int bdId;
         private int accountId;
@@ -16,15 +12,16 @@ namespace hMoney
         private decimal transAmount;
         private String status;
         private String transActionNumber;
+        private String notes;
         private String category;
         private int categoryId;
         private String subCategory;
         private int subCategoryId;
-        private DateTime transdate;
+        private DateTime transDate;
         private int followUpId;
         private decimal toTransAmount;
         private int repeats;
-        private String nextOccurrenceDate;
+        private DateTime nextOccurrenceDate;
         private int numOccurrence;
 
         public int BdId { get => bdId; set => bdId = value; }
@@ -39,11 +36,12 @@ namespace hMoney
         public int CategoryId { get => categoryId; set => categoryId = value; }
         public string SubCategory { get => subCategory; set => subCategory = value; }
         public int SubCategoryId { get => subCategoryId; set => subCategoryId = value; }
-        public DateTime Transdate { get => transdate; set => transdate = value; }
+        public DateTime TransDate { get => transDate; set => transDate = value; }
         public int FollowUpId { get => followUpId; set => followUpId = value; }
         public decimal ToTransAmount { get => toTransAmount; set => toTransAmount = value; }
         public int Repeats { get => repeats; set => repeats = value; }
-        public string NextOccurrenceDate { get => nextOccurrenceDate; set => nextOccurrenceDate = value; }
+        public DateTime NextOccurrenceDate { get => nextOccurrenceDate; set => nextOccurrenceDate = value; }
         public int NumOccurrence { get => numOccurrence; set => numOccurrence = value; }
+        public string Notes { get => notes; set => notes = value; }
     }
 }

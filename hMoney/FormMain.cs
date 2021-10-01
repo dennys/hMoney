@@ -125,6 +125,7 @@ namespace hMoney
             int i = 0;
             String accountType = "";
 
+            // Get account data and generate balance
             foreach (Account account in accountList)
             {
                 gridSummary.Rows.Add(new DataGridViewRow());
@@ -140,7 +141,6 @@ namespace hMoney
                     i++;
                 }
                 accountType = account.AccountType;
-
                 gridSummary.Rows[i].Cells[x++].Value = "  " + account.AccountName;
                 gridSummary.Rows[i].Cells[x++].Value = account.Reconciled;  // Reconciled
                 gridSummary.Rows[i].Cells[x++].Value = account.TodayBal;    // Today balance
@@ -149,6 +149,8 @@ namespace hMoney
                 i++;
                 //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
             }
+
+            // GUI Friendly
             gridSummary.ClearSelection();
             gridSummary.Height = gridSummary.Rows[0].Height * (gridSummary.Rows.Count + 1);     // Resize the grid height
             tabControl1.SelectedTab = tabHome;
