@@ -17,10 +17,9 @@ namespace hMoney
         private Boolean favoriteAcct;
         private int currencyId;
         private decimal initialBal;
-        private decimal reconciled;
-
+        private decimal reconciled;   // This field is calculated dynamically, not existed in database
         private decimal todayBal;     // This field is calculated dynamically, not existed in database
-        private decimal futureBal;     // This field is calculated dynamically, not existed in database
+        private decimal futureBal;    // This field is calculated dynamically, not existed in database
 
         public int AccountId { get => accountId; set => accountId = value; }
         public int CurrencyId { get => currencyId; set => currencyId = value; }

@@ -151,7 +151,7 @@ namespace hMoney
                 gridSummary.Rows[i].Cells[x++].Value = "  " + account.AccountName;
                 gridSummary.Rows[i].Cells[x++].Value = account.Reconciled;  // Reconciled
                 gridSummary.Rows[i].Cells[x++].Value = account.TodayBal;    // Today balance
-                gridSummary.Rows[i].Cells[x++].Value = null;                // Future balance
+                gridSummary.Rows[i].Cells[x++].Value = account.FutureBal;   // Future balance
                 gridSummary.Rows[i].Cells[x++].Value = account.AccountId;   // Account ID
                 i++;
                 //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);

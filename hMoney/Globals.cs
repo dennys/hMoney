@@ -16,8 +16,14 @@ namespace hMoney
             public const String Shares = "Shares";
             public const String Asset = "Asset";
         }
-
-        enum REPEAT_TYPE
+        public enum STATUS
+        {
+            Reconciled,
+            Void,
+            Followup,
+            Duplicate
+        }
+        public enum REPEAT_TYPE
         {
             REPEAT_INACTIVE = -1,
             REPEAT_NONE,

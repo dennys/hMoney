@@ -41,6 +41,10 @@ namespace hMoney
         const String FIELD_NEXTOCCURRENCEDATE = "NextOccurrenceDate";
         const String FIELD_NUMOCCURRENCE = "NumOccurrence";
 
+        const String CONDITION_ALL = "All";
+        const String CONDITION_TODAY = "Today";
+        const String CONDITION_RECONCILED = "Reconciled";
+
         public DB()
         {
             Configuration config;
@@ -66,7 +70,7 @@ namespace hMoney
                 // SQL command
                 const string sql = @"SELECT a.accountname, c.categname, sc.subcategname,
 							                CASE WHEN t.transcode = 'Transfer' AND t.toaccountid = 1 THEN '< '||a.accountname
-							                     WHEN t.transcode = 'Transfer' AND t.accountid = 1 THEN '> '||ta.accountname
+							                     WHEN t.transcode = 'Transfer' AND t.accountid = 1   THEN '> '||ta.accountname
                                                  ELSE p.payeename
                                             END AS payeename, t.*
                                        FROM checkingaccount_v1 t
@@ -114,12 +118,12 @@ namespace hMoney
                 // SQL command
                 const string sql = @"SELECT * 
                                        FROM accountlist_v1
-                                      WHERE accounttype = @AccountType
+                                      WHERE accounttype = @accountType
                                       ORDER BY accountname ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 cmd.Prepare();
-                cmd.Parameters.Add("@AccountType", DbType.String).Value = accountType;
+                cmd.Parameters.Add("@accountType", DbType.String).Value = accountType;
                 SQLiteDataReader reader = cmd.ExecuteReader();
 
                 //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
@@ -144,35 +148,58 @@ namespace hMoney
 
             }
         }
-        public decimal GetAccountTodayBalanceByAccountIdWithoutInitialBalance(int accountId)
+        public decimal GetAccountTodayBalanceByAccountIdWithoutInitialBalance(int accountId, String condition)
         {
-            decimal result = 0;
+            decimal todayBalance = 0;
+            string sql = "";
 
             //進行連線，用using可以避免忘了釋放
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // SQL command
-                const string sql = @"SELECT sum(amount) balance
+                if (condition == CONDITION_TODAY)
+                {
+                    sql = @"SELECT sum(amount) balance
                                        FROM (SELECT CASE WHEN t.transcode = 'Deposit'  THEN t.transamount
-                                                         WHEN t.transcode = 'Transfer' THEN t.transamount
+                                                         WHEN t.transcode = 'Transfer' AND t.toaccountid = @accountId THEN t.transamount
                                                     ELSE t.transamount * -1
                                                     END as amount
                                                FROM checkingaccount_v1 t
-                                              WHERE (accountid = @AccountId OR toaccountid = @AccountId)
-                                                AND t.transdate <= DATE() ) ";
+                                              WHERE (accountid = @accountId OR toaccountid = @accountId)
+                                                AND t.transdate <= date(CURRENT_TIMESTAMP, 'localtime') ) ";
+                } else if (condition == CONDITION_RECONCILED)
+                {
+                    sql = @"SELECT sum(amount) balance
+                                       FROM (SELECT CASE WHEN t.transcode = 'Deposit'  THEN t.transamount
+                                                         WHEN t.transcode = 'Transfer' AND t.toaccountid = @accountId THEN t.transamount
+                                                    ELSE t.transamount * -1
+                                                    END as amount
+                                               FROM checkingaccount_v1 t
+                                              WHERE (accountid = @accountId OR toaccountid = @accountId)
+                                                AND t.status = 'R' ) ";
+                } else if (condition == CONDITION_ALL)
+                {
+                    sql = @"SELECT sum(amount) balance
+                                       FROM (SELECT CASE WHEN t.transcode = 'Deposit'  THEN t.transamount
+                                                         WHEN t.transcode = 'Transfer' AND t.toaccountid = @accountId THEN t.transamount
+                                                    ELSE t.transamount * -1
+                                                    END as amount
+                                               FROM checkingaccount_v1 t
+                                              WHERE (accountid = @accountId OR toaccountid = @accountId) ) ";
+                }
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 cmd.Prepare();
-                cmd.Parameters.Add("@AccountId", DbType.Int32).Value = accountId;
+                cmd.Parameters.Add("@accountId", DbType.Int32).Value = accountId;
                 SQLiteDataReader reader = cmd.ExecuteReader();
-                Log.Debug("AccountId = " + accountId);
 
                 // TODO: The SQL is not good, it will return 1 row even there is no data
                 while (reader.Read())
                 {
-                    result = String.IsNullOrEmpty(reader[FIELD_BALANCE].ToString()) ? 0 : Convert.ToInt32(reader[FIELD_BALANCE]);
+                    todayBalance = String.IsNullOrEmpty(reader[FIELD_BALANCE].ToString()) ? 0 : Convert.ToInt32(reader[FIELD_BALANCE]);
+                    Log.Debug("AccountId = " + accountId + ", balance (without initlal balance) = " + todayBalance);
                 }
-                return result;
+                return todayBalance;
             }
         }
         public List<Account> GetAccountBalanceByAccountType(String accountType)
@@ -182,35 +209,35 @@ namespace hMoney
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
                 // Save Reconciled data into a dictionary
-                const string sqlReconciled = @"SELECT IFNULL ((a.initialbal + x.amount), 0) reconciled, a.* 
-                                 FROM accountlist_v1 a
-                                 LEFT OUTER JOIN (
-                                      SELECT accountid,
-                                             SUM(CASE WHEN t.transcode = 'Deposit'  THEN t.transamount
-                                                      WHEN t.transcode = 'Transfer' THEN t.transamount
-                                                      ELSE t.transamount * -1
-                                                    END) as amount
-                                         FROM checkingaccount_v1 t
-                                        WHERE t.status = 'R'
-                                        GROUP BY accountid ) x
-                                   ON a.accountid = x.accountid
-                                WHERE a.accounttype = @AccountType
-                                ORDER BY a.accountname ";
-                SQLiteCommand cmd = new SQLiteCommand(sqlReconciled, conn);
-                conn.Open();
-                cmd.Prepare();
-                cmd.Parameters.Add("@AccountType", DbType.String).Value = accountType;
-                SQLiteDataReader reader = cmd.ExecuteReader();
+                //const string sqlReconciled = @"SELECT IFNULL ((a.initialbal + x.amount), 0) reconciled, a.* 
+                //                 FROM accountlist_v1 a
+                //                 LEFT OUTER JOIN (
+                //                      SELECT accountid,
+                //                             SUM(CASE WHEN t.transcode = 'Deposit'  THEN t.transamount
+                //                                      WHEN t.transcode = 'Transfer' THEN t.transamount
+                //                                      ELSE t.transamount * -1
+                //                                    END) as amount
+                //                         FROM checkingaccount_v1 t
+                //                        WHERE t.status = 'R'
+                //                        GROUP BY accountid ) x
+                //                   ON a.accountid = x.accountid
+                //                WHERE a.accounttype = @AccountType
+                //                ORDER BY a.accountname ";
+                //SQLiteCommand cmd = new SQLiteCommand(sqlReconciled, conn);
+                //conn.Open();
+                //cmd.Prepare();
+                //cmd.Parameters.Add("@AccountType", DbType.String).Value = accountType;
+                //SQLiteDataReader reader = cmd.ExecuteReader();
 
-                Dictionary<int, int> reconciledDict = new Dictionary<int, int>();
-                while (reader.Read())
-                {
-                    reconciledDict.Add(Convert.ToInt32(reader[FIELD_ACCOUNTID]), Convert.ToInt32(reader["reconciled"]));
-                }
-                conn.Close();
+                //Dictionary<int, int> reconciledDict = new Dictionary<int, int>();
+                //while (reader.Read())
+                //{
+                //    reconciledDict.Add(Convert.ToInt32(reader[FIELD_ACCOUNTID]), Convert.ToInt32(reader["reconciled"]));
+                //}
+                //conn.Close();
 
                 // Save Today Balance
-                const string sqlTodayBal = @"SELECT (a.initialbal + x.amount) todaybal, a.* 
+                const string sqlTodayBal = @"SELECT (a.initialbal + x.amount) todaybal, a.initialbal, a.* 
                                  FROM accountlist_v1 a
                                  LEFT OUTER JOIN (
                                       SELECT accountid,
@@ -223,11 +250,12 @@ namespace hMoney
                                    ON a.accountid = x.accountid
                                 WHERE a.accounttype = @AccountType
                                 ORDER BY a.accountname ";
+                SQLiteCommand cmd = new SQLiteCommand(sqlTodayBal, conn);
                 cmd = new SQLiteCommand(sqlTodayBal, conn);
                 conn.Open();
                 cmd.Prepare();
                 cmd.Parameters.Add("@AccountType", DbType.String).Value = accountType;
-                reader = cmd.ExecuteReader();
+                SQLiteDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -235,8 +263,11 @@ namespace hMoney
                     account.AccountId = Convert.ToInt32(reader[FIELD_ACCOUNTID]);
                     account.AccountType = reader[FIELD_ACCOUNTTYPE].ToString();
                     account.AccountName = reader[FIELD_ACCOUNTNAME].ToString();
-                    account.TodayBal = account.InitialBal + this.GetAccountTodayBalanceByAccountIdWithoutInitialBalance(account.AccountId);
-                    account.Reconciled = reconciledDict[account.AccountId];
+                    //account.Reconciled = reconciledDict[account.AccountId];
+                    account.InitialBal = Convert.ToInt32(reader[FIELD_INITIALBAL]);
+                    account.Reconciled = account.InitialBal + this.GetAccountTodayBalanceByAccountIdWithoutInitialBalance(account.AccountId, CONDITION_RECONCILED);
+                    account.TodayBal = account.InitialBal + this.GetAccountTodayBalanceByAccountIdWithoutInitialBalance(account.AccountId, CONDITION_TODAY);
+                    account.FutureBal = account.InitialBal + this.GetAccountTodayBalanceByAccountIdWithoutInitialBalance(account.AccountId, CONDITION_ALL);
                     account.Status = reader[FIELD_STATUS].ToString();
                     account.Notes = reader[FIELD_NOTES].ToString();
                     account.WebSite = reader[FIELD_WEBSITE].ToString();
@@ -280,7 +311,9 @@ namespace hMoney
                     account.InitialBal = Convert.ToDecimal(reader[FIELD_INITIALBAL]);
                     account.FavoriteAcct = reader[FIELD_FAVORITEACCT].ToString() == "TRUE";
                     account.CurrencyId = Convert.ToInt32(reader[FIELD_CURRENCYID]);
-                    account.TodayBal = account.InitialBal + this.GetAccountTodayBalanceByAccountIdWithoutInitialBalance(account.AccountId);
+                    account.Reconciled = account.InitialBal + this.GetAccountTodayBalanceByAccountIdWithoutInitialBalance(account.AccountId, CONDITION_RECONCILED);
+                    account.TodayBal = account.InitialBal + this.GetAccountTodayBalanceByAccountIdWithoutInitialBalance(account.AccountId, CONDITION_TODAY);
+                    account.FutureBal = account.InitialBal + this.GetAccountTodayBalanceByAccountIdWithoutInitialBalance(account.AccountId, CONDITION_ALL);
                     //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
                 }
                 return account;
