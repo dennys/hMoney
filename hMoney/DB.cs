@@ -69,7 +69,7 @@ namespace hMoney
             {
                 // SQL command
                 const string sql = @"SELECT a.accountname, c.categname, sc.subcategname,
-							                CASE WHEN t.transcode = 'Transfer' AND t.toaccountid = 1 THEN '< '||a.accountname
+                                            CASE WHEN t.transcode = 'Transfer' AND t.toaccountid = 1 THEN '< '||a.accountname
 							                     WHEN t.transcode = 'Transfer' AND t.accountid = 1   THEN '> '||ta.accountname
                                                  ELSE p.payeename
                                             END AS payeename, t.*
@@ -177,7 +177,7 @@ namespace hMoney
                                                FROM checkingaccount_v1 t
                                               WHERE (accountid = @accountId OR toaccountid = @accountId)
                                                 AND t.status = 'R' ) ";
-                } else if (condition == CONDITION_ALL)
+                } else //Quary all transactions
                 {
                     sql = @"SELECT sum(amount) balance
                                        FROM (SELECT CASE WHEN t.transcode = 'Deposit'  THEN t.transamount
