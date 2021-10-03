@@ -140,7 +140,7 @@ namespace hMoney
 
                 if (accountType != account.AccountType) // New account type
                 {
-                    gridSummary.Rows[i].Cells[0].Value = account.AccountType;
+                    gridSummary.Rows[i].Cells[1].Value = account.AccountType;
                     gridSummary.Rows[i].DefaultCellStyle.Font = new Font(gridSummary.Font, FontStyle.Bold);
                     gridSummary.Rows[i].DefaultCellStyle.BackColor = config.GetAccountSummaryHeaderBackColor();
                     gridSummary.Rows[i].DefaultCellStyle.BackColor = Color.Cornsilk;
@@ -167,10 +167,13 @@ namespace hMoney
             // TreeView
             treeView1.Font = new Font(treeView1.Font.Name, config.GetTreeAccountFontSize());
             // Grid Summary
-            gridSummary.Columns[2].DefaultCellStyle.Format = config.GetNumberFormat();
-            gridSummary.Columns[3].DefaultCellStyle.Format = config.GetNumberFormat();
-            gridSummary.Columns[4].DefaultCellStyle.Format = config.GetNumberFormat();
             gridSummary.Font = new Font(treeView1.Font.Name, config.GetFontSize());
+            gridSummary.Columns[2].DefaultCellStyle.Format = config.GetNumberFormat();  //Reconciled balance
+            gridSummary.Columns[3].DefaultCellStyle.Format = config.GetNumberFormat();  //Today balance
+            gridSummary.Columns[4].DefaultCellStyle.Format = config.GetNumberFormat();  //Future balance
+            // Grid Future
+            gridFuture.Font = new Font(treeView1.Font.Name, config.GetFontSize());
+            gridFuture.Columns[2].DefaultCellStyle.Format = config.GetNumberFormat();   //Reconciled balance
             // Grid Transaction
             gridTrans.Columns[0].DefaultCellStyle.Format = config.GetDateFormat();
             gridTrans.Columns[4].DefaultCellStyle.Format = config.GetNumberFormat();
@@ -202,6 +205,40 @@ namespace hMoney
 
         private void btnRefreshFuture_Click(object sender, EventArgs e)
         {
+            List<Account> accountList = db.GetAccountSummary();
+            gridFuture.Rows.Clear();
+            int i = 0;
+            String accountType = "";
+
+            // Get account data and generate balance
+            foreach (Account account in accountList)
+            {
+                gridFuture.Rows.Add(new DataGridViewRow());
+                int x = 0;
+
+                if (accountType != account.AccountType) // New account type
+                {
+                    gridFuture.Rows[i].Cells[1].Value = account.AccountType;
+                    gridFuture.Rows[i].DefaultCellStyle.Font = new Font(gridFuture.Font, FontStyle.Bold);
+                    gridFuture.Rows[i].DefaultCellStyle.BackColor = config.GetAccountSummaryHeaderBackColor();
+                    gridFuture.Rows[i].DefaultCellStyle.BackColor = Color.Cornsilk;
+                    gridFuture.Rows.Add(new DataGridViewRow());
+                    i++;
+                }
+                accountType = account.AccountType;
+                gridFuture.Rows[i].Cells[x++].Value = account.AccountId;   // Account ID
+                gridFuture.Rows[i].Cells[x++].Value = "  " + account.AccountName;
+                gridFuture.Rows[i].Cells[x++].Value = account.Reconciled;  // Reconciled
+                //gridFuture.Rows[i].Cells[x++].Value = account.TodayBal;    // Today balance
+                //gridFuture.Rows[i].Cells[x++].Value = account.FutureBal;   // Future balance
+                i++;
+                //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
+            }
+
+            // GUI Friendly
+            gridFuture.ClearSelection();
+            gridFuture.Height = gridFuture.Rows[0].Height * (gridFuture.Rows.Count + 1);     // Resize the grid height
+            //tabControl1.SelectedTab = tabHome;
 
         }
     }
