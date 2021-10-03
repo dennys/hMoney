@@ -168,17 +168,17 @@ namespace hMoney
             treeView1.Font = new Font(treeView1.Font.Name, config.GetTreeAccountFontSize());
             // Grid Summary
             gridSummary.Font = new Font(treeView1.Font.Name, config.GetFontSize());
-            gridSummary.Columns[2].DefaultCellStyle.Format = config.GetNumberFormat();  //Reconciled balance
-            gridSummary.Columns[3].DefaultCellStyle.Format = config.GetNumberFormat();  //Today balance
-            gridSummary.Columns[4].DefaultCellStyle.Format = config.GetNumberFormat();  //Future balance
+            gridSummary.Columns["ColumnReconciled"].DefaultCellStyle.Format = config.GetNumberFormat(); //Reconciled balance
+            gridSummary.Columns["ColumnToday"].DefaultCellStyle.Format = config.GetNumberFormat();      //Today balance
+            gridSummary.Columns["ColumnFuture"].DefaultCellStyle.Format = config.GetNumberFormat();     //Future balance
             // Grid Future
             gridFuture.Font = new Font(treeView1.Font.Name, config.GetFontSize());
-            gridFuture.Columns[2].DefaultCellStyle.Format = config.GetNumberFormat();   //Reconciled balance
+            gridFuture.Columns["ColumnFutureRecondiled"].DefaultCellStyle.Format = config.GetNumberFormat();   //Reconciled balance
             // Grid Transaction
-            gridTrans.Columns[0].DefaultCellStyle.Format = config.GetDateFormat();
-            gridTrans.Columns[4].DefaultCellStyle.Format = config.GetNumberFormat();
-            gridTrans.Columns[5].DefaultCellStyle.Format = config.GetNumberFormat();
-            gridTrans.Columns[6].DefaultCellStyle.Format = config.GetNumberFormat();
+            gridTrans.Columns["ColumnDate"].DefaultCellStyle.Format = config.GetDateFormat();
+            gridTrans.Columns["ColumnExpense"].DefaultCellStyle.Format = config.GetNumberFormat();
+            gridTrans.Columns["ColumnIncome"].DefaultCellStyle.Format = config.GetNumberFormat();
+            gridTrans.Columns["ColumnBalance"].DefaultCellStyle.Format = config.GetNumberFormat();
             gridTrans.Font = new Font(treeView1.Font.Name, config.GetFontSize());
         }
 
