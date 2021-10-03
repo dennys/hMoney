@@ -76,7 +76,7 @@ namespace hMoney
             this.qqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textRefreshFuturePeriod = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ColumnAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAccountName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -277,7 +277,7 @@ namespace hMoney
             // panel1
             // 
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.textRefreshFuturePeriod);
             this.panel1.Controls.Add(this.btnRefreshFuture);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
@@ -396,10 +396,10 @@ namespace hMoney
             this.cCToolStripMenuItem.Name = "cCToolStripMenuItem";
             resources.ApplyResources(this.cCToolStripMenuItem, "cCToolStripMenuItem");
             // 
-            // textBox1
+            // textRefreshFuturePeriod
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
+            resources.ApplyResources(this.textRefreshFuturePeriod, "textRefreshFuturePeriod");
+            this.textRefreshFuturePeriod.Name = "textRefreshFuturePeriod";
             // 
             // label1
             // 
@@ -537,7 +537,7 @@ namespace hMoney
         private System.Windows.Forms.DataGridView gridFuture;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnRefreshFuture;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textRefreshFuturePeriod;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountName;

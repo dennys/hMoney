@@ -238,8 +238,6 @@ namespace hMoney
             // GUI Friendly
             gridFuture.ClearSelection();
             gridFuture.Height = gridFuture.Rows[0].Height * (gridFuture.Rows.Count + 1);     // Resize the grid height
-            //tabControl1.SelectedTab = tabHome;
-
         }
     }
 }

@@ -400,25 +400,31 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="textRefreshFuturePeriod.Location" type="System.Drawing.Point, System.Drawing">
     <value>104, 11</value>
   </data>
-  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 22</value>
+  <data name="textRefreshFuturePeriod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 22</value>
   </data>
-  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="textRefreshFuturePeriod.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
-    <value>textBox1</value>
+  <data name="textRefreshFuturePeriod.Text" xml:space="preserve">
+    <value>12</value>
   </data>
-  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+  <data name="textRefreshFuturePeriod.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;textRefreshFuturePeriod.Name" xml:space="preserve">
+    <value>textRefreshFuturePeriod</value>
+  </data>
+  <data name="&gt;&gt;textRefreshFuturePeriod.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;textRefreshFuturePeriod.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;textRefreshFuturePeriod.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="btnRefreshFuture.Location" type="System.Drawing.Point, System.Drawing">
