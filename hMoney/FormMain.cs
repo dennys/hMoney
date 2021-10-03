@@ -148,11 +148,11 @@ namespace hMoney
                     i++;
                 }
                 accountType = account.AccountType;
+                gridSummary.Rows[i].Cells[x++].Value = account.AccountId;   // Account ID
                 gridSummary.Rows[i].Cells[x++].Value = "  " + account.AccountName;
                 gridSummary.Rows[i].Cells[x++].Value = account.Reconciled;  // Reconciled
                 gridSummary.Rows[i].Cells[x++].Value = account.TodayBal;    // Today balance
                 gridSummary.Rows[i].Cells[x++].Value = account.FutureBal;   // Future balance
-                gridSummary.Rows[i].Cells[x++].Value = account.AccountId;   // Account ID
                 i++;
                 //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
             }
@@ -164,15 +164,18 @@ namespace hMoney
         }
         private void ConfigFormat()
         {
+            // TreeView
+            treeView1.Font = new Font(treeView1.Font.Name, config.GetTreeAccountFontSize());
+            // Grid Summary
+            gridSummary.Columns[2].DefaultCellStyle.Format = config.GetNumberFormat();
+            gridSummary.Columns[3].DefaultCellStyle.Format = config.GetNumberFormat();
+            gridSummary.Columns[4].DefaultCellStyle.Format = config.GetNumberFormat();
+            gridSummary.Font = new Font(treeView1.Font.Name, config.GetFontSize());
+            // Grid Transaction
             gridTrans.Columns[0].DefaultCellStyle.Format = config.GetDateFormat();
             gridTrans.Columns[4].DefaultCellStyle.Format = config.GetNumberFormat();
             gridTrans.Columns[5].DefaultCellStyle.Format = config.GetNumberFormat();
             gridTrans.Columns[6].DefaultCellStyle.Format = config.GetNumberFormat();
-            gridSummary.Columns[1].DefaultCellStyle.Format = config.GetNumberFormat();
-            gridSummary.Columns[2].DefaultCellStyle.Format = config.GetNumberFormat();
-            gridSummary.Columns[3].DefaultCellStyle.Format = config.GetNumberFormat();
-            treeView1.Font = new Font(treeView1.Font.Name, config.GetTreeAccountFontSize());
-            gridSummary.Font = new Font(treeView1.Font.Name, config.GetFontSize());
             gridTrans.Font = new Font(treeView1.Font.Name, config.GetFontSize());
         }
 
@@ -197,5 +200,9 @@ namespace hMoney
                 this.ShowAccount(accountId, cell.Value.ToString());
         }
 
+        private void btnRefreshFuture_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
