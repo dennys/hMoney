@@ -487,10 +487,10 @@
   <data name="dataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
     <value>250</value>
   </data>
-  <metadata name="ColumnFutureRecondiled.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="ColumnFutureReconciled.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="ColumnFutureRecondiled.HeaderText" xml:space="preserve">
+  <data name="ColumnFutureReconciled.HeaderText" xml:space="preserve">
     <value>Reconciled</value>
   </data>
   <data name="gridFuture.Location" type="System.Drawing.Point, System.Drawing">
@@ -895,10 +895,10 @@
   <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ColumnFutureRecondiled.Name" xml:space="preserve">
-    <value>ColumnFutureRecondiled</value>
+  <data name="&gt;&gt;ColumnFutureReconciled.Name" xml:space="preserve">
+    <value>ColumnFutureReconciled</value>
   </data>
-  <data name="&gt;&gt;ColumnFutureRecondiled.Type" xml:space="preserve">
+  <data name="&gt;&gt;ColumnFutureReconciled.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

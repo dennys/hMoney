@@ -173,7 +173,7 @@ namespace hMoney
             gridSummary.Columns["ColumnFuture"].DefaultCellStyle.Format = config.GetNumberFormat();     //Future balance
             // Grid Future
             gridFuture.Font = new Font(treeView1.Font.Name, config.GetFontSize());
-            gridFuture.Columns["ColumnFutureRecondiled"].DefaultCellStyle.Format = config.GetNumberFormat();   //Reconciled balance
+            gridFuture.Columns["ColumnFutureReconciled"].DefaultCellStyle.Format = config.GetNumberFormat();   //Reconciled balance
             // Grid Transaction
             gridTrans.Columns["ColumnDate"].DefaultCellStyle.Format = config.GetDateFormat();
             gridTrans.Columns["ColumnExpense"].DefaultCellStyle.Format = config.GetNumberFormat();

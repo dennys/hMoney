@@ -85,7 +85,7 @@ namespace hMoney
             this.ColumnFuture = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnFutureRecondiled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnFutureReconciled = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -307,7 +307,7 @@ namespace hMoney
             this.gridFuture.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn1,
-            this.ColumnFutureRecondiled});
+            this.ColumnFutureReconciled});
             resources.ApplyResources(this.gridFuture, "gridFuture");
             this.gridFuture.MultiSelect = false;
             this.gridFuture.Name = "gridFuture";
@@ -462,15 +462,15 @@ namespace hMoney
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // ColumnFutureRecondiled
+            // ColumnFutureReconciled
             // 
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle13.NullValue = null;
-            this.ColumnFutureRecondiled.DefaultCellStyle = dataGridViewCellStyle13;
-            this.ColumnFutureRecondiled.FillWeight = 61.96669F;
-            resources.ApplyResources(this.ColumnFutureRecondiled, "ColumnFutureRecondiled");
-            this.ColumnFutureRecondiled.Name = "ColumnFutureRecondiled";
-            this.ColumnFutureRecondiled.ReadOnly = true;
+            this.ColumnFutureReconciled.DefaultCellStyle = dataGridViewCellStyle13;
+            this.ColumnFutureReconciled.FillWeight = 61.96669F;
+            resources.ApplyResources(this.ColumnFutureReconciled, "ColumnFutureReconciled");
+            this.ColumnFutureReconciled.Name = "ColumnFutureReconciled";
+            this.ColumnFutureReconciled.ReadOnly = true;
             // 
             // FormMain
             // 
@@ -546,7 +546,7 @@ namespace hMoney
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFuture;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFutureRecondiled;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFutureReconciled;
     }
 }
 
