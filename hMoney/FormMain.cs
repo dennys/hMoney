@@ -209,6 +209,7 @@ namespace hMoney
             gridFuture.Rows.Clear();
             int i = 0;
             String accountType = "";
+            int period = Convert.ToInt32(textRefreshFuturePeriod.Text);
 
             // Get account data and generate balance
             foreach (Account account in accountList)
@@ -233,6 +234,14 @@ namespace hMoney
                 //gridFuture.Rows[i].Cells[x++].Value = account.FutureBal;   // Future balance
                 i++;
                 //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
+            }
+
+            for (int c = 3; c < period+3; c++)
+            {
+                DataGridViewColumn col = new DataGridViewColumn();
+                col.CellTemplate = new DataGridViewTextBoxCell();
+                //col.CellType = CellType.Numeric;
+                gridFuture.Columns.Insert(c, col);
             }
 
             // GUI Friendly
