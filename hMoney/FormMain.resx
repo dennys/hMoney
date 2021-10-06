@@ -499,6 +499,12 @@
   <data name="ColumnFutureReconciled.HeaderText" xml:space="preserve">
     <value>Reconciled</value>
   </data>
+  <metadata name="ColumnFutureToday.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnFutureToday.HeaderText" xml:space="preserve">
+    <value>Today</value>
+  </data>
   <data name="gridFuture.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 43</value>
   </data>
@@ -905,6 +911,12 @@
     <value>ColumnFutureReconciled</value>
   </data>
   <data name="&gt;&gt;ColumnFutureReconciled.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnFutureToday.Name" xml:space="preserve">
+    <value>ColumnFutureToday</value>
+  </data>
+  <data name="&gt;&gt;ColumnFutureToday.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

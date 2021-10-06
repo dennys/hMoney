@@ -174,6 +174,7 @@ namespace hMoney
             // Grid Future
             gridFuture.Font = new Font(treeView1.Font.Name, config.GetFontSize());
             gridFuture.Columns["ColumnFutureReconciled"].DefaultCellStyle.Format = config.GetNumberFormat();   //Reconciled balance
+            gridFuture.Columns["ColumnFutureToday"].DefaultCellStyle.Format = config.GetNumberFormat();   //Reconciled balance
             // Grid Transaction
             gridTrans.Columns["ColumnDate"].DefaultCellStyle.Format = config.GetDateFormat();
             gridTrans.Columns["ColumnExpense"].DefaultCellStyle.Format = config.GetNumberFormat();
@@ -230,15 +231,18 @@ namespace hMoney
                 gridFuture.Rows[i].Cells[x++].Value = account.AccountId;   // Account ID
                 gridFuture.Rows[i].Cells[x++].Value = "  " + account.AccountName;
                 gridFuture.Rows[i].Cells[x++].Value = account.Reconciled;  // Reconciled
-                //gridFuture.Rows[i].Cells[x++].Value = account.TodayBal;    // Today balance
+                gridFuture.Rows[i].Cells[x++].Value = account.TodayBal;    // Today balance
                 //gridFuture.Rows[i].Cells[x++].Value = account.FutureBal;   // Future balance
                 i++;
                 //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
             }
 
-            for (int c = 3; c < period+3; c++)
+            for (int c = 4; c < period+4; c++)
             {
                 DataGridViewColumn col = new DataGridViewColumn();
+                col.Name = "ColumnFuture" + (c - 3).ToString();
+                col.HeaderText = (c - 3).ToString();
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 col.CellTemplate = new DataGridViewTextBoxCell();
                 //col.CellType = CellType.Numeric;
                 gridFuture.Columns.Insert(c, col);

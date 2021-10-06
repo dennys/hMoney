@@ -43,6 +43,7 @@ namespace hMoney
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -86,6 +87,7 @@ namespace hMoney
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnFutureReconciled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnFutureToday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -307,7 +309,8 @@ namespace hMoney
             this.gridFuture.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn1,
-            this.ColumnFutureReconciled});
+            this.ColumnFutureReconciled,
+            this.ColumnFutureToday});
             resources.ApplyResources(this.gridFuture, "gridFuture");
             this.gridFuture.MultiSelect = false;
             this.gridFuture.Name = "gridFuture";
@@ -472,6 +475,14 @@ namespace hMoney
             this.ColumnFutureReconciled.Name = "ColumnFutureReconciled";
             this.ColumnFutureReconciled.ReadOnly = true;
             // 
+            // ColumnFutureToday
+            // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnFutureToday.DefaultCellStyle = dataGridViewCellStyle14;
+            resources.ApplyResources(this.ColumnFutureToday, "ColumnFutureToday");
+            this.ColumnFutureToday.Name = "ColumnFutureToday";
+            this.ColumnFutureToday.ReadOnly = true;
+            // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
@@ -547,6 +558,7 @@ namespace hMoney
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFutureReconciled;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFutureToday;
     }
 }
 
