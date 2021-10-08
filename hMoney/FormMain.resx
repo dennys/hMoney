@@ -142,7 +142,7 @@
 </value>
   </data>
   <data name="treeView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 598</value>
+    <value>187, 517</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="treeView1.TabIndex" type="System.Int32, mscorlib">
@@ -373,108 +373,6 @@
   <data name="tabFuture.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 15</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 12</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Forecast month:</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="textRefreshFuturePeriod.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 11</value>
-  </data>
-  <data name="textRefreshFuturePeriod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 22</value>
-  </data>
-  <data name="textRefreshFuturePeriod.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="textRefreshFuturePeriod.Text" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="textRefreshFuturePeriod.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;textRefreshFuturePeriod.Name" xml:space="preserve">
-    <value>textRefreshFuturePeriod</value>
-  </data>
-  <data name="&gt;&gt;textRefreshFuturePeriod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textRefreshFuturePeriod.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;textRefreshFuturePeriod.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnRefreshFuture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 11</value>
-  </data>
-  <data name="btnRefreshFuture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 20</value>
-  </data>
-  <data name="btnRefreshFuture.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="btnRefreshFuture.Text" xml:space="preserve">
-    <value>&amp;Refresh</value>
-  </data>
-  <data name="&gt;&gt;btnRefreshFuture.Name" xml:space="preserve">
-    <value>btnRefreshFuture</value>
-  </data>
-  <data name="&gt;&gt;btnRefreshFuture.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRefreshFuture.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;btnRefreshFuture.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>910, 42</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>tabFuture</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="dataGridViewTextBoxColumn5.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -505,17 +403,17 @@
   <data name="ColumnFutureToday.HeaderText" xml:space="preserve">
     <value>Today</value>
   </data>
-  <data name="gridFuture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 43</value>
+  <data name="gridFuture.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="gridFuture.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>None</value>
+  <data name="gridFuture.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
   <data name="gridFuture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>690, 1421</value>
+    <value>893, 457</value>
   </data>
   <data name="gridFuture.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;gridFuture.Name" xml:space="preserve">
     <value>gridFuture</value>
@@ -524,9 +422,135 @@
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;gridFuture.Parent" xml:space="preserve">
-    <value>tabFuture</value>
+    <value>panel2</value>
   </data>
   <data name="&gt;&gt;gridFuture.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 31</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>893, 457</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>tabFuture</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 7</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 12</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Forecast month:</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>panelFutureHeader</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textRefreshFuturePeriod.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 3</value>
+  </data>
+  <data name="textRefreshFuturePeriod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 22</value>
+  </data>
+  <data name="textRefreshFuturePeriod.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="textRefreshFuturePeriod.Text" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="textRefreshFuturePeriod.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;textRefreshFuturePeriod.Name" xml:space="preserve">
+    <value>textRefreshFuturePeriod</value>
+  </data>
+  <data name="&gt;&gt;textRefreshFuturePeriod.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textRefreshFuturePeriod.Parent" xml:space="preserve">
+    <value>panelFutureHeader</value>
+  </data>
+  <data name="&gt;&gt;textRefreshFuturePeriod.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnRefreshFuture.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 3</value>
+  </data>
+  <data name="btnRefreshFuture.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 20</value>
+  </data>
+  <data name="btnRefreshFuture.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="btnRefreshFuture.Text" xml:space="preserve">
+    <value>&amp;Refresh</value>
+  </data>
+  <data name="&gt;&gt;btnRefreshFuture.Name" xml:space="preserve">
+    <value>btnRefreshFuture</value>
+  </data>
+  <data name="&gt;&gt;btnRefreshFuture.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRefreshFuture.Parent" xml:space="preserve">
+    <value>panelFutureHeader</value>
+  </data>
+  <data name="&gt;&gt;btnRefreshFuture.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panelFutureHeader.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panelFutureHeader.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="panelFutureHeader.Size" type="System.Drawing.Size, System.Drawing">
+    <value>893, 28</value>
+  </data>
+  <data name="panelFutureHeader.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panelFutureHeader.Name" xml:space="preserve">
+    <value>panelFutureHeader</value>
+  </data>
+  <data name="&gt;&gt;panelFutureHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelFutureHeader.Parent" xml:space="preserve">
+    <value>tabFuture</value>
+  </data>
+  <data name="&gt;&gt;panelFutureHeader.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="tabFuture.Location" type="System.Drawing.Point, System.Drawing">
@@ -536,7 +560,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabFuture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>933, 572</value>
+    <value>899, 491</value>
   </data>
   <data name="tabFuture.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -563,7 +587,7 @@
     <value>0, 0</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>941, 598</value>
+    <value>907, 517</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -593,10 +617,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1140, 598</value>
+    <value>1098, 517</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>195</value>
+    <value>187</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -617,10 +641,10 @@
     <value>17, 17</value>
   </metadata>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 622</value>
+    <value>0, 541</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1140, 22</value>
+    <value>1098, 22</value>
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -710,7 +734,7 @@
     <value>0, 0</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1140, 24</value>
+    <value>1098, 24</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -740,10 +764,40 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1140, 644</value>
+    <value>1098, 563</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>hMoney</value>
+  </data>
+  <data name="&gt;&gt;ColumnAccountId.Name" xml:space="preserve">
+    <value>ColumnAccountId</value>
+  </data>
+  <data name="&gt;&gt;ColumnAccountId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnAccountName.Name" xml:space="preserve">
+    <value>ColumnAccountName</value>
+  </data>
+  <data name="&gt;&gt;ColumnAccountName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnReconciled.Name" xml:space="preserve">
+    <value>ColumnReconciled</value>
+  </data>
+  <data name="&gt;&gt;ColumnReconciled.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnToday.Name" xml:space="preserve">
+    <value>ColumnToday</value>
+  </data>
+  <data name="&gt;&gt;ColumnToday.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnFuture.Name" xml:space="preserve">
+    <value>ColumnFuture</value>
+  </data>
+  <data name="&gt;&gt;ColumnFuture.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ColumnDate.Name" xml:space="preserve">
     <value>ColumnDate</value>
@@ -864,36 +918,6 @@
   </data>
   <data name="&gt;&gt;cCToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnAccountId.Name" xml:space="preserve">
-    <value>ColumnAccountId</value>
-  </data>
-  <data name="&gt;&gt;ColumnAccountId.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnAccountName.Name" xml:space="preserve">
-    <value>ColumnAccountName</value>
-  </data>
-  <data name="&gt;&gt;ColumnAccountName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnReconciled.Name" xml:space="preserve">
-    <value>ColumnReconciled</value>
-  </data>
-  <data name="&gt;&gt;ColumnReconciled.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnToday.Name" xml:space="preserve">
-    <value>ColumnToday</value>
-  </data>
-  <data name="&gt;&gt;ColumnToday.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnFuture.Name" xml:space="preserve">
-    <value>ColumnFuture</value>
-  </data>
-  <data name="&gt;&gt;ColumnFuture.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn5.Name" xml:space="preserve">
     <value>dataGridViewTextBoxColumn5</value>

@@ -237,14 +237,17 @@ namespace hMoney
                 //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
             }
 
+            DateTime firstDayOfMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+            int m = 1;
             for (int c = 4; c < period+4; c++)
             {
                 DataGridViewColumn col = new DataGridViewColumn();
                 col.Name = "ColumnFuture" + (c - 3).ToString();
-                col.HeaderText = (c - 3).ToString();
+                col.HeaderText = lastDayOfMonth.ToString("M/dd");
+                lastDayOfMonth = firstDayOfMonth.AddMonths(++m).AddDays(-1);
                 col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 col.CellTemplate = new DataGridViewTextBoxCell();
-                //col.CellType = CellType.Numeric;
                 gridFuture.Columns.Insert(c, col);
             }
 
