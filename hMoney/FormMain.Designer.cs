@@ -85,8 +85,8 @@ namespace hMoney
             this.cCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gridFuture = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnFutureAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnFutureAccountName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnFutureReconciled = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnFutureToday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -449,8 +449,8 @@ namespace hMoney
             this.gridFuture.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.gridFuture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridFuture.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn1,
+            this.ColumnFutureAccountId,
+            this.ColumnFutureAccountName,
             this.ColumnFutureReconciled,
             this.ColumnFutureToday});
             resources.ApplyResources(this.gridFuture, "gridFuture");
@@ -460,20 +460,20 @@ namespace hMoney
             this.gridFuture.RowHeadersVisible = false;
             this.gridFuture.RowTemplate.Height = 24;
             // 
-            // dataGridViewTextBoxColumn5
+            // ColumnFutureAccountId
             // 
-            this.dataGridViewTextBoxColumn5.Frozen = true;
-            resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.ColumnFutureAccountId.Frozen = true;
+            resources.ApplyResources(this.ColumnFutureAccountId, "ColumnFutureAccountId");
+            this.ColumnFutureAccountId.Name = "ColumnFutureAccountId";
+            this.ColumnFutureAccountId.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn1
+            // ColumnFutureAccountName
             // 
-            this.dataGridViewTextBoxColumn1.FillWeight = 183.4862F;
-            this.dataGridViewTextBoxColumn1.Frozen = true;
-            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.ColumnFutureAccountName.FillWeight = 183.4862F;
+            this.ColumnFutureAccountName.Frozen = true;
+            resources.ApplyResources(this.ColumnFutureAccountName, "ColumnFutureAccountName");
+            this.ColumnFutureAccountName.Name = "ColumnFutureAccountName";
+            this.ColumnFutureAccountName.ReadOnly = true;
             // 
             // ColumnFutureReconciled
             // 
@@ -567,8 +567,8 @@ namespace hMoney
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFuture;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView gridFuture;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFutureAccountId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFutureAccountName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFutureReconciled;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFutureToday;
     }

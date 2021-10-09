@@ -208,7 +208,6 @@ namespace hMoney
         {
             List<Account> accountList = db.GetAccountSummary();
             gridFuture.Rows.Clear();
-            int i = 0;
             String accountType = "";
             int period = Convert.ToInt32(textRefreshFuturePeriod.Text);
 
@@ -216,25 +215,25 @@ namespace hMoney
             foreach (Account account in accountList)
             {
                 gridFuture.Rows.Add(new DataGridViewRow());
-                int x = 0;
+                DataGridViewRow row = gridFuture.Rows[gridFuture.RowCount - 1];
 
-                if (accountType != account.AccountType) // New account type
+                // New account type
+                if (accountType != account.AccountType) 
                 {
-                    gridFuture.Rows[i].Cells[1].Value = account.AccountType;
-                    gridFuture.Rows[i].DefaultCellStyle.Font = new Font(gridFuture.Font, FontStyle.Bold);
-                    gridFuture.Rows[i].DefaultCellStyle.BackColor = config.GetAccountSummaryHeaderBackColor();
-                    gridFuture.Rows[i].DefaultCellStyle.BackColor = Color.Cornsilk;
+                    row.DefaultCellStyle.Font = new Font(gridFuture.Font, FontStyle.Bold);
+                    row.DefaultCellStyle.BackColor = config.GetAccountSummaryHeaderBackColor();
+                    row.DefaultCellStyle.BackColor = Color.Cornsilk;
+                    row.Cells[1].Value = account.AccountType;
                     gridFuture.Rows.Add(new DataGridViewRow());
-                    i++;
+                    row = gridFuture.Rows[gridFuture.RowCount - 1];
                 }
                 accountType = account.AccountType;
-                gridFuture.Rows[i].Cells[x++].Value = account.AccountId;   // Account ID
-                gridFuture.Rows[i].Cells[x++].Value = "  " + account.AccountName;
-                gridFuture.Rows[i].Cells[x++].Value = account.Reconciled;  // Reconciled
-                gridFuture.Rows[i].Cells[x++].Value = account.TodayBal;    // Today balance
-                //gridFuture.Rows[i].Cells[x++].Value = account.FutureBal;   // Future balance
-                i++;
                 //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
+
+                row.Cells["ColumnFutureAccountId"].Value = account.AccountId;               // Account ID
+                row.Cells["ColumnFutureAccountName"].Value = "  " + account.AccountName;    // Account Name
+                row.Cells["ColumnFutureReconciled"].Value = account.Reconciled;             // Reconciled
+                row.Cells["ColumnFutureToday"].Value = account.TodayBal;                    // Today balance
             }
 
             DateTime firstDayOfMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
