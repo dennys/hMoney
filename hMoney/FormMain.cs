@@ -251,18 +251,19 @@ namespace hMoney
                 row.Cells["ColumnFutureToday"].Value = account.TodayBal;                    // Today balance
 
                 // Calculate future balance
-                for (int c = 4; c < period + 4; c++)
-                {
+                //List<BillsDeposits> billsDepositsList = db.GetBillsDepositsByAccountId(account.AccountId);
+                //foreach (BillsDeposits billsDeposits in billsDepositsList)
+                //{
+                //    Log.Debug("Account Id=" + billsDeposits.AccountId);
+                //    Log.Debug("Account Repeats=" + billsDeposits.Repeats);
+                //}
 
-                }
+            }
 
-                List<BillsDeposits> billsDepositsList = db.GetBillsDepositsByAccountId(1);
-                foreach (BillsDeposits billsDeposits in billsDepositsList)
-                {
-                    Log.Debug("Account Id=" + billsDeposits.AccountId);
-                    Log.Debug("Account Repeats=" + billsDeposits.Repeats);
-                }
-
+            List<BillsDeposits> billsDepositsList = db.GetBillsDepositsByAccountId(1);
+            foreach (BillsDeposits billsDeposits in billsDepositsList)
+            {
+                Log.Debug("Repeat: account id=" + billsDeposits.AccountId + ", bdid=" + billsDeposits.BdId + ", Repeats = " + billsDeposits.Repeats);
             }
 
             // GUI Friendly

@@ -393,7 +393,6 @@ namespace hMoney
         }
         public List<BillsDeposits> GetBillsDepositsByAccountId(int accountId)
         {
-            BillsDeposits billsDeposits = new BillsDeposits();
             List< BillsDeposits> billsDepositsList = new List< BillsDeposits>();      
             //進行連線，用using可以避免忘了釋放
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
@@ -416,6 +415,7 @@ namespace hMoney
                 //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
                 while (reader.Read())
                 {
+                    BillsDeposits billsDeposits = new BillsDeposits();
                     billsDeposits.BdId = Convert.ToInt32(reader[FIELD_BDID]);
                     billsDeposits.AccountId = Convert.ToInt32(reader[FIELD_ACCOUNTID]);
                     billsDeposits.ToAccountId = Convert.ToInt32(reader[FIELD_TOACCOUNTID]);
