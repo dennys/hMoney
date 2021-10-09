@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace hMoney
 {
@@ -25,14 +26,23 @@ namespace hMoney
         }
         public enum RepeatType
         {
+            [Description("REPEAT_INACTIVE")]
             REPEAT_INACTIVE = -1,
+            [Description("REPEAT_NONE")]
             REPEAT_NONE,            //0
+            [Description("REPEAT_WEEKLY")]
             REPEAT_WEEKLY,          //1
+            [Description("REPEAT_BI_WEEKLY")]
             REPEAT_BI_WEEKLY,       //2: FORTNIGHTLY
+            [Description("REPEAT_MONTHLY")]
             REPEAT_MONTHLY,         //3
+            [Description("REPEAT_BI_MONTHLY")]
             REPEAT_BI_MONTHLY,      //4
+            [Description("REPEAT_QUARTERLY")]
             REPEAT_QUARTERLY,       //5: TRI_MONTHLY
+            [Description("REPEAT_HALF_YEARLY")]
             REPEAT_HALF_YEARLY,     //6
+            [Description("REPEAT_YEARLY")]
             REPEAT_YEARLY,          //7
             REPEAT_FOUR_MONTHLY,    //8: QUAD_MONTHLY
             REPEAT_FOUR_WEEKLY,     //9: QUAD_WEEKLY

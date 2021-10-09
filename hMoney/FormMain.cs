@@ -211,6 +211,21 @@ namespace hMoney
             String accountType = "";
             int period = Convert.ToInt32(textRefreshFuturePeriod.Text);
 
+            // Generate future columns 
+            DateTime firstDayOfMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+            int m = 1;
+            for (int c = 4; c < period + 4; c++)
+            {
+                DataGridViewColumn col = new DataGridViewColumn();
+                col.Name = "ColumnFuture" + (c - 3).ToString();
+                col.HeaderText = lastDayOfMonth.ToString("M/dd");
+                lastDayOfMonth = firstDayOfMonth.AddMonths(++m).AddDays(-1);
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                col.CellTemplate = new DataGridViewTextBoxCell();
+                gridFuture.Columns.Insert(c, col);
+            }
+
             // Get account data and generate balance
             foreach (Account account in accountList)
             {
@@ -228,31 +243,36 @@ namespace hMoney
                     row = gridFuture.Rows[gridFuture.RowCount - 1];
                 }
                 accountType = account.AccountType;
-                //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
+                // Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
 
                 row.Cells["ColumnFutureAccountId"].Value = account.AccountId;               // Account ID
                 row.Cells["ColumnFutureAccountName"].Value = "  " + account.AccountName;    // Account Name
                 row.Cells["ColumnFutureReconciled"].Value = account.Reconciled;             // Reconciled
                 row.Cells["ColumnFutureToday"].Value = account.TodayBal;                    // Today balance
-            }
 
-            DateTime firstDayOfMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
-            DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
-            int m = 1;
-            for (int c = 4; c < period+4; c++)
-            {
-                DataGridViewColumn col = new DataGridViewColumn();
-                col.Name = "ColumnFuture" + (c - 3).ToString();
-                col.HeaderText = lastDayOfMonth.ToString("M/dd");
-                lastDayOfMonth = firstDayOfMonth.AddMonths(++m).AddDays(-1);
-                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                col.CellTemplate = new DataGridViewTextBoxCell();
-                gridFuture.Columns.Insert(c, col);
+                // Calculate future balance
+                for (int c = 4; c < period + 4; c++)
+                {
+
+                }
+
+                List<BillsDeposits> billsDepositsList = db.GetBillsDepositsByAccountId(1);
+                foreach (BillsDeposits billsDeposits in billsDepositsList)
+                {
+                    Log.Debug("Account Id=" + billsDeposits.AccountId);
+                    Log.Debug("Account Repeats=" + billsDeposits.Repeats);
+                }
+
             }
 
             // GUI Friendly
             gridFuture.ClearSelection();
             gridFuture.Height = gridFuture.Rows[0].Height * (gridFuture.Rows.Count + 1);     // Resize the grid height
+        }
+
+        private void getFutureByAccountId(int accountId)
+        {
+
         }
     }
 }

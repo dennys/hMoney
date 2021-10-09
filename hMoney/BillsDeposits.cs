@@ -1,4 +1,5 @@
 ﻿using System;
+using static hMoney.Globals;
 
 namespace hMoney
 {
@@ -20,7 +21,7 @@ namespace hMoney
         private DateTime transDate;
         private int followUpId;
         private decimal toTransAmount;
-        private int repeats;
+        private RepeatType repeats;
         private DateTime nextOccurrenceDate;
         private int numOccurrence;
 
@@ -39,7 +40,7 @@ namespace hMoney
         public DateTime TransDate { get => transDate; set => transDate = value; }
         public int FollowUpId { get => followUpId; set => followUpId = value; }
         public decimal ToTransAmount { get => toTransAmount; set => toTransAmount = value; }
-        public int Repeats { get => repeats; set => repeats = value; }
+        public RepeatType Repeats { get => repeats; set => repeats = value; }
         public DateTime NextOccurrenceDate { get => nextOccurrenceDate; set => nextOccurrenceDate = value; }
         public int NumOccurrence { get => numOccurrence; set => numOccurrence = value; }
         public string Notes { get => notes; set => notes = value; }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using static hMoney.Globals;
 
 namespace hMoney
 {
@@ -30,7 +31,7 @@ namespace hMoney
         const String FIELD_HELDAT = "HeldAt";
         const String FIELD_CONTACTINFO = "ContactInfo";
         const String FIELD_ACCESSINFO = "AccessInfo";
-        const String FIELD_BDID = "AccessInfo";
+        const String FIELD_BDID = "BdId";
         const String FIELD_PAYEEID = "PayeeId";
         const String FIELD_TRANSACTIONNUMBER = "TransActionNumber";
         const String FIELD_CATEGID = "CategId";
@@ -39,7 +40,7 @@ namespace hMoney
         const String FIELD_TOTRANSAMOUNT = "ToTransAmount";
         const String FIELD_REPEATS = "Repeats";
         const String FIELD_NEXTOCCURRENCEDATE = "NextOccurrenceDate";
-        const String FIELD_NUMOCCURRENCE = "NumOccurrence";
+        const String FIELD_NUMOCCURRENCES = "NumOccurrences";
 
         const String CONDITION_ALL = "All";
         const String CONDITION_TODAY = "Today";
@@ -390,9 +391,10 @@ namespace hMoney
             }
 
         }
-        public BillsDeposits GetBillsDepositsByAccountId(int accountId)
+        public List<BillsDeposits> GetBillsDepositsByAccountId(int accountId)
         {
             BillsDeposits billsDeposits = new BillsDeposits();
+            List< BillsDeposits> billsDepositsList = new List< BillsDeposits>();      
             //進行連線，用using可以避免忘了釋放
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
             {
@@ -404,8 +406,7 @@ namespace hMoney
                                        LEFT OUTER JOIN payee_v1 p        ON b.payeeid = p.payeeid
                                        LEFT OUTER JOIN category_v1 c     ON b.categid = c.categid
                                        LEFT OUTER JOIN subcategory_v1 sc ON b.subcategid = sc.subcategid
-                                       FROM billsdeposits_v1
-                                      WHERE accountid = @accountId ";
+                                      WHERE b.accountid = @accountId ";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 conn.Open();
                 cmd.Prepare();
@@ -429,11 +430,12 @@ namespace hMoney
                     billsDeposits.TransDate = DateTime.Parse(reader[FIELD_TRANSDATE].ToString());
                     billsDeposits.FollowUpId = Convert.ToInt32(reader[FIELD_FOLLOWUPID]);
                     billsDeposits.ToTransAmount = Convert.ToDecimal(reader[FIELD_TOTRANSAMOUNT]);
-                    billsDeposits.Repeats = Convert.ToInt32(reader[FIELD_REPEATS]);
+                    billsDeposits.Repeats = (RepeatType)Enum.Parse(typeof(RepeatType), reader[FIELD_REPEATS].ToString());
                     billsDeposits.NextOccurrenceDate = DateTime.Parse(reader[FIELD_NEXTOCCURRENCEDATE].ToString());
-                    billsDeposits.NumOccurrence = Convert.ToInt32(reader[FIELD_NUMOCCURRENCE]);
+                    billsDeposits.NumOccurrence = Convert.ToInt32(reader[FIELD_NUMOCCURRENCES]);
+                    billsDepositsList.Add(billsDeposits);
                 }
-                return billsDeposits;
+                return billsDepositsList;
             }
         }
 
