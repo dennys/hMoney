@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace hMoney
@@ -40,6 +41,11 @@ namespace hMoney
             tabAccount.Hide();
 
             //TreeNode nodeHome = treeView1.Nodes.Add("Home");
+
+            // Set DoubleBuffered to true to improve DataGridView scrolling performance
+            Type dgvType = gridFuture.GetType();
+            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(gridFuture, true, null);
 
             List<String> accountTypes = new List<String>();
             accountTypes.Add("Checking");
