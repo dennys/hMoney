@@ -5,6 +5,9 @@ namespace hMoney
 {
     public class BillsDeposits
     {
+        const int VALUE_AUTO_EXECUTE_MANUAL = 100;
+        const int VALUE_AUTO_EXECUTE_SILENT = 200;
+
         private int bdId;
         private int accountId;
         private int toAccountId;
@@ -24,6 +27,8 @@ namespace hMoney
         private RepeatType repeats;
         private DateTime nextOccurrenceDate;
         private int numOccurrence;
+        private Boolean autoExecuteManual;
+        private Boolean autoExecuteSilent;
 
         public int BdId { get => bdId; set => bdId = value; }
         public int AccountId { get => accountId; set => accountId = value; }
@@ -40,9 +45,30 @@ namespace hMoney
         public DateTime TransDate { get => transDate; set => transDate = value; }
         public int FollowUpId { get => followUpId; set => followUpId = value; }
         public decimal ToTransAmount { get => toTransAmount; set => toTransAmount = value; }
-        public RepeatType Repeats { get => repeats; set => repeats = value; }
+        public RepeatType Repeats { 
+            get => repeats; 
+            set
+            {
+                if (Convert.ToInt32(value) >= VALUE_AUTO_EXECUTE_SILENT)
+                {
+                    repeats = value - VALUE_AUTO_EXECUTE_SILENT;
+                    autoExecuteSilent = true;
+                } 
+                else if (Convert.ToInt32(value) >= VALUE_AUTO_EXECUTE_MANUAL)
+                {
+                    repeats = value - VALUE_AUTO_EXECUTE_MANUAL;
+                    autoExecuteManual = true;
+                } 
+                else
+                {
+                    repeats = value;
+                }
+            }
+        }
         public DateTime NextOccurrenceDate { get => nextOccurrenceDate; set => nextOccurrenceDate = value; }
         public int NumOccurrence { get => numOccurrence; set => numOccurrence = value; }
         public string Notes { get => notes; set => notes = value; }
+        public bool AutoExecuteSilent { get => autoExecuteSilent; set => autoExecuteSilent = value; }
+        public bool AutoExecuteManual { get => autoExecuteManual; set => autoExecuteManual = value; }
     }
 }

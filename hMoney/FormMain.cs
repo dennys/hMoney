@@ -260,8 +260,6 @@ namespace hMoney
                 //List<BillsDeposits> billsDepositsList = db.GetBillsDepositsByAccountId(account.AccountId);
                 //foreach (BillsDeposits billsDeposits in billsDepositsList)
                 //{
-                //    Log.Debug("Account Id=" + billsDeposits.AccountId);
-                //    Log.Debug("Account Repeats=" + billsDeposits.Repeats);
                 //}
 
             }
@@ -269,7 +267,8 @@ namespace hMoney
             List<BillsDeposits> billsDepositsList = db.GetBillsDepositsByAccountId(1);
             foreach (BillsDeposits billsDeposits in billsDepositsList)
             {
-                Log.Debug("Repeat: account id=" + billsDeposits.AccountId + ", bdid=" + billsDeposits.BdId + ", Repeats = " + billsDeposits.Repeats);
+                Log.Debug("Repeat: account id=" + billsDeposits.AccountId + ", bdid=" + billsDeposits.BdId + ", Repeats=" + billsDeposits.Repeats + ", NextTrans=" + billsDeposits.NextOccurrenceDate + ", AutoSilent=" + billsDeposits.AutoExecuteSilent + ", AutoManual=" + billsDeposits.AutoExecuteManual);
+
             }
 
             // GUI Friendly
@@ -277,9 +276,5 @@ namespace hMoney
             gridFuture.Height = gridFuture.Rows[0].Height * (gridFuture.Rows.Count + 1);     // Resize the grid height
         }
 
-        private void getFutureByAccountId(int accountId)
-        {
-
-        }
     }
 }
