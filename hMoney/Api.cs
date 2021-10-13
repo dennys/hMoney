@@ -37,25 +37,33 @@ namespace hMoney
                     nextTransDate = preTransDate.AddYears(1);
                     break;
                 case RepeatType.REPEAT_FOUR_MONTHLY:// 8
+                    nextTransDate = preTransDate.AddMonths(4);
                     break;
                 case RepeatType.REPEAT_FOUR_WEEKLY: // 9
+                    nextTransDate = preTransDate.AddDays(28);
                     break;
                 case RepeatType.REPEAT_DAILY:       // 10
                     nextTransDate = preTransDate.AddDays(1);
                     break;
                 case RepeatType.REPEAT_IN_X_DAYS:   // 11
+                    //TODO
                     nextTransDate = preTransDate.AddDays(numOccurrences);
                     break;
                 case RepeatType.REPEAT_IN_X_MONTHS: // 12
+                    //TODO
                     nextTransDate = preTransDate.AddMonths(numOccurrences);
                     break;
                 case RepeatType.REPEAT_EVERY_X_DAYS:// 13
+                    nextTransDate = preTransDate.AddDays(numOccurrences);
                     break;
                 case RepeatType.REPEAT_EVERY_X_MONTHS:  // 14
+                    nextTransDate = preTransDate.AddMonths(numOccurrences);
                     break;
                 case RepeatType.REPEAT_MONTHLY_LAST_DAY:    // 15
+                    //TODO
                     break;
                 case RepeatType.REPEAT_MONTHLY_LAST_BUSINESS_DAY:   //  16
+                    //TODO
                     break;
                 default:
                     Log.Error("Invalid repeat type: " + repeatType);
