@@ -268,7 +268,7 @@ namespace hMoney
             foreach (BillsDeposits billsDeposits in billsDepositsList)
             {
                 Log.Debug("Repeat: account id=" + billsDeposits.AccountId + ", bdid=" + billsDeposits.BdId + ", Repeats=" + billsDeposits.Repeats + ", NextTrans=" + billsDeposits.NextOccurrenceDate + ", AutoSilent=" + billsDeposits.AutoExecuteSilent + ", AutoManual=" + billsDeposits.AutoExecuteManual);
-
+                Log.Debug("Next trans date=" + db.GetNextTransDate(billsDeposits.Repeats, billsDeposits.TransDate, billsDeposits.NumOccurrence));
             }
 
             // GUI Friendly
