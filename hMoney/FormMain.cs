@@ -47,9 +47,9 @@ namespace hMoney
             //TreeNode nodeHome = treeView1.Nodes.Add("Home");
 
             // Set DoubleBuffered to true to improve DataGridView scrolling performance
-            Type dgvType = gridFuture.GetType();
+            Type dgvType = gridForecast.GetType();
             PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
-            pi.SetValue(gridFuture, true, null);
+            pi.SetValue(gridForecast, true, null);
 
             List<String> accountTypes = new List<String>();
             accountTypes.Add("Checking");
@@ -181,10 +181,10 @@ namespace hMoney
             gridSummary.Columns["ColumnReconciled"].DefaultCellStyle.Format = config.GetNumberFormat(); //Reconciled balance
             gridSummary.Columns["ColumnToday"].DefaultCellStyle.Format = config.GetNumberFormat();      //Today balance
             gridSummary.Columns["ColumnFuture"].DefaultCellStyle.Format = config.GetNumberFormat();     //Future balance
-            // Grid Future
-            gridFuture.Font = new Font(treeView1.Font.Name, config.GetFontSize());
-            gridFuture.Columns["ColumnFutureReconciled"].DefaultCellStyle.Format = config.GetNumberFormat();   //Reconciled balance
-            gridFuture.Columns["ColumnFutureToday"].DefaultCellStyle.Format = config.GetNumberFormat();   //Reconciled balance
+            // Grid Forecast
+            gridForecast.Font = new Font(treeView1.Font.Name, config.GetFontSize());
+            gridForecast.Columns["ColumnForecastReconciled"].DefaultCellStyle.Format = config.GetNumberFormat();   //Reconciled balance
+            gridForecast.Columns["ColumnForecastToday"].DefaultCellStyle.Format = config.GetNumberFormat();   //Reconciled balance
             // Grid Transaction
             gridTrans.Columns["ColumnDate"].DefaultCellStyle.Format = config.GetDateFormat();
             gridTrans.Columns["ColumnExpense"].DefaultCellStyle.Format = config.GetNumberFormat();
@@ -214,53 +214,53 @@ namespace hMoney
                 this.ShowAccount(accountId, cell.Value.ToString());
         }
 
-        private void btnRefreshFuture_Click(object sender, EventArgs e)
+        private void btnRefreshForecast_Click(object sender, EventArgs e)
         {
             List<Account> accountList = db.GetAccountSummary();
-            gridFuture.Rows.Clear();
+            gridForecast.Rows.Clear();
             String accountType = "";
-            int period = Convert.ToInt32(textRefreshFuturePeriod.Text);
+            int period = Convert.ToInt32(textRefreshForecastPeriod.Text);
 
-            // Generate future columns 
+            // Generate forecast columns 
             DateTime firstDayOfMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
             DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
             int m = 1;
             for (int c = 4; c < period + 4; c++)
             {
                 DataGridViewColumn col = new DataGridViewColumn();
-                col.Name = "ColumnFuture" + (c - 3).ToString();
+                col.Name = "ColumnForecast" + (c - 3).ToString();
                 col.HeaderText = lastDayOfMonth.ToString("M/dd");
                 lastDayOfMonth = firstDayOfMonth.AddMonths(++m).AddDays(-1);
                 col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 col.CellTemplate = new DataGridViewTextBoxCell();
-                gridFuture.Columns.Insert(c, col);
+                gridForecast.Columns.Insert(c, col);
             }
 
             // Get account data and generate balance
             foreach (Account account in accountList)
             {
-                gridFuture.Rows.Add(new DataGridViewRow());
-                DataGridViewRow row = gridFuture.Rows[gridFuture.RowCount - 1];
+                gridForecast.Rows.Add(new DataGridViewRow());
+                DataGridViewRow row = gridForecast.Rows[gridForecast.RowCount - 1];
 
                 // New account type
                 if (accountType != account.AccountType) 
                 {
-                    row.DefaultCellStyle.Font = new Font(gridFuture.Font, FontStyle.Bold);
+                    row.DefaultCellStyle.Font = new Font(gridForecast.Font, FontStyle.Bold);
                     row.DefaultCellStyle.BackColor = config.GetAccountSummaryHeaderBackColor();
                     row.DefaultCellStyle.BackColor = Color.Cornsilk;
                     row.Cells[1].Value = account.AccountType;
-                    gridFuture.Rows.Add(new DataGridViewRow());
-                    row = gridFuture.Rows[gridFuture.RowCount - 1];
+                    gridForecast.Rows.Add(new DataGridViewRow());
+                    row = gridForecast.Rows[gridForecast.RowCount - 1];
                 }
                 accountType = account.AccountType;
                 // Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
 
-                row.Cells["ColumnFutureAccountId"].Value = account.AccountId;               // Account ID
-                row.Cells["ColumnFutureAccountName"].Value = "  " + account.AccountName;    // Account Name
-                row.Cells["ColumnFutureReconciled"].Value = account.Reconciled;             // Reconciled
-                row.Cells["ColumnFutureToday"].Value = account.TodayBal;                    // Today balance
+                row.Cells["ColumnForecastAccountId"].Value = account.AccountId;               // Account ID
+                row.Cells["ColumnForecastAccountName"].Value = "  " + account.AccountName;    // Account Name
+                row.Cells["ColumnForecastReconciled"].Value = account.Reconciled;             // Reconciled
+                row.Cells["ColumnForecastToday"].Value = account.TodayBal;                    // Today balance
 
-                // Calculate future balance
+                // Calculate forecast balance
                 //List<BillsDeposits> billsDepositsList = db.GetBillsDepositsByAccountId(account.AccountId);
                 //foreach (BillsDeposits billsDeposits in billsDepositsList)
                 //{
@@ -276,8 +276,8 @@ namespace hMoney
             }
 
             // GUI Friendly
-            gridFuture.ClearSelection();
-            gridFuture.Height = gridFuture.Rows[0].Height * (gridFuture.Rows.Count + 1);     // Resize the grid height
+            gridForecast.ClearSelection();
+            gridForecast.Height = gridForecast.Rows[0].Height * (gridForecast.Rows.Count + 1);     // Resize the grid height
         }
 
     }

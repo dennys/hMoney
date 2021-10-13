@@ -65,11 +65,13 @@ namespace hMoney
             this.ColumnBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabFuture = new System.Windows.Forms.TabPage();
-            this.panelFutureHeader = new System.Windows.Forms.Panel();
+            this.tabForecast = new System.Windows.Forms.TabPage();
+            this.panelForecast = new System.Windows.Forms.Panel();
+            this.gridForecast = new System.Windows.Forms.DataGridView();
+            this.panelForecastHeader = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.textRefreshFuturePeriod = new System.Windows.Forms.TextBox();
-            this.btnRefreshFuture = new System.Windows.Forms.Button();
+            this.textRefreshForecastPeriod = new System.Windows.Forms.TextBox();
+            this.btnRefreshForecast = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,12 +85,10 @@ namespace hMoney
             this.qqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.gridFuture = new System.Windows.Forms.DataGridView();
-            this.ColumnFutureAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnFutureAccountName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnFutureReconciled = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnFutureToday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnForecastAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnForecastAccountName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnForecastReconciled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnForecastToday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -98,11 +98,11 @@ namespace hMoney
             ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).BeginInit();
             this.tabAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTrans)).BeginInit();
-            this.tabFuture.SuspendLayout();
-            this.panelFutureHeader.SuspendLayout();
+            this.tabForecast.SuspendLayout();
+            this.panelForecast.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridForecast)).BeginInit();
+            this.panelForecastHeader.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridFuture)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -130,7 +130,7 @@ namespace hMoney
             // 
             this.tabControl1.Controls.Add(this.tabHome);
             this.tabControl1.Controls.Add(this.tabAccount);
-            this.tabControl1.Controls.Add(this.tabFuture);
+            this.tabControl1.Controls.Add(this.tabForecast);
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -313,38 +313,71 @@ namespace hMoney
             this.ColumnNotes.Name = "ColumnNotes";
             this.ColumnNotes.ReadOnly = true;
             // 
-            // tabFuture
+            // tabForecast
             // 
-            resources.ApplyResources(this.tabFuture, "tabFuture");
-            this.tabFuture.Controls.Add(this.panel2);
-            this.tabFuture.Controls.Add(this.panelFutureHeader);
-            this.tabFuture.Name = "tabFuture";
-            this.tabFuture.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.tabForecast, "tabForecast");
+            this.tabForecast.Controls.Add(this.panelForecast);
+            this.tabForecast.Controls.Add(this.panelForecastHeader);
+            this.tabForecast.Name = "tabForecast";
+            this.tabForecast.UseVisualStyleBackColor = true;
             // 
-            // panelFutureHeader
+            // panelForecast
             // 
-            this.panelFutureHeader.Controls.Add(this.label1);
-            this.panelFutureHeader.Controls.Add(this.textRefreshFuturePeriod);
-            this.panelFutureHeader.Controls.Add(this.btnRefreshFuture);
-            resources.ApplyResources(this.panelFutureHeader, "panelFutureHeader");
-            this.panelFutureHeader.Name = "panelFutureHeader";
+            this.panelForecast.Controls.Add(this.gridForecast);
+            resources.ApplyResources(this.panelForecast, "panelForecast");
+            this.panelForecast.Name = "panelForecast";
+            // 
+            // gridForecast
+            // 
+            this.gridForecast.AllowUserToAddRows = false;
+            this.gridForecast.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle11.NullValue = null;
+            this.gridForecast.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            this.gridForecast.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridForecast.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.gridForecast.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridForecast.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnForecastAccountId,
+            this.ColumnForecastAccountName,
+            this.ColumnForecastReconciled,
+            this.ColumnForecastToday});
+            resources.ApplyResources(this.gridForecast, "gridForecast");
+            this.gridForecast.MultiSelect = false;
+            this.gridForecast.Name = "gridForecast";
+            this.gridForecast.ReadOnly = true;
+            this.gridForecast.RowHeadersVisible = false;
+            this.gridForecast.RowTemplate.Height = 24;
+            // 
+            // panelForecastHeader
+            // 
+            this.panelForecastHeader.Controls.Add(this.label1);
+            this.panelForecastHeader.Controls.Add(this.textRefreshForecastPeriod);
+            this.panelForecastHeader.Controls.Add(this.btnRefreshForecast);
+            resources.ApplyResources(this.panelForecastHeader, "panelForecastHeader");
+            this.panelForecastHeader.Name = "panelForecastHeader";
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // textRefreshFuturePeriod
+            // textRefreshForecastPeriod
             // 
-            resources.ApplyResources(this.textRefreshFuturePeriod, "textRefreshFuturePeriod");
-            this.textRefreshFuturePeriod.Name = "textRefreshFuturePeriod";
+            resources.ApplyResources(this.textRefreshForecastPeriod, "textRefreshForecastPeriod");
+            this.textRefreshForecastPeriod.Name = "textRefreshForecastPeriod";
             // 
-            // btnRefreshFuture
+            // btnRefreshForecast
             // 
-            resources.ApplyResources(this.btnRefreshFuture, "btnRefreshFuture");
-            this.btnRefreshFuture.Name = "btnRefreshFuture";
-            this.btnRefreshFuture.UseVisualStyleBackColor = true;
-            this.btnRefreshFuture.Click += new System.EventHandler(this.btnRefreshFuture_Click);
+            resources.ApplyResources(this.btnRefreshForecast, "btnRefreshForecast");
+            this.btnRefreshForecast.Name = "btnRefreshForecast";
+            this.btnRefreshForecast.UseVisualStyleBackColor = true;
+            this.btnRefreshForecast.Click += new System.EventHandler(this.btnRefreshForecast_Click);
             // 
             // statusStrip1
             // 
@@ -427,71 +460,38 @@ namespace hMoney
             this.cCToolStripMenuItem.Name = "cCToolStripMenuItem";
             resources.ApplyResources(this.cCToolStripMenuItem, "cCToolStripMenuItem");
             // 
-            // panel2
+            // ColumnForecastAccountId
             // 
-            this.panel2.Controls.Add(this.gridFuture);
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
+            this.ColumnForecastAccountId.Frozen = true;
+            resources.ApplyResources(this.ColumnForecastAccountId, "ColumnForecastAccountId");
+            this.ColumnForecastAccountId.Name = "ColumnForecastAccountId";
+            this.ColumnForecastAccountId.ReadOnly = true;
             // 
-            // gridFuture
+            // ColumnForecastAccountName
             // 
-            this.gridFuture.AllowUserToAddRows = false;
-            this.gridFuture.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle11.NullValue = null;
-            this.gridFuture.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
-            this.gridFuture.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridFuture.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.gridFuture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridFuture.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnFutureAccountId,
-            this.ColumnFutureAccountName,
-            this.ColumnFutureReconciled,
-            this.ColumnFutureToday});
-            resources.ApplyResources(this.gridFuture, "gridFuture");
-            this.gridFuture.MultiSelect = false;
-            this.gridFuture.Name = "gridFuture";
-            this.gridFuture.ReadOnly = true;
-            this.gridFuture.RowHeadersVisible = false;
-            this.gridFuture.RowTemplate.Height = 24;
+            this.ColumnForecastAccountName.FillWeight = 183.4862F;
+            this.ColumnForecastAccountName.Frozen = true;
+            resources.ApplyResources(this.ColumnForecastAccountName, "ColumnForecastAccountName");
+            this.ColumnForecastAccountName.Name = "ColumnForecastAccountName";
+            this.ColumnForecastAccountName.ReadOnly = true;
             // 
-            // ColumnFutureAccountId
-            // 
-            this.ColumnFutureAccountId.Frozen = true;
-            resources.ApplyResources(this.ColumnFutureAccountId, "ColumnFutureAccountId");
-            this.ColumnFutureAccountId.Name = "ColumnFutureAccountId";
-            this.ColumnFutureAccountId.ReadOnly = true;
-            // 
-            // ColumnFutureAccountName
-            // 
-            this.ColumnFutureAccountName.FillWeight = 183.4862F;
-            this.ColumnFutureAccountName.Frozen = true;
-            resources.ApplyResources(this.ColumnFutureAccountName, "ColumnFutureAccountName");
-            this.ColumnFutureAccountName.Name = "ColumnFutureAccountName";
-            this.ColumnFutureAccountName.ReadOnly = true;
-            // 
-            // ColumnFutureReconciled
+            // ColumnForecastReconciled
             // 
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle13.NullValue = null;
-            this.ColumnFutureReconciled.DefaultCellStyle = dataGridViewCellStyle13;
-            this.ColumnFutureReconciled.FillWeight = 61.96669F;
-            resources.ApplyResources(this.ColumnFutureReconciled, "ColumnFutureReconciled");
-            this.ColumnFutureReconciled.Name = "ColumnFutureReconciled";
-            this.ColumnFutureReconciled.ReadOnly = true;
+            this.ColumnForecastReconciled.DefaultCellStyle = dataGridViewCellStyle13;
+            this.ColumnForecastReconciled.FillWeight = 61.96669F;
+            resources.ApplyResources(this.ColumnForecastReconciled, "ColumnForecastReconciled");
+            this.ColumnForecastReconciled.Name = "ColumnForecastReconciled";
+            this.ColumnForecastReconciled.ReadOnly = true;
             // 
-            // ColumnFutureToday
+            // ColumnForecastToday
             // 
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnFutureToday.DefaultCellStyle = dataGridViewCellStyle14;
-            resources.ApplyResources(this.ColumnFutureToday, "ColumnFutureToday");
-            this.ColumnFutureToday.Name = "ColumnFutureToday";
-            this.ColumnFutureToday.ReadOnly = true;
+            this.ColumnForecastToday.DefaultCellStyle = dataGridViewCellStyle14;
+            resources.ApplyResources(this.ColumnForecastToday, "ColumnForecastToday");
+            this.ColumnForecastToday.Name = "ColumnForecastToday";
+            this.ColumnForecastToday.ReadOnly = true;
             // 
             // FormMain
             // 
@@ -512,13 +512,13 @@ namespace hMoney
             ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).EndInit();
             this.tabAccount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridTrans)).EndInit();
-            this.tabFuture.ResumeLayout(false);
-            this.panelFutureHeader.ResumeLayout(false);
-            this.panelFutureHeader.PerformLayout();
+            this.tabForecast.ResumeLayout(false);
+            this.panelForecast.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridForecast)).EndInit();
+            this.panelForecastHeader.ResumeLayout(false);
+            this.panelForecastHeader.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridFuture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -555,22 +555,22 @@ namespace hMoney
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBalance;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNotes;
-        private System.Windows.Forms.TabPage tabFuture;
-        private System.Windows.Forms.Panel panelFutureHeader;
-        private System.Windows.Forms.Button btnRefreshFuture;
-        private System.Windows.Forms.TextBox textRefreshFuturePeriod;
+        private System.Windows.Forms.TabPage tabForecast;
+        private System.Windows.Forms.Panel panelForecastHeader;
+        private System.Windows.Forms.Button btnRefreshForecast;
+        private System.Windows.Forms.TextBox textRefreshForecastPeriod;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReconciled;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnToday;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFuture;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView gridFuture;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFutureAccountId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFutureAccountName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFutureReconciled;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFutureToday;
+        private System.Windows.Forms.Panel panelForecast;
+        private System.Windows.Forms.DataGridView gridForecast;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnForecastAccountId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnForecastAccountName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnForecastReconciled;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnForecastToday;
     }
 }
 
