@@ -13,6 +13,7 @@ namespace hMoney
         const String TRANSCODE_TRANSFER = "Transfer";
         readonly Configuration config;
         readonly DB db;
+        readonly Api api;
 
         public FormMain()
         {
@@ -33,6 +34,9 @@ namespace hMoney
 
             // Enable DB
             db = new DB();
+
+            // Enable API
+            api = new Api();
         }
 
         private void Initial(object sender, EventArgs e)
@@ -268,7 +272,7 @@ namespace hMoney
             foreach (BillsDeposits billsDeposits in billsDepositsList)
             {
                 Log.Debug("Repeat: account id=" + billsDeposits.AccountId + ", bdid=" + billsDeposits.BdId + ", Repeats=" + billsDeposits.Repeats + ", NextTrans=" + billsDeposits.NextOccurrenceDate + ", AutoSilent=" + billsDeposits.AutoExecuteSilent + ", AutoManual=" + billsDeposits.AutoExecuteManual);
-                Log.Debug("Next trans date=" + db.GetNextTransDate(billsDeposits.Repeats, billsDeposits.TransDate, billsDeposits.NumOccurrence));
+                Log.Debug("Next trans date=" + api.GetNextTransDate(billsDeposits.Repeats, billsDeposits.TransDate, billsDeposits.NumOccurrence));
             }
 
             // GUI Friendly
