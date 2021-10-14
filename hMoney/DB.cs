@@ -152,7 +152,7 @@ namespace hMoney
         public decimal GetAccountTodayBalanceByAccountIdWithoutInitialBalance(int accountId, String condition)
         {
             decimal todayBalance = 0;
-            string sql = "";
+            string sql;
 
             //進行連線，用using可以避免忘了釋放
             using (SQLiteConnection conn = new SQLiteConnection(dbPath))
