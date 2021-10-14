@@ -16,41 +16,39 @@ namespace hMoney
                 case RepeatType.REPEAT_NONE:        // 0
                     break;
                 case RepeatType.REPEAT_WEEKLY:      // 1
-                    nextTransDate = preTransDate.AddDays(7);    //NOSONAR
+                    nextTransDate = preTransDate.AddDays(7);
                     break;
                 case RepeatType.REPEAT_BI_WEEKLY:   // 2
-                    nextTransDate = preTransDate.AddDays(14);   //NOSONAR
+                    nextTransDate = preTransDate.AddDays(14);
                     break;
                 case RepeatType.REPEAT_MONTHLY:     // 3
-                    nextTransDate = preTransDate.AddMonths(1);  //NOSONAR
+                    nextTransDate = preTransDate.AddMonths(1);
                     break;
                 case RepeatType.REPEAT_BI_MONTHLY:  // 4
-                    nextTransDate = preTransDate.AddMonths(2);  //NOSONAR
+                    nextTransDate = preTransDate.AddMonths(2);
                     break;
                 case RepeatType.REPEAT_QUARTERLY:   // 5
-                    nextTransDate = preTransDate.AddMonths(3);  //NOSONAR
+                    nextTransDate = preTransDate.AddMonths(3);
                     break;
                 case RepeatType.REPEAT_HALF_YEARLY: // 6
-                    nextTransDate = preTransDate.AddMonths(6);  //NOSONAR
+                    nextTransDate = preTransDate.AddMonths(6);
                     break;
                 case RepeatType.REPEAT_YEARLY:      // 7
-                    nextTransDate = preTransDate.AddYears(1);   //NOSONAR
+                    nextTransDate = preTransDate.AddYears(1);
                     break;
                 case RepeatType.REPEAT_FOUR_MONTHLY:// 8
-                    nextTransDate = preTransDate.AddMonths(4);  //NOSONAR
+                    nextTransDate = preTransDate.AddMonths(4);
                     break;
                 case RepeatType.REPEAT_FOUR_WEEKLY: // 9
-                    nextTransDate = preTransDate.AddDays(28);   //NOSONAR
+                    nextTransDate = preTransDate.AddDays(28);
                     break;
                 case RepeatType.REPEAT_DAILY:       // 10
-                    nextTransDate = preTransDate.AddDays(1);    //NOSONAR
+                    nextTransDate = preTransDate.AddDays(1);
                     break;
                 case RepeatType.REPEAT_IN_X_DAYS:   // 11
-                    //TODO
                     nextTransDate = preTransDate.AddDays(numOccurrences);
                     break;
                 case RepeatType.REPEAT_IN_X_MONTHS: // 12
-                    //TODO
                     nextTransDate = preTransDate.AddMonths(numOccurrences);
                     break;
                 case RepeatType.REPEAT_EVERY_X_DAYS:// 13
