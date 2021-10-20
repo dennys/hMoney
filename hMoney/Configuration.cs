@@ -29,9 +29,9 @@ namespace hMoney
         }
         private void GenerateDefaultIni(FileIniDataParser parser)
         {
-            IniData data = new IniData();
-            data["UI"]["fullscreen"] = "true";
-            parser.WriteFile(Globals.INI_FILE_NAME, data);
+            IniData ini = new IniData();
+            ini["UI"]["Language"] = "en";
+            parser.WriteFile(Globals.INI_FILE_NAME, ini);
         }
 
         public string GetDbPath()
