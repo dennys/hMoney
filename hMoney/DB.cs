@@ -252,7 +252,6 @@ namespace hMoney
                                 WHERE a.accounttype = @AccountType
                                 ORDER BY a.accountname ";
                 SQLiteCommand cmd = new SQLiteCommand(sqlTodayBal, conn);
-                cmd = new SQLiteCommand(sqlTodayBal, conn);
                 conn.Open();
                 cmd.Prepare();
                 cmd.Parameters.Add("@AccountType", DbType.String).Value = accountType;
