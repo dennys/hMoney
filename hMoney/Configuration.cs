@@ -2,6 +2,7 @@
 using IniParser.Model;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace hMoney
@@ -12,16 +13,25 @@ namespace hMoney
 
         public void Init()
         {
-            var parser = new FileIniDataParser();
+            FileIniDataParser parser = new FileIniDataParser();
             try
             {
+                if (!File.Exists(Globals.INI_FILE_NAME) )
+                {
+                    GenerateDefaultIni(parser);
+                }
                 data = parser.ReadFile(Globals.INI_FILE_NAME);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Cannot open INI file");
             }
-
+        }
+        private void GenerateDefaultIni(FileIniDataParser parser)
+        {
+            IniData data = new IniData();
+            data["UI"]["fullscreen"] = "true";
+            parser.WriteFile(Globals.INI_FILE_NAME, data);
         }
 
         public string GetDbPath()
