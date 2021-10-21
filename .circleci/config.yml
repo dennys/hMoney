@@ -26,6 +26,7 @@ jobs:
           working_directory: ~/project/App.Tests
           name: Run tests
           command: |
+            echo $DOCKERHUB_USERNAME
             dotnet test
 
 # Invoke jobs via workflows
