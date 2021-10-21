@@ -34,8 +34,7 @@ jobs:
           working_directory: ~/project/App.Tests
           name: Run tests
           command: |
-            echo $DOCKERHUB_USERNAME
-            dotnet test
+            dotnet build
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
