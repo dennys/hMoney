@@ -37,4 +37,4 @@ workflows:
     jobs:
       - build-and-test:
           context:
-            - docker
+            - Docker
