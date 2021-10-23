@@ -170,17 +170,51 @@ namespace hMoney.Tests
         }
 
         [Test()]
-        public void GetNextTransDateMonthlyLastDayTest()
+        public void GetNextTransDateMonthlyLastDay1Test()
         {
             nextTransDate = api.GetNextTransDate(RepeatType.REPEAT_MONTHLY_LAST_DAY, Convert.ToDateTime("06/04/2021"), -1);
-            Assert.AreEqual(nextTransDate, Convert.ToDateTime("06/18/2021"));
+            Assert.AreEqual(nextTransDate, Convert.ToDateTime("06/30/2021"));
         }
 
         [Test()]
-        public void GetNextTransDateMonthlyLastBusinessDayTest()
+        public void GetNextTransDateMonthlyLastDay2Test()
         {
-            nextTransDate = api.GetNextTransDate(RepeatType.REPEAT_MONTHLY_LAST_BUSINESS_DAY, Convert.ToDateTime("06/04/2021"), -1);
-            Assert.AreEqual(nextTransDate, Convert.ToDateTime("06/18/2021"));
+            nextTransDate = api.GetNextTransDate(RepeatType.REPEAT_MONTHLY_LAST_DAY, Convert.ToDateTime("07/24/2021"), -1);
+            Assert.AreEqual(nextTransDate, Convert.ToDateTime("07/31/2021"));
+        }
+
+        [Test()]
+        public void GetNextTransDateMonthlyLastDay3Test()
+        {
+            nextTransDate = api.GetNextTransDate(RepeatType.REPEAT_MONTHLY_LAST_DAY, Convert.ToDateTime("02/04/2021"), -1);
+            Assert.AreEqual(nextTransDate, Convert.ToDateTime("02/28/2021"));
+        }
+
+        [Test()]
+        public void GetNextTransDateMonthlyLastDayTest()
+        {
+            nextTransDate = api.GetNextTransDate(RepeatType.REPEAT_MONTHLY_LAST_DAY, Convert.ToDateTime("06/04/2021"), -1);
+            Assert.AreEqual(nextTransDate, Convert.ToDateTime("06/30/2021"));
+        }
+
+        [Test()]
+        public void GetNextTransDateMonthlyLastBusinessDay1Test()
+        {
+            nextTransDate = api.GetNextTransDate(RepeatType.REPEAT_MONTHLY_LAST_BUSINESS_DAY, Convert.ToDateTime("10/17/2021"), -1);
+            Assert.AreEqual(nextTransDate, Convert.ToDateTime("10/29/2021"));
+        }
+
+        [Test()]
+        public void GetNextTransDateMonthlyLastBusinessDay2Test()
+        {
+            nextTransDate = api.GetNextTransDate(RepeatType.REPEAT_MONTHLY_LAST_BUSINESS_DAY, Convert.ToDateTime("10/23/2021"), -1);
+            Assert.AreEqual(nextTransDate, Convert.ToDateTime("10/29/2021"));
+        }
+        [Test()]
+        public void GetNextTransDateMonthlyLastBusinessDay3Test()
+        {
+            nextTransDate = api.GetNextTransDate(RepeatType.REPEAT_MONTHLY_LAST_BUSINESS_DAY, Convert.ToDateTime("10/30/2021"), -1);
+            Assert.AreEqual(nextTransDate, Convert.ToDateTime("10/29/2021"));
         }
 
     }

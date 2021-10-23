@@ -1,5 +1,6 @@
 ﻿using Serilog;
 using System;
+using System.Collections.Generic;
 using static hMoney.Globals;
 
 namespace hMoney
@@ -58,10 +59,24 @@ namespace hMoney
                     nextTransDate = preTransDate.AddMonths(numOccurrences);
                     break;
                 case RepeatType.REPEAT_MONTHLY_LAST_DAY:    // 15
-                    //TODO
+                    nextTransDate = new DateTime(preTransDate.Year, preTransDate.Month, DateTime.DaysInMonth(preTransDate.Year, preTransDate.Month));
                     break;
                 case RepeatType.REPEAT_MONTHLY_LAST_BUSINESS_DAY:   //  16
-                    //TODO
+                    List<DateTime> holidays = new List<DateTime> {/* list of observed holidays */};
+                    int i = DateTime.DaysInMonth(preTransDate.Year, preTransDate.Month);
+                    while (i > 0)
+                    {
+                        DateTime dtCurrent = new DateTime(preTransDate.Year, preTransDate.Month, i);
+                        if (dtCurrent.DayOfWeek < DayOfWeek.Saturday && dtCurrent.DayOfWeek > DayOfWeek.Sunday && !holidays.Contains(dtCurrent))
+                        {
+                            nextTransDate = dtCurrent;
+                            i = 0;
+                        }
+                        else
+                        {
+                            i--;
+                        }
+                    }
                     break;
                 default:
                     Log.Error("Invalid repeat type: " + repeatType);
