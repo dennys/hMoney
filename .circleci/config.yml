@@ -14,7 +14,8 @@ jobs:
     # Be sure to update the tag on this image to a more stable version, using latest can result in unstable builds.
     docker:
      #- image: mcr.microsoft.com/dotnet/sdk:5.0
-     - image: mcr.microsoft.com/dotnet/framework/aspnet:4.8-20190611-windowsservercore-1903
+     #- image: mcr.microsoft.com/dotnet/framework/aspnet:4.8-20190611-windowsservercore-1903
+     - image: mcr.microsoft.com/dotnet/framework/aspnet:4.8
        auth:
          username: $DOCKERHUB_USERNAME
          password: $DOCKERHUB_PASSWORD
