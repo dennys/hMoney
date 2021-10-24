@@ -40,38 +40,38 @@ jobs:
           path: .\bin\Release\net5.0-windows\win10-x64\publish\hMoney.exe
 
 
-  browser-tests:
-    executor:
-      name: win/default
-    steps:
-      - checkout
-      - run:
-          name: Run browser tests
-          command: |
-              cd WebBrowserTestsSample/tests/WebBrowserTests
-              dotnet test
-  ui-tests:
-    executor:
-      name: win/default
-      shell: powershell.exe
-    steps:
-      - checkout
-      - run: choco install winappdriver
-      - run: 
-          name: Run winappdriver in background
-          background: true
-          command: | 
-              cd "C:\Program Files (x86)\Windows Application Driver\"
-              Start-Process -FilePath "WinAppDriver.exe" -Wait
-      - run:
-          name: Restore and build
-          command: |
-            cd NotepadTest
-            nuget restore
-            cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\msbuild\current\bin\"
-            .\msbuild.exe "C:\Users\circleci\project\hMoneyTests\hMoneyTests.csproj"
-      - run: 
-          name: Run UI tests
-          command: |
-              cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\common7\ide\extensions\TestPlatform"
-              .\vstest.console.exe C:\Users\circleci\project\hMoneyTests\bin\debug\hMoneyTests.dll
+#  browser-tests:
+#    executor:
+#      name: win/default
+#    steps:
+#      - checkout
+#      - run:
+#          name: Run browser tests
+#          command: |
+#              cd WebBrowserTestsSample/tests/WebBrowserTests
+#              dotnet test
+#  ui-tests:
+#    executor:
+#      name: win/default
+#      shell: powershell.exe
+#    steps:
+#      - checkout
+#      - run: choco install winappdriver
+#      - run: 
+#          name: Run winappdriver in background
+#          background: true
+#          command: | 
+#              cd "C:\Program Files (x86)\Windows Application Driver\"
+#              Start-Process -FilePath "WinAppDriver.exe" -Wait
+#      - run:
+#          name: Restore and build
+#          command: |
+#            cd NotepadTest
+#            nuget restore
+#            cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\msbuild\current\bin\"
+#            .\msbuild.exe "C:\Users\circleci\project\hMoneyTests\hMoneyTests.csproj"
+#      - run: 
+#          name: Run UI tests
+#          command: |
+#              cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\common7\ide\extensions\TestPlatform"
+#              .\vstest.console.exe C:\Users\circleci\project\hMoneyTests\bin\debug\hMoneyTests.dll
