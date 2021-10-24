@@ -68,6 +68,10 @@ namespace hMoney
             this.tabForecast = new System.Windows.Forms.TabPage();
             this.panelForecast = new System.Windows.Forms.Panel();
             this.gridForecast = new System.Windows.Forms.DataGridView();
+            this.ColumnForecastAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnForecastAccountName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnForecastReconciled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnForecastToday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelForecastHeader = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.textRefreshForecastPeriod = new System.Windows.Forms.TextBox();
@@ -85,10 +89,6 @@ namespace hMoney
             this.qqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ColumnForecastAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnForecastAccountName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnForecastReconciled = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnForecastToday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -229,7 +229,7 @@ namespace hMoney
             this.gridTrans.AllowUserToDeleteRows = false;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -354,6 +354,39 @@ namespace hMoney
             this.gridForecast.RowHeadersVisible = false;
             this.gridForecast.RowTemplate.Height = 24;
             // 
+            // ColumnForecastAccountId
+            // 
+            this.ColumnForecastAccountId.Frozen = true;
+            resources.ApplyResources(this.ColumnForecastAccountId, "ColumnForecastAccountId");
+            this.ColumnForecastAccountId.Name = "ColumnForecastAccountId";
+            this.ColumnForecastAccountId.ReadOnly = true;
+            // 
+            // ColumnForecastAccountName
+            // 
+            this.ColumnForecastAccountName.FillWeight = 183.4862F;
+            this.ColumnForecastAccountName.Frozen = true;
+            resources.ApplyResources(this.ColumnForecastAccountName, "ColumnForecastAccountName");
+            this.ColumnForecastAccountName.Name = "ColumnForecastAccountName";
+            this.ColumnForecastAccountName.ReadOnly = true;
+            // 
+            // ColumnForecastReconciled
+            // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.NullValue = null;
+            this.ColumnForecastReconciled.DefaultCellStyle = dataGridViewCellStyle13;
+            this.ColumnForecastReconciled.FillWeight = 61.96669F;
+            resources.ApplyResources(this.ColumnForecastReconciled, "ColumnForecastReconciled");
+            this.ColumnForecastReconciled.Name = "ColumnForecastReconciled";
+            this.ColumnForecastReconciled.ReadOnly = true;
+            // 
+            // ColumnForecastToday
+            // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnForecastToday.DefaultCellStyle = dataGridViewCellStyle14;
+            resources.ApplyResources(this.ColumnForecastToday, "ColumnForecastToday");
+            this.ColumnForecastToday.Name = "ColumnForecastToday";
+            this.ColumnForecastToday.ReadOnly = true;
+            // 
             // panelForecastHeader
             // 
             this.panelForecastHeader.Controls.Add(this.label1);
@@ -459,39 +492,6 @@ namespace hMoney
             // 
             this.cCToolStripMenuItem.Name = "cCToolStripMenuItem";
             resources.ApplyResources(this.cCToolStripMenuItem, "cCToolStripMenuItem");
-            // 
-            // ColumnForecastAccountId
-            // 
-            this.ColumnForecastAccountId.Frozen = true;
-            resources.ApplyResources(this.ColumnForecastAccountId, "ColumnForecastAccountId");
-            this.ColumnForecastAccountId.Name = "ColumnForecastAccountId";
-            this.ColumnForecastAccountId.ReadOnly = true;
-            // 
-            // ColumnForecastAccountName
-            // 
-            this.ColumnForecastAccountName.FillWeight = 183.4862F;
-            this.ColumnForecastAccountName.Frozen = true;
-            resources.ApplyResources(this.ColumnForecastAccountName, "ColumnForecastAccountName");
-            this.ColumnForecastAccountName.Name = "ColumnForecastAccountName";
-            this.ColumnForecastAccountName.ReadOnly = true;
-            // 
-            // ColumnForecastReconciled
-            // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.NullValue = null;
-            this.ColumnForecastReconciled.DefaultCellStyle = dataGridViewCellStyle13;
-            this.ColumnForecastReconciled.FillWeight = 61.96669F;
-            resources.ApplyResources(this.ColumnForecastReconciled, "ColumnForecastReconciled");
-            this.ColumnForecastReconciled.Name = "ColumnForecastReconciled";
-            this.ColumnForecastReconciled.ReadOnly = true;
-            // 
-            // ColumnForecastToday
-            // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnForecastToday.DefaultCellStyle = dataGridViewCellStyle14;
-            resources.ApplyResources(this.ColumnForecastToday, "ColumnForecastToday");
-            this.ColumnForecastToday.Name = "ColumnForecastToday";
-            this.ColumnForecastToday.ReadOnly = true;
             // 
             // FormMain
             // 
