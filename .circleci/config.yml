@@ -28,7 +28,7 @@ jobs:
           command: dotnet.exe restore
       - save_cache:
           paths:
-            - C:\Users\circleci\project\HelloWorld\.nuget\packages
+            - C:\Users\circleci\project\hMoney\.nuget\packages
           key: dotnet-packages-v1-{{ checksum "hMoney.csproj" }}
       - run:
           name: "Run Build step"
