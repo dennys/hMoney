@@ -16,7 +16,7 @@ jobs:
   build:
     executor:
       name: win/default
-    working_directory: C:\Users\circleci\project\hMoney\hMoney
+    working_directory: C:\Users\circleci\project\hMoney
     steps:
       - checkout:
           path: C:\Users\circleci\project
