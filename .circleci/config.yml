@@ -7,10 +7,10 @@ workflows:
   hello-world:
     jobs:
       - build
-  integration-tests:
-    jobs:
-      - browser-tests
-      - ui-tests
+  #integration-tests:
+  #  jobs:
+  #    - browser-tests
+  #    - ui-tests
 
 jobs:
   build:
