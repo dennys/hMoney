@@ -35,9 +35,9 @@ jobs:
           command: dotnet.exe publish -c Release -r win10-x64
       - run:
           name: "Test the executable"
-          command: .\bin\Release\netcoreapp2.1\win10-x64\publish\hMoney.exe 
+          command: .\bin\Release\net5.0-windows\win10-x64\publish\hMoney.exe 
       - store_artifacts:
-          path: .\bin\Release\netcoreapp2.1\win10-x64\publish\hMoney.exe
+          path: .\bin\Release\net5.0-windows\win10-x64\publish\hMoney.exe
 
 
   browser-tests:
