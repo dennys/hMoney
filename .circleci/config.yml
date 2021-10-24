@@ -69,9 +69,9 @@ jobs:
             cd NotepadTest
             nuget restore
             cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\msbuild\current\bin\"
-            .\msbuild.exe "C:\Users\circleci\project\NotepadTest\NotepadTest.csproj"
+            .\msbuild.exe "C:\Users\circleci\project\hMoneyTests\hMoneyTests.csproj"
       - run: 
           name: Run UI tests
           command: |
               cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\common7\ide\extensions\TestPlatform"
-              .\vstest.console.exe C:\Users\circleci\project\NotepadTest\bin\debug\NotepadTest.dll
+              .\vstest.console.exe C:\Users\circleci\project\hMoneyTests\bin\debug\hMoneyTests.dll
