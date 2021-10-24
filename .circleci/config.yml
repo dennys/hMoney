@@ -41,6 +41,7 @@ jobs:
       #    command: .\bin\Release\net5.0-windows\win10-x64\publish\hMoney.exe 
       - store_artifacts:
           path: .\bin\Release\net5.0-windows\win10-x64\publish\hMoney.exe
+          path: C:\Users\circleci\project\test_coverage
 
 
 #  browser-tests:
