@@ -33,6 +33,9 @@ jobs:
       - run:
           name: "Run Build step"
           command: dotnet.exe publish -c Release -r win10-x64
+      - run:
+          name: "Run Application Tests"
+          command: dotnet.exe test -v n --results-directory:test_coverage --collect:"Code Coverage"
       #- run:
       #    name: "Test the executable"
       #    command: .\bin\Release\net5.0-windows\win10-x64\publish\hMoney.exe 
