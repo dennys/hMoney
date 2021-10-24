@@ -36,13 +36,13 @@ jobs:
       #- run:
       #    name: "Run Application Tests"
       #    command: dotnet.exe test -v n --results-directory:test_coverage --collect:"Code Coverage"
-      - run: dotnet test --no-build --logger "trx"
-      - run:
-          name: test results
-          when: always
-          command: |
-              dotnet tool install -g trx2junit
-              trx2junit tests/**/TestResults/*.trx
+      #- run: dotnet test --no-build --logger "trx"
+      #- run:
+      #    name: test results
+      #    when: always
+      #    command: |
+      #        dotnet tool install -g trx2junit
+      #        trx2junit tests/**/TestResults/*.trx
       #- run:
       #    name: "Test the executable"
       #    command: .\bin\Release\net5.0-windows\win10-x64\publish\hMoney.exe 
