@@ -33,16 +33,24 @@ jobs:
       - run:
           name: "Run Build step"
           command: dotnet.exe publish -c Release -r win10-x64
+      #- run:
+      #    name: "Run Application Tests"
+      #    command: dotnet.exe test -v n --results-directory:test_coverage --collect:"Code Coverage"
+      - run: dotnet test --no-build --logger "trx"
       - run:
-          name: "Run Application Tests"
-          command: dotnet.exe test -v n --results-directory:test_coverage --collect:"Code Coverage"
+          name: test results
+          when: always
+          command: |
+              dotnet tool install -g trx2junit
+              export PATH="$PATH:/root/.dotnet/tools"
+              trx2junit tests/**/TestResults/*.trx
       #- run:
       #    name: "Test the executable"
       #    command: .\bin\Release\net5.0-windows\win10-x64\publish\hMoney.exe 
-      - store_test_results:
-          path: .\bin\Release\net5.0-windows\win10-x64\publish\hMoney.exe
       - store_artifacts:
-          path: C:\Users\circleci\project\test_coverage
+          path: .\bin\Release\net5.0-windows\win10-x64\publish\hMoney.exe
+      - store_test_results:
+          path: tests/TestResults
 
 
 #  browser-tests:
