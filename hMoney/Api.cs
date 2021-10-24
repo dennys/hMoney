@@ -70,7 +70,7 @@ namespace hMoney
                         if (dtCurrent.DayOfWeek < DayOfWeek.Saturday && dtCurrent.DayOfWeek > DayOfWeek.Sunday && !holidays.Contains(dtCurrent))
                         {
                             nextTransDate = dtCurrent;
-                            i = 0;
+                            break;
                         }
                         else
                         {
