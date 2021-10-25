@@ -7,7 +7,7 @@ namespace hMoney
 {
     public class Api
     {
-        public DateTime GetNextTransDate(RepeatType repeatType, DateTime preTransDate, int numOccurrences)
+        public static DateTime GetNextTransDate(RepeatType repeatType, DateTime preTransDate, int numOccurrences)
         {
             DateTime nextTransDate = preTransDate;
             switch (repeatType)

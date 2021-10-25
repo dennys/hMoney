@@ -33,7 +33,7 @@ namespace hMoney
                 MessageBox.Show(ex.Message, "Cannot open INI file");
             }
         }
-        private void GenerateDefaultIni(FileIniDataParser parser)
+        private static void GenerateDefaultIni(FileIniDataParser parser)
         {
             IniData ini = new IniData();
             ini["UI"]["Language"] = DEFAULT_UI_LANGUAGE;
