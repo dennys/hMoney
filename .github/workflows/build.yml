@@ -56,6 +56,6 @@ jobs:
           # The organization and project arguments (see /o and /k) are displayed
           # on the project dashboard in SonarCloud.
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"SonarSource_sonarcloud-github-action-samples" /o:"sonarsource" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"SonarSource_sonarcloud-github-action-samples" /o:"sonarsource" /d:sonar.login="0e87e381010d1ce395261883653c197dc5f0b17b" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build hMoney.sln
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="0e87e381010d1ce395261883653c197dc5f0b17b"
