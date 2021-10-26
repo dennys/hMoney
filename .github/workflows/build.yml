@@ -1,6 +1,6 @@
-    - name: SonarScanner for .NET 5 with pull request decoration support
-      uses: highbyte/sonarscan-dotnet@2.0
-      with:
+name: SonarScanner for .NET 5 with pull request decoration support
+uses: highbyte/sonarscan-dotnet@2.0
+with:
         # The key of the SonarQube project
         sonarProjectKey: dennys_hMoney
         # The name of the SonarQube project
@@ -12,6 +12,6 @@
         # Optional extra command arguments the the SonarScanner 'begin' command
         sonarBeginArguments: /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.cs.vstest.reportsPaths="**/TestResults/*.trx"
         
-  env:
-    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
