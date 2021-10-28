@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hMoney", "hMoney\hMoney.csproj", "{17B2DF09-967C-47AD-A751-BB6FCE5ABC0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hMoney", "hMoney\hMoney.csproj", "{17B2DF09-967C-47AD-A751-BB6FCE5ABC0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hMoneyTests", "hMoneyTests\hMoneyTests.csproj", "{1ADE3743-13F4-4C3B-9267-D3A49368C988}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hMoneyTests", "hMoneyTests\hMoneyTests.csproj", "{1ADE3743-13F4-4C3B-9267-D3A49368C988}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
