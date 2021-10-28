@@ -42,7 +42,7 @@ namespace hMoney
             ini["UI"]["TreeAccountFontSize"] = DEFAULT_UI_TREEACCOUNTFONTSIZE;
             ini["UI"]["FontSize"] = DEFAULT_UI_FONTSIZE;
             ini["UI"]["AccountSummaryHeaderBackColor"] = DEFAULT_UI_AccountSummaryHeaderBackColor;
-            parser.WriteFile(Globals.INI_FILE_NAME, ini);
+            //parser.WriteFile(Globals.INI_FILE_NAME, ini);
         }
 
         public string GetDbPath()
