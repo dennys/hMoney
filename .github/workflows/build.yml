@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: windows-latest
+    runs-on: linux-latest
     steps:
       - name: SonarScanner for .NET 5 with pull request decoration support
         uses: highbyte/sonarscan-dotnet@2.0
