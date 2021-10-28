@@ -86,9 +86,13 @@ namespace hMoney
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Node.Name == Globals.TREE_VIEW_HOME_NAME)
+            {
                 this.ShowSummary();
+            }
             else
+            {
                 this.ShowAccount(Convert.ToInt32(e.Node.Tag.ToString()), e.Node.Text);
+            }
 
         }
         private void ShowAccount(int accountId, String accountName)
@@ -107,13 +111,8 @@ namespace hMoney
                 gridTrans.Rows[i].Cells[x++].Value = trans.CategName + ":" + trans.SubCategName;
                 gridTrans.Rows[i].Cells[x++].Value = trans.AccountName;
                 gridTrans.Rows[i].Cells[x++].Value = trans.PayeeName;
-                if (trans.TransCode == TRANSCODE_WITHDRAWAL) //Withdrawal
-                {
-                    gridTrans.Rows[i].Cells[x++].Value = trans.TransAmount;
-                    balance -= trans.TransAmount;
-                    x++;
-                }
-                else if (trans.TransCode == TRANSCODE_TRANSFER && trans.AccountId == accountId) //Transfer out
+                if ( (trans.TransCode == TRANSCODE_WITHDRAWAL) || //Withdrawal
+                     (trans.TransCode == TRANSCODE_TRANSFER && trans.AccountId == accountId) ) //Transfer out
                 {
                     gridTrans.Rows[i].Cells[x++].Value = trans.TransAmount;
                     balance -= trans.TransAmount;
@@ -196,7 +195,9 @@ namespace hMoney
         private void gridSummary_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0 && e.RowIndex >= 1)
+            {
                 gridSummary.Cursor = Cursors.Hand;
+            }
         }
 
         private void gridSummary_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
@@ -211,7 +212,9 @@ namespace hMoney
             Log.Debug("Cell.Value=" + cell.Value + ", account id = " + accountId);
 
             if (e.ColumnIndex == 0)
+            {
                 this.ShowAccount(accountId, cell.Value.ToString());
+            }
         }
 
         private void btnRefreshForecast_Click(object sender, EventArgs e)
