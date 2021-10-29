@@ -11,9 +11,9 @@ namespace hMoney
     {
         const String TRANSCODE_WITHDRAWAL = "Withdrawal";
         const String TRANSCODE_TRANSFER = "Transfer";
-        readonly Configuration config;
-        readonly DB db;
-        readonly Api api;
+        private readonly Configuration config;
+        private readonly DB db;
+        private readonly Api api;
 
         public FormMain()
         {
