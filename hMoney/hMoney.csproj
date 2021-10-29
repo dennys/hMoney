@@ -42,13 +42,6 @@
     <PackageReference Include="Castle.Core" Version="4.4.1" />
     <PackageReference Include="ini-parser-netcore3.1" Version="3.0.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="Moq" Version="4.16.1" />
-    <PackageReference Include="NUnit" Version="3.13.2" />
-    <PackageReference Include="NUnit.Extension.NUnitProjectLoader" Version="3.7.1" />
-    <PackageReference Include="NUnit.Extension.NUnitV2Driver" Version="3.9.0" />
-    <PackageReference Include="NUnit.Extension.NUnitV2ResultWriter" Version="3.7.0" />
-    <PackageReference Include="NUnit.Extension.VSProjectLoader" Version="3.9.0" />
-    <PackageReference Include="NUnit.Runners" Version="3.12.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.0.0" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.115.0" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.0.0" />
