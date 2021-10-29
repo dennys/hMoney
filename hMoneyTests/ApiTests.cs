@@ -30,7 +30,7 @@ namespace hMoney.Tests
         public void GetNextTransDateMonthlyTest()
         {
             DateTime nextTransDate = Api.GetNextTransDate(RepeatType.REPEAT_MONTHLY, Convert.ToDateTime("06/04/2021"), -1);
-            Assert.AreEqual(nextTransDate, Convert.ToDateTime("07/04/2021"));
+            Assert.AreEqual(nextTransDate, Convert.ToDateTime("07/08/2021"));
         }
 
         [Test]
