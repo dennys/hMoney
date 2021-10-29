@@ -1,4 +1,7 @@
 # hMoney
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=dennys_hMoney&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=dennys_hMoney&metric=coverage)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)
+
 CI:
 [![Build Status](https://dev.azure.com/dennyshsieh/hMoney/_apis/build/status/dennys.hMoney?branchName=master)](https://dev.azure.com/dennyshsieh/hMoney/_build/latest?definitionId=1&branchName=master)
 [![CircleCI](https://circleci.com/gh/dennys/hMoney/tree/master.svg?style=svg)](https://circleci.com/gh/dennys/hMoney/tree/master)
@@ -11,3 +14,5 @@ Code scan:
 
 Others:
 [![.NET Core Desktop](https://github.com/dennys/hMoney/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/dennys/hMoney/actions/workflows/dotnet-desktop.yml)
+
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=dennys_hMoney)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)
