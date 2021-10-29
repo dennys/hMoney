@@ -42,7 +42,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"dennys_hMoney" /o:"dennys" /d:SonarQubeTestProject=false /d:sonar.login="c70a53862de980131b1c6071a6123ae11e259f6d" /d:sonar.host.url="https://sonarcloud.io"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"dennys_hMoney" /o:"dennys" /d:SonarQubeTestProject=false /d:sonar.verbose=true /d:sonar.login="c70a53862de980131b1c6071a6123ae11e259f6d" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build hMoney.sln
           #dotnet build hMoney\hMoney.csproj
           #dotnet build test hMoney\hMoney.csproj
