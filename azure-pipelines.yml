@@ -39,7 +39,8 @@ steps:
     version: '5.0.x'
 
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet build'
+  #displayName: 'dotnet build'
+  displayName: 'dotnet build $(buildConfiguration)'
   inputs:
     command: 'build'
     
@@ -47,8 +48,9 @@ steps:
   displayName: 'dotnet test'
   inputs:
     command: test
-    #projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
+    projects: '**/*Tests/*.csproj'
+    #arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
+    arguments: '--configuration $(buildConfiguration)'
 
 #- task: DotNetCoreCLI@2
 #- task: publish
