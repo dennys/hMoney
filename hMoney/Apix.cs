@@ -5,7 +5,7 @@ using static hMoney.Globals;
 
 namespace hMoney
 {
-    public class Api
+    public class Apix
     {
         public DateTime GetNextTransDate(RepeatType repeatType, DateTime preTransDate, int numOccurrences)
         {

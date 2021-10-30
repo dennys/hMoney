@@ -13,7 +13,7 @@ namespace hMoney
         const String TRANSCODE_TRANSFER = "Transfer";
         private readonly Configuration config;
         private readonly DB db;
-        private readonly Api api;
+        private readonly Apix api;
 
         public FormMain()
         {
@@ -36,7 +36,7 @@ namespace hMoney
             db = new DB();
 
             // Enable API
-            api = new Api();
+            api = new Apix();
         }
 
         private void Initial(object sender, EventArgs e)

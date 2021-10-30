@@ -12,7 +12,7 @@ namespace hMoney.Tests
     [TestFixture()]
     public class ApiTests
     {
-        Api api = new Api();
+        Apix api = new Apix();
         DateTime nextTransDate;
 
         [Test()]
