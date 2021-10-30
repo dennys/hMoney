@@ -33,6 +33,7 @@ steps:
 #    configuration: '$(buildConfiguration)'
 
 - task: UseDotNet@2
+  displayName: 'Use .NET Core sdk 5.0.x'
   inputs:
     packageType: 'sdk'
     version: '5.0.x'
@@ -46,7 +47,7 @@ steps:
   displayName: 'dotnet test'
   inputs:
     command: test
-    projects: '**/*Tests/*.csproj'
+    #projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 
 #- task: DotNetCoreCLI@2
