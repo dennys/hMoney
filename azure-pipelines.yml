@@ -43,6 +43,7 @@ steps:
     command: 'build'
     
 - task: DotNetCoreCLI@2
+  displayName: 'dotnet test'
   inputs:
     command: test
     projects: '**/*Tests/*.csproj'
