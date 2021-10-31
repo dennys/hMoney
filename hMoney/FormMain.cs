@@ -22,8 +22,7 @@ namespace hMoney
             config.Init();
 
             // Setup log (Serilog)
-            // Log.Logger = 
-                new LoggerConfiguration()
+            Log.Logger = new Serilog.LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .WriteTo.Console()
                 .CreateLogger();
