@@ -6,11 +6,14 @@ Azure Pipelines:
 
 SonarCloud:
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=dennys_hMoney&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=dennys_hMoney&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=dennys_hMoney&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=dennys_hMoney&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=dennys_hMoney&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=dennys_hMoney&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=dennys_hMoney&metric=bugs)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=dennys_hMoney&metric=coverage)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)
- (cannot get coverage now)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=dennys_hMoney&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=dennys_hMoney&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=dennys_hMoney&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)
 
 CircleCI:
 [![CircleCI](https://circleci.com/gh/dennys/hMoney/tree/master.svg?style=svg)](https://circleci.com/gh/dennys/hMoney/tree/master)
