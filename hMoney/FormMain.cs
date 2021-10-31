@@ -22,10 +22,15 @@ namespace hMoney
             config.Init();
 
             // Setup log (Serilog)
-            Log.Logger = new LoggerConfiguration()
+            // Log.Logger = 
+                new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .WriteTo.Console()
                 .CreateLogger();
+
+            Log.Warning("Hello, world!");
+
+            System.Diagnostics.Debug.WriteLine("diag");
 
             // Setup i18n
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(config.GetLanguage());

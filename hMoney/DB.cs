@@ -50,7 +50,8 @@ namespace hMoney
         {
             Configuration config;
             // Setup log (Serilog)
-            Log.Logger = new LoggerConfiguration()
+            Log.Logger = 
+                new LoggerConfiguration()
                     .MinimumLevel.Debug()
                     .WriteTo.Console()
                     .CreateLogger();
