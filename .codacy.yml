@@ -1,3 +1,5 @@
 ---
 exclude_paths:
+  - ".github/**"
+  - "*.md"
   - "**Tests/**"
