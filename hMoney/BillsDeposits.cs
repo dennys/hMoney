@@ -8,43 +8,28 @@ namespace hMoney
         const int VALUE_AUTO_EXECUTE_MANUAL = 100;
         const int VALUE_AUTO_EXECUTE_SILENT = 200;
 
-        private int bdId;
-        private int accountId;
-        private int toAccountId;
-        private int payeeId;
-        private String transCode;
-        private decimal transAmount;
-        private String status;
-        private String transActionNumber;
-        private String notes;
-        private String category;
-        private int categoryId;
-        private String subCategory;
-        private int subCategoryId;
-        private DateTime transDate;
-        private int followUpId;
-        private decimal toTransAmount;
-        private RepeatType repeats;
-        private DateTime nextOccurrenceDate;
-        private int numOccurrence;
         private Boolean autoExecuteManual;
         private Boolean autoExecuteSilent;
+        private RepeatType repeats;
 
-        public int BdId { get => bdId; set => bdId = value; }
-        public int AccountId { get => accountId; set => accountId = value; }
-        public int ToAccountId { get => toAccountId; set => toAccountId = value; }
-        public int PayeeId { get => payeeId; set => payeeId = value; }
-        public string TransCode { get => transCode; set => transCode = value; }
-        public decimal TransAmount { get => transAmount; set => transAmount = value; }
-        public string Status { get => status; set => status = value; }
-        public string TransActionNumber { get => transActionNumber; set => transActionNumber = value; }
-        public string Category { get => category; set => category = value; }
-        public int CategoryId { get => categoryId; set => categoryId = value; }
-        public string SubCategory { get => subCategory; set => subCategory = value; }
-        public int SubCategoryId { get => subCategoryId; set => subCategoryId = value; }
-        public DateTime TransDate { get => transDate; set => transDate = value; }
-        public int FollowUpId { get => followUpId; set => followUpId = value; }
-        public decimal ToTransAmount { get => toTransAmount; set => toTransAmount = value; }
+        public int BdId { get; set; }
+        public int AccountId { get; set; }
+        public int ToAccountId { get; set; }
+        public int PayeeId { get; set; }
+        public string TransCode { get; set; }
+        public decimal TransAmount { get; set; }
+        public string Status { get; set; }
+        public string TransActionNumber { get; set; }
+        public string Category { get; set; }
+        public int CategoryId { get; set; }
+        public string SubCategory { get; set; }
+        public int SubCategoryId { get; set; }
+        public DateTime TransDate { get; set; }
+        public int FollowUpId { get; set; }
+        public decimal ToTransAmount { get; set; }
+        //public Boolean AutoExecuteSilent { get => autoExecuteSilent; set => autoExecuteSilent = value; }
+        //public Boolean AutoExecuteManual { get => autoExecuteManual; set => autoExecuteManual = value; }
+
         public RepeatType Repeats { 
             get => repeats; 
             set
@@ -65,10 +50,10 @@ namespace hMoney
                 }
             }
         }
-        public DateTime NextOccurrenceDate { get => nextOccurrenceDate; set => nextOccurrenceDate = value; }
-        public int NumOccurrence { get => numOccurrence; set => numOccurrence = value; }
-        public string Notes { get => notes; set => notes = value; }
-        public bool AutoExecuteSilent { get => autoExecuteSilent; set => autoExecuteSilent = value; }
-        public bool AutoExecuteManual { get => autoExecuteManual; set => autoExecuteManual = value; }
+        public DateTime NextOccurrenceDate { get; set; }
+        public int NumOccurrence { get; set; }
+        public string Notes { get; set; }
+        public bool AutoExecuteSilent { get; set; }
+        public bool AutoExecuteManual { get; set; }
     }
 }
