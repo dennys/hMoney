@@ -65,8 +65,8 @@ namespace hMoney
 
         public List<CheckingAccount> GetTransactionByAccountId(int accountId)
         {
-            List<CheckingAccount> result = new List<CheckingAccount>();
-            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            List<CheckingAccount> result = new();
+            using (SQLiteConnection conn = new(dbPath))
             {
                 // SQL command
                 const string sql = @"SELECT a.accountname, c.categname, sc.subcategname,
@@ -82,7 +82,7 @@ namespace hMoney
                                        LEFT OUTER JOIN payee_v1 p         ON t.payeeid       = p.payeeid 
                                       WHERE (t.accountid = @accountId OR t.toaccountid = @accountId)
                                       ORDER BY t.transdate  ";
-                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                SQLiteCommand cmd = new(sql, conn);
                 conn.Open();
                 cmd.Prepare();
                 cmd.Parameters.Add("@accountId", DbType.Int32).Value = accountId;
@@ -92,7 +92,7 @@ namespace hMoney
                 //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
                 while (reader.Read())
                 {
-                    CheckingAccount trans = new CheckingAccount();
+                    CheckingAccount trans = new();
                     trans.AccountId = Convert.ToInt32(reader[FIELD_ACCOUNTID]);
                     trans.AccountName = reader[FIELD_ACCOUNTNAME].ToString();
                     trans.Transdate = DateTime.Parse(reader[FIELD_TRANSDATE].ToString());
@@ -111,17 +111,17 @@ namespace hMoney
 
         public List<Account> GetAccountListByAccountType(String accountType)
         {
-            List<Account> result = new List<Account>();
+            List<Account> result = new();
 
             //進行連線，用using可以避免忘了釋放
-            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            using (SQLiteConnection conn = new(dbPath))
             {
                 // SQL command
                 const string sql = @"SELECT * 
                                        FROM accountlist_v1
                                       WHERE accounttype = @accountType
                                       ORDER BY accountname ";
-                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                SQLiteCommand cmd = new(sql, conn);
                 conn.Open();
                 cmd.Prepare();
                 cmd.Parameters.Add("@accountType", DbType.String).Value = accountType;
@@ -130,7 +130,7 @@ namespace hMoney
                 //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
                 while (reader.Read())
                 {
-                    Account account = new Account();
+                    Account account = new();
                     account.AccountId = Convert.ToInt32(reader[FIELD_ACCOUNTID]);
                     account.AccountName = reader[FIELD_ACCOUNTNAME].ToString();
                     result.Add(account);
@@ -155,7 +155,7 @@ namespace hMoney
             string sql;
 
             //進行連線，用using可以避免忘了釋放
-            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            using (SQLiteConnection conn = new(dbPath))
             {
                 // SQL command
                 if (condition == CONDITION_TODAY)
@@ -188,7 +188,7 @@ namespace hMoney
                                                FROM checkingaccount_v1 t
                                               WHERE (accountid = @accountId OR toaccountid = @accountId) ) ";
                 }
-                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                SQLiteCommand cmd = new(sql, conn);
                 conn.Open();
                 cmd.Prepare();
                 cmd.Parameters.Add("@accountId", DbType.Int32).Value = accountId;
@@ -205,9 +205,9 @@ namespace hMoney
         }
         public List<Account> GetAccountBalanceByAccountType(String accountType)
         {
-            List<Account> accountList = new List<Account>();
+            List<Account> accountList = new();
 
-            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            using (SQLiteConnection conn = new(dbPath))
             {
                 // Save Reconciled data into a dictionary
                 //const string sqlReconciled = @"SELECT IFNULL ((a.initialbal + x.amount), 0) reconciled, a.* 
@@ -224,7 +224,7 @@ namespace hMoney
                 //                   ON a.accountid = x.accountid
                 //                WHERE a.accounttype = @AccountType
                 //                ORDER BY a.accountname ";
-                //SQLiteCommand cmd = new SQLiteCommand(sqlReconciled, conn);
+                //SQLiteCommand cmd = new(sqlReconciled, conn);
                 //conn.Open();
                 //cmd.Prepare();
                 //cmd.Parameters.Add("@AccountType", DbType.String).Value = accountType;
@@ -251,7 +251,7 @@ namespace hMoney
                                    ON a.accountid = x.accountid
                                 WHERE a.accounttype = @AccountType
                                 ORDER BY a.accountname ";
-                SQLiteCommand cmd = new SQLiteCommand(sqlTodayBal, conn);
+                SQLiteCommand cmd = new(sqlTodayBal, conn);
                 conn.Open();
                 cmd.Prepare();
                 cmd.Parameters.Add("@AccountType", DbType.String).Value = accountType;
@@ -259,7 +259,7 @@ namespace hMoney
 
                 while (reader.Read())
                 {
-                    Account account = new Account();
+                    Account account = new();
                     account.AccountId = Convert.ToInt32(reader[FIELD_ACCOUNTID]);
                     account.AccountType = reader[FIELD_ACCOUNTTYPE].ToString();
                     account.AccountName = reader[FIELD_ACCOUNTNAME].ToString();
@@ -281,15 +281,15 @@ namespace hMoney
         }
         public Account GetAccountByAccountId(int accountId)
         {
-            Account account = new Account();
+            Account account = new();
             //進行連線，用using可以避免忘了釋放
-            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            using (SQLiteConnection conn = new(dbPath))
             {
                 // SQL command
                 const string sql = @"SELECT * 
                                  FROM accountlist_v1
                                 WHERE accountid = @accountId ";
-                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                SQLiteCommand cmd = new(sql, conn);
                 conn.Open();
                 cmd.Prepare();
                 cmd.Parameters.Add("@accountId", DbType.Int32).Value = accountId;
@@ -321,7 +321,7 @@ namespace hMoney
         }
         public List<Account> GetAccountSummary()
         {
-            List<String> accountTypes = new List<String>();
+            List<String> accountTypes = new();
             accountTypes.Add("Checking");
             accountTypes.Add("Credit Card");
             accountTypes.Add("Term");
@@ -330,7 +330,7 @@ namespace hMoney
             accountTypes.Add("Shares");
             accountTypes.Add("Asset");
 
-            List<Account> accountList = new List<Account>();
+            List<Account> accountList = new();
             foreach (String accountType in accountTypes)
             {
                 accountList.AddRange(GetAccountBalanceByAccountType(accountType));
@@ -339,17 +339,17 @@ namespace hMoney
         }
         public SortedSet<int> GetAccountIdListByAccountType(String accountType)
         {
-            SortedSet<int> result = new SortedSet<int>();
+            SortedSet<int> result = new();
 
             //進行連線，用using可以避免忘了釋放
-            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            using (SQLiteConnection conn = new(dbPath))
             {
                 // SQL command
                 const string sql = @"SELECT * 
                                        FROM accountlist_v1 
                                       WHERE accounttype = @accountType
                                       ORDER BY accountid ";
-                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                SQLiteCommand cmd = new(sql, conn);
                 conn.Open();
                 cmd.Prepare();
                 cmd.Parameters.Add("@accountType", DbType.String).Value = accountType;
@@ -367,17 +367,17 @@ namespace hMoney
         }
         public SortedSet<string> GetAccountNameList()
         {
-            SortedSet<string> result = new SortedSet<string>();
+            SortedSet<string> result = new();
 
             //進行連線，用using可以避免忘了釋放
-            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            using (SQLiteConnection conn = new(dbPath))
             {
                 // SQL command
                 const string sql = @"SELECT * 
                                        FROM accountlist_v1
                                       --WHERE accounttype='Checking'
                                       ORDER BY accountname ";
-                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                SQLiteCommand cmd = new(sql, conn);
                 conn.Open();
                 SQLiteDataReader reader = cmd.ExecuteReader();
 
@@ -392,9 +392,9 @@ namespace hMoney
         }
         public List<BillsDeposits> GetBillsDepositsByAccountId(int accountId)
         {
-            List< BillsDeposits> billsDepositsList = new List< BillsDeposits>();      
+            List< BillsDeposits> billsDepositsList = new();      
             //進行連線，用using可以避免忘了釋放
-            using (SQLiteConnection conn = new SQLiteConnection(dbPath))
+            using (SQLiteConnection conn = new(dbPath))
             {
                 // SQL command
                 const string sql = @"SELECT a.accountname, ta.accountname, p.payeename, c.categname, sc.subcategname, b.*
@@ -405,7 +405,7 @@ namespace hMoney
                                        LEFT OUTER JOIN category_v1 c     ON b.categid = c.categid
                                        LEFT OUTER JOIN subcategory_v1 sc ON b.subcategid = sc.subcategid
                                       WHERE b.accountid = @accountId ";
-                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+                SQLiteCommand cmd = new(sql, conn);
                 conn.Open();
                 cmd.Prepare();
                 cmd.Parameters.Add("@accountId", DbType.Int32).Value = accountId;
@@ -414,7 +414,7 @@ namespace hMoney
                 //這是用Microsoft.Data.Sqlite時的寫法，只能這樣先推到儲存資料再另外處理。
                 while (reader.Read())
                 {
-                    BillsDeposits billsDeposits = new BillsDeposits();
+                    BillsDeposits billsDeposits = new();
                     billsDeposits.BdId = Convert.ToInt32(reader[FIELD_BDID]);
                     billsDeposits.AccountId = Convert.ToInt32(reader[FIELD_ACCOUNTID]);
                     billsDeposits.ToAccountId = Convert.ToInt32(reader[FIELD_TOACCOUNTID]);

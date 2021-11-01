@@ -27,8 +27,8 @@ namespace hMoney
         public DateTime TransDate { get; set; }
         public int FollowUpId { get; set; }
         public decimal ToTransAmount { get; set; }
-        //public Boolean AutoExecuteSilent { get => autoExecuteSilent; set => autoExecuteSilent = value; }
-        //public Boolean AutoExecuteManual { get => autoExecuteManual; set => autoExecuteManual = value; }
+        public Boolean AutoExecuteSilent { get => autoExecuteSilent; set => autoExecuteSilent = value; }
+        public Boolean AutoExecuteManual { get => autoExecuteManual; set => autoExecuteManual = value; }
 
         public RepeatType Repeats { 
             get => repeats; 
@@ -53,7 +53,5 @@ namespace hMoney
         public DateTime NextOccurrenceDate { get; set; }
         public int NumOccurrence { get; set; }
         public string Notes { get; set; }
-        public bool AutoExecuteSilent { get; set; }
-        public bool AutoExecuteManual { get; set; }
     }
 }

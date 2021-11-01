@@ -62,11 +62,11 @@ namespace hMoney
                     nextTransDate = new DateTime(preTransDate.Year, preTransDate.Month, DateTime.DaysInMonth(preTransDate.Year, preTransDate.Month));
                     break;
                 case RepeatType.REPEAT_MONTHLY_LAST_BUSINESS_DAY:   //  16
-                    List<DateTime> holidays = new List<DateTime> {/* list of observed holidays */};
+                    List<DateTime> holidays = new() {/* list of observed holidays */};
                     int i = DateTime.DaysInMonth(preTransDate.Year, preTransDate.Month);
                     while (i > 0)
                     {
-                        DateTime dtCurrent = new DateTime(preTransDate.Year, preTransDate.Month, i);
+                        DateTime dtCurrent = new(preTransDate.Year, preTransDate.Month, i);
                         if (dtCurrent.DayOfWeek < DayOfWeek.Saturday && dtCurrent.DayOfWeek > DayOfWeek.Sunday && !holidays.Contains(dtCurrent))
                         {
                             nextTransDate = dtCurrent;

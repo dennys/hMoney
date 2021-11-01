@@ -19,7 +19,7 @@ namespace hMoney
 
         public void Init()
         {
-            FileIniDataParser parser = new FileIniDataParser();
+            FileIniDataParser parser = new();
             try
             {
                 if (!File.Exists(Globals.INI_FILE_NAME) )
@@ -35,7 +35,7 @@ namespace hMoney
         }
         private static void GenerateDefaultIni(FileIniDataParser parser)
         {
-            IniData ini = new IniData();
+            IniData ini = new();
             ini["UI"]["Language"] = DEFAULT_UI_LANGUAGE;
             ini["UI"]["DateFormat"] = DEFAULT_UI_DATEFORMAT;
             ini["UI"]["NumberFormat"] = DEFAULT_UI_NUMBERFORMAT;

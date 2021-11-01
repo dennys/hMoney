@@ -55,7 +55,7 @@ namespace hMoney
             PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(gridForecast, true, null);
 
-            List<String> accountTypes = new List<String>();
+            List<String> accountTypes = new();
             accountTypes.Add("Checking");
             accountTypes.Add("Credit Card");
             accountTypes.Add("Investment");
@@ -64,7 +64,7 @@ namespace hMoney
             accountTypes.Add("Shares");
             accountTypes.Add("Asset");
 
-            List<Account> accountList = new List<Account>();
+            List<Account> accountList = new();
 
             foreach (String accountType in accountTypes)
             {
@@ -76,7 +76,7 @@ namespace hMoney
                 TreeNode nodeAccounts = treeView1.Nodes.Add(accountType);
                 foreach (Account account in accountList)
                 {
-                    TreeNode node = new TreeNode();
+                    TreeNode node = new();
                     node.Tag = account.AccountId;
                     node.Text = account.AccountName;
                     nodeAccounts.Nodes.Add(node);
@@ -108,7 +108,7 @@ namespace hMoney
             decimal balance = account.InitialBal;
             foreach (CheckingAccount trans in transList)
             {
-                DataGridViewRow row = new DataGridViewRow();
+                DataGridViewRow row = new();
                 gridTrans.Rows.Add(row);
                 int x = 0;
                 gridTrans.Rows[i].Cells[x++].Value = trans.Transdate;
@@ -130,7 +130,7 @@ namespace hMoney
                 }
                 gridTrans.Rows[i].Cells[x++].Value = balance;
                 gridTrans.Rows[i].Cells[x++].Value = trans.Status;
-                gridTrans.Rows[i].Cells[x++].Value = trans.Notes;
+                gridTrans.Rows[i].Cells[x].Value = trans.Notes;
                 i++;
             }
             gridTrans.FirstDisplayedScrollingRowIndex = gridTrans.RowCount - 1;  // Move to last row
@@ -165,7 +165,7 @@ namespace hMoney
                 gridSummary.Rows[i].Cells[x++].Value = "  " + account.AccountName;
                 gridSummary.Rows[i].Cells[x++].Value = account.Reconciled;  // Reconciled
                 gridSummary.Rows[i].Cells[x++].Value = account.TodayBal;    // Today balance
-                gridSummary.Rows[i].Cells[x++].Value = account.FutureBal;   // Future balance
+                gridSummary.Rows[i].Cells[x].Value = account.FutureBal;   // Future balance
                 i++;
                 //Log.Debug(account.AccountId + "/" + account.AccountName + ":" + account.TodayBal);
             }
@@ -229,12 +229,12 @@ namespace hMoney
             int period = Convert.ToInt32(textRefreshForecastPeriod.Text);
 
             // Generate forecast columns 
-            DateTime firstDayOfMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            DateTime firstDayOfMonth = new(DateTime.Today.Year, DateTime.Today.Month, 1);
             DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
             int m = 1;
             for (int c = 4; c < period + 4; c++)
             {
-                DataGridViewColumn col = new DataGridViewColumn();
+                DataGridViewColumn col = new();
                 col.Name = "ColumnForecast" + (c - 3).ToString();
                 col.HeaderText = lastDayOfMonth.ToString("M/dd");
                 lastDayOfMonth = firstDayOfMonth.AddMonths(++m).AddDays(-1);
