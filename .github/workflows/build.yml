@@ -25,8 +25,9 @@ jobs:
       - name: Sonarqube Begin
         run: | 
           dotnet tool install --global dotnet-sonarscanner
-          dotnet sonarscanner begin /o:someorg /k:somekey `
+          dotnet sonarscanner begin /o:"dennys" /k:"dennys_hMoney" `
             /d:sonar.login="c70a53862de980131b1c6071a6123ae11e259f6d" `
+            /d:sonar.host.url="https://sonarcloud.io" `
             /s:SonarQube.Analysis.xml
 
       - name: Build
@@ -38,7 +39,7 @@ jobs:
           ASPNETCORE_ENVIRONMENT: Development
 
       - name: Sonarqube end
-        run: dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+        run: dotnet sonarscanner end /d:sonar.login="c70a53862de980131b1c6071a6123ae11e259f6d"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
     
