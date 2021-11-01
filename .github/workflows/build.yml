@@ -42,8 +42,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"dennys_hMoney"
-            /o:"dennys" /d:sonar.login="c70a53862de980131b1c6071a6123ae11e259f6d" 
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"dennys_hMoney" `
+            /o:"dennys" /d:sonar.login="c70a53862de980131b1c6071a6123ae11e259f6d"  `
             /d:sonar.host.url="https://sonarcloud.io"
           dotnet build hMoney.sln
           dotnet test hMoney.sln collect:"XPlat Code Coverage" --results-directory TestResults/ --logger "trx;LogFileName=unittests.trx" --no-build --no-restore --configuration release --DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
