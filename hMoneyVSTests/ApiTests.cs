@@ -16,12 +16,25 @@ namespace Api.Tests
         DateTime nextTransDate;
 
         [TestMethod]
+        public void GetNextTrlyTestInactive()
+        {
+            nextTransDate = apix.GetNextTransDate(RepeatType.REPEAT_INACTIVE, Convert.ToDateTime("06/04/2021"), -1);
+            Assert.AreEqual(nextTransDate, Convert.ToDateTime("06/04/2021"));
+        }
+
+        [TestMethod]
+        public void GetNextTrlyTestNone()
+        {
+            nextTransDate = apix.GetNextTransDate(RepeatType.REPEAT_NONE, Convert.ToDateTime("06/04/2021"), -1);
+            Assert.AreEqual(nextTransDate, Convert.ToDateTime("06/04/2021"));
+        }
+
+        [TestMethod]
         public void GetNextTrlyTest()
         {
             nextTransDate = apix.GetNextTransDate(RepeatType.REPEAT_WEEKLY, Convert.ToDateTime("06/04/2021"), -1);
             Assert.AreEqual(nextTransDate, Convert.ToDateTime("06/11/2021"));
         }
-
         [TestMethod]
         public void GetNextTransDateBiWeeklyTest()
         {
