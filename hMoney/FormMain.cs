@@ -1,4 +1,4 @@
-﻿using Serilog;
+﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -15,21 +15,13 @@ namespace hMoney
         private readonly DB db;
         private readonly Apix api;
 
+        private static readonly NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
+
         public FormMain()
         {
             // Enable configuration
             config = new Configuration();
             config.Init();
-
-            // Setup log (Serilog)
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .WriteTo.Console()
-                .CreateLogger();
-
-            Log.Warning("Hello, world!");
-
-            System.Diagnostics.Debug.WriteLine("diag");
 
             // Setup i18n
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(config.GetLanguage());

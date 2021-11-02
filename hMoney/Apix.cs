@@ -1,4 +1,4 @@
-﻿using Serilog;
+﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using static hMoney.Globals;
@@ -7,6 +7,8 @@ namespace hMoney
 {
     public class Apix
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         public DateTime GetNextTransDate(RepeatType repeatType, DateTime preTransDate, int numOccurrences)
         {
             DateTime nextTransDate = preTransDate;
@@ -79,7 +81,7 @@ namespace hMoney
                     }
                     break;
                 default:
-                    Log.Error("Invalid repeat type: " + repeatType);
+                    Logger.Error("Invalid repeat type: " + repeatType);
                     //TODO should raise exception here
                     break;
             }
