@@ -1,5 +1,4 @@
-﻿using Serilog;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
@@ -46,14 +45,10 @@ namespace hMoney
         const String CONDITION_TODAY = "Today";
         const String CONDITION_RECONCILED = "Reconciled";
 
+        private static readonly NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
         public DB()
         {
             Configuration config;
-            // Setup log (Serilog)
-            Log.Logger = new LoggerConfiguration()
-                    .MinimumLevel.Debug()
-                    .WriteTo.Console()
-                    .CreateLogger();
 
             // Setup configuration
             config = new Configuration();
