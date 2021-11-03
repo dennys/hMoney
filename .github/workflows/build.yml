@@ -53,6 +53,8 @@ jobs:
             /p:CoverletOutputFormat=opencover `
             /p:CoverletOutput=coverage
           dir
+          dir hMoney
+          dir hMoneyVSTest
           mv ./coverage.opencover.xml opencover.xml
           
           #dotnet test --settings coverlet.runsettings --logger:trx hMoney.sln
