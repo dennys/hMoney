@@ -46,7 +46,7 @@ jobs:
             /d:sonar.login="c70a53862de980131b1c6071a6123ae11e259f6d" `
             /d:sonar.host.url="https://sonarcloud.io" `
             /d:sonar.verbose=true `
-            /d:sonar.cs.opencover.reportsPaths="**\TestResults\*\*.xml"
+            /d:sonar.cs.opencover.reportsPaths="**\TestResults\*.xml"
           #dotnet build hMoney.sln
           dotnet test hMoney.sln `
             /p:CollectCoverage=true `
@@ -54,14 +54,13 @@ jobs:
             /p:CoverletOutput=coverage           
           
           dotnet test hMoney.sln --collect:"XPlat Code Coverage" `
-            --results-directory TestResults/ `
+            --results-directory TestResults\ `
             --DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
          
           dir
           dir hMoney
           dir hMoneyVSTests
-          #dir hMoneyVSTests\TestResults 
-          dir hMoneyVSTests\TestResults    
+          dir "hMoneyVSTests\TestResults"
           
                                                       
           #mv ./coverage.opencover.xml opencover.xml
