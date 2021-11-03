@@ -54,10 +54,12 @@ jobs:
           #  /p:CoverletOutput=coverage           
           
           dotnet test hMoney.sln collect:"XPlat Code Coverage" `
-            -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+            --results-directory TestResults/ `
+            --DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
          
           dir
           dir hMoney
+          dir hMoneyVSTests
           #dir hMoneyVSTests\TestResults 
           dir hMoneyVSTests\TestResults    
           
