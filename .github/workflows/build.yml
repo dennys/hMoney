@@ -50,7 +50,7 @@ jobs:
           dotnet test hMoney.sln `
             /p:CollectCoverage=true `
             /p:CoverletOutputFormat=opencover `
-            /p:CoverletOutput=".\coverage"
+            /p:CoverletOutput=".\coverage\coverage.opencover.xml"
           #dotnet build hMoney.sln
           #dotnet test --settings coverlet.runsettings --logger:trx hMoney.sln
           #dotnet test hMoney.sln
