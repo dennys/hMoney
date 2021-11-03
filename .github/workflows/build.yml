@@ -52,7 +52,7 @@ jobs:
             /p:CollectCoverage=true `
             /p:CoverletOutputFormat=opencover `
             /p:CoverletOutput=coverage
-          ls -lR
+          dir /s
           mv ./hMoneyVSTests/coverage.opencover.xml opencover.xml
           
           #dotnet test --settings coverlet.runsettings --logger:trx hMoney.sln
