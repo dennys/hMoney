@@ -46,7 +46,7 @@ jobs:
             /d:sonar.login="c70a53862de980131b1c6071a6123ae11e259f6d" `
             /d:sonar.host.url="https://sonarcloud.io" `
             /d:sonar.cs.opencover.reportsPaths=/coverage.opencover.xml
-          dotnet test \
+          dotnet test hMoney.sln \
             /p:CollectCoverage=true \
             /p:CoverletOutputFormat=opencover \
             /p:CoverletOutput="/coverage"
