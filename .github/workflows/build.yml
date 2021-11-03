@@ -46,21 +46,22 @@ jobs:
             /d:sonar.login="c70a53862de980131b1c6071a6123ae11e259f6d" `
             /d:sonar.host.url="https://sonarcloud.io" `
             /d:sonar.verbose=true `
-            /d:sonar.cs.opencover.reportsPaths="**/*opencover.xml"
+            /d:sonar.cs.opencover.reportsPaths="**\TestResults\*\*.xml"
           dotnet build hMoney.sln
-          dotnet test hMoney.sln `
-            /p:CollectCoverage=true `
-            /p:CoverletOutputFormat=opencover `
-            /p:CoverletOutput=coverage
-          dir
-          dir hMoney
-          dir hMoneyVSTests
-          mv ./coverage.opencover.xml opencover.xml
+          #dotnet test hMoney.sln `
+          #  /p:CollectCoverage=true `
+          #  /p:CoverletOutputFormat=opencover `
+          #  /p:CoverletOutput=coverage           
           
-          dotnet test hMoney.sln collect:"XPlat Code Coverage" 
+          dotnet test hMoney.sln collect:"XPlat Code Coverage" `
+            -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+         
           dir
           dir hMoney
-          dir hMoneyVSTests
+          dir hMoneyVSTests\TestResults    
+          
+                                                      
+          #mv ./coverage.opencover.xml opencover.xml
           
           #dotnet test --settings coverlet.runsettings --logger:trx hMoney.sln
           #dotnet test hMoney.sln
