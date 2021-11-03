@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -19,6 +21,7 @@ namespace hMoney
 
         public FormMain()
         {
+            Log.Debug("Hello World!!");
             // Enable configuration
             config = new Configuration();
             config.Init();
