@@ -54,8 +54,13 @@ jobs:
             /p:CoverletOutput=coverage
           dir
           dir hMoney
-          dir hMoneyVSTest
+          dir hMoneyVSTests
           mv ./coverage.opencover.xml opencover.xml
+          
+          dotnet test hMoney.sln collect:"XPlat Code Coverage" 
+          dir
+          dir hMoney
+          dir hMoneyVSTests
           
           #dotnet test --settings coverlet.runsettings --logger:trx hMoney.sln
           #dotnet test hMoney.sln
