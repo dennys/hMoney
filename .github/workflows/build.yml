@@ -48,12 +48,12 @@ jobs:
             /d:sonar.verbose=true `
             /d:sonar.cs.opencover.reportsPaths="**\TestResults\*\*.xml"
           #dotnet build hMoney.sln
-          #dotnet test hMoney.sln `
-          #  /p:CollectCoverage=true `
-          #  /p:CoverletOutputFormat=opencover `
-          #  /p:CoverletOutput=coverage           
+          dotnet test hMoney.sln `
+            /p:CollectCoverage=true `
+            /p:CoverletOutputFormat=opencover `
+            /p:CoverletOutput=coverage           
           
-          dotnet test hMoney.sln collect:"XPlat Code Coverage" `
+          dotnet test hMoney.sln --collect:"XPlat Code Coverage" `
             --results-directory TestResults/ `
             --DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
          
