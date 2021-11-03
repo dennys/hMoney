@@ -58,6 +58,7 @@ jobs:
          
           dir
           dir hMoney
+          #dir hMoneyVSTests\TestResults 
           dir hMoneyVSTests\TestResults    
           
                                                       
