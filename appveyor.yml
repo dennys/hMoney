@@ -14,7 +14,7 @@ test_script:
     dir
     
     dir hMoneyVSTests
-- OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".\hMoneyVSTests\bin\Debug\net5.0-windows\hMoneyVSTests.dll -noshadow" -filter:"+[UnitTestTargetProject*]* -[hMoneyVSTests*]*" -output:".\hMoney_coverage.xml"
+- OpenCover.Console.exe -register:user -target:"vstest.console.x86.exe" -targetargs:".\hMoneyVSTests\bin\Debug\net5.0-windows\hMoneyVSTests.dll -noshadow" -filter:"+[UnitTestTargetProject*]* -[hMoneyVSTests*]*" -output:".\hMoney_coverage.xml"
 
 - codecov -f "hMoney_coverage.xml"
 artifacts:
