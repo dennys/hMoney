@@ -18,6 +18,9 @@ SonarCloud:
 CircleCI:
 [![CircleCI](https://circleci.com/gh/dennys/hMoney/tree/master.svg?style=svg)](https://circleci.com/gh/dennys/hMoney/tree/master)
 
+AppVeyor:
+[![Build status](https://ci.appveyor.com/api/projects/status/dg71ap4mygauhw4e?svg=true)](https://ci.appveyor.com/project/dennys/hmoney)
+
 Code scan:
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9654ae0d5f024ba7b49233e72b4b0685)](https://app.codacy.com/gh/dennys/hMoney?utm_source=github.com&utm_medium=referral&utm_content=dennys/hMoney&utm_campaign=Badge_Grade_Settings)
 [![CodeQL](https://github.com/dennys/hMoney/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/dennys/hMoney/actions/workflows/codeql-analysis.yml)
