@@ -16,6 +16,8 @@ test_script:
     
     dir hMoneyVSTests
     
+    dir hMoneyVSTests\TestResults
+    
 - OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:test -filter:"+[UnitTestTargetProject*]* -[hMoneyVSTests*]*" -output:".\hMoney_coverage.xml" -oldstyle
 
 - codecov -f "hMoney_coverage.xml"
