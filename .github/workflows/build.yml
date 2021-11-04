@@ -60,10 +60,6 @@ jobs:
           dir TestResults
           dir hMoney
           dir hMoneyVSTests
-          cd hMoneyVSTests
-          dir TestResults
-          cd ..
-          
                                                       
           #mv ./coverage.opencover.xml opencover.xml
           
