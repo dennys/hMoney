@@ -57,7 +57,7 @@ jobs:
             -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
          
           dir
-          dir "hMoneyVSTests\TestResults"
+          dir TestResults
           dir hMoney
           dir hMoneyVSTests
           cd hMoneyVSTests
