@@ -1,14 +1,27 @@
 image: Visual Studio 2015
 
+version: 0.0.{build}
+
 before_build:
 - nuget restore
 - choco install opencover.portable
 - choco install codecov
+- cmd: nuget restore hMoney.sln
 
 build:
   project: hMoney.sln
   verbosity: minimal
 
 test_script:
+- cmd: >-
+    nuget install Appveyor.TestLogger -Version 2.0.0
+
+    dotnet test --no-build --no-restore --test-adapter-path:. --logger:Appveyor hMoney.sln
+
+test_script:
 - OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".\hMoneyVSTests\bin\Debug\hMoneyVSTests.dll -noshadow" -filter:"+[UnitTestTargetProject*]* -[hMoneyVSTests*]*" -output:".\hMoney_coverage.xml"
 - codecov -f "hMoney_coverage.xml"
+
+artifacts:
+- path: hMoney
+  name: hMoney.exe
