@@ -29,7 +29,6 @@ Commit:
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/dennys/hMoney)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/dennys/hMoney)
 ![GitHub contributors](https://img.shields.io/github/contributors/dennys/hMoney)
-![GitHub top language](https://img.shields.io/github/languages/top/dennys/hMoney)
 
 Issue:
 ![GitHub issues](https://img.shields.io/github/issues-raw/dennys/hMoney)
