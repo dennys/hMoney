@@ -21,8 +21,6 @@ test_script:
 - OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full hMoneyVSTests\hMoneyVSTests.csproj" -filter:"+[MyApp*]* -[MyApp.Tests*]*" -output:".\hMoney_coverage.xml"  -oldstyle
 
 #- OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:test -filter:"+[UnitTestTargetProject*]* -[hMoneyVSTests*]*" -output:".\hMoney_coverage.xml" -oldstyle
-
-    dir
     
 - codecov -f "hMoney_coverage.xml"
 - codecov -f "valit_coverage.xml"
