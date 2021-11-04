@@ -16,11 +16,12 @@ SonarCloud:
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=dennys_hMoney&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=dennys_hMoney&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=dennys_hMoney)
 
-CircleCI:
-[![CircleCI](https://circleci.com/gh/dennys/hMoney/tree/master.svg?style=svg)](https://circleci.com/gh/dennys/hMoney/tree/master)
-
 AppVeyor:
 [![Build status](https://ci.appveyor.com/api/projects/status/dg71ap4mygauhw4e?svg=true)](https://ci.appveyor.com/project/dennys/hmoney)
+![AppVeyor tests](https://img.shields.io/appveyor/tests/dennys/hMoney)
+
+CircleCI:
+[![CircleCI](https://circleci.com/gh/dennys/hMoney/tree/master.svg?style=svg)](https://circleci.com/gh/dennys/hMoney/tree/master)
 
 Code scan:
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9654ae0d5f024ba7b49233e72b4b0685)](https://app.codacy.com/gh/dennys/hMoney?utm_source=github.com&utm_medium=referral&utm_content=dennys/hMoney&utm_campaign=Badge_Grade_Settings)
