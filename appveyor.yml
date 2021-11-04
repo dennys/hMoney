@@ -10,7 +10,7 @@ test_script:
 - cmd: >-
     nuget install Appveyor.TestLogger -Version 2.0.0
     
-    dotnet test --no-build --no-restore --test-adapter-path:. --logger:Appveyor hMoney.sln
+    #dotnet test --no-build --no-restore --test-adapter-path:. --logger:Appveyor hMoney.sln
     
     dir
     
@@ -18,7 +18,7 @@ test_script:
     
     dir hMoneyVSTests\TestResults
     
-- OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test --test-adapter-path:. --logger:Appveyor" -filter:"+[ExpressionEvaluatorForDotNet*]* -[ExpressionEvaluatorForDotNet.Tests*]*" -output:".\hMoney_coverage.xml" -oldstyle
+- OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test --test-adapter-path:. --logger:Appveyor" -filter:"+[hMoney*]* -[hMoneyVSTests*]*" -output:".\hMoney_coverage.xml" -oldstyle
 
 #- OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full hMoneyVSTests\hMoneyVSTests.csproj" -filter:"+[MyApp*]* -[MyApp.Tests*]*" -output:".\hMoney_coverage.xml"  -oldstyle
 
