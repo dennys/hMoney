@@ -33,15 +33,14 @@ jobs:
       - run:
           name: "Run Build step"
           command: dotnet.exe publish -c Release -r win10-x64
-          
       - run:
-          name: Setup Code Climate test-reporter
+          name: "Setup Code Climate test-reporter"
           command: |
           # download test reporter as a static binary
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
       - run:
-          name: Run tests
+          name: "Run tests"
           command: |
             sudo docker-php-ext-enable xdebug
             ./cc-test-reporter before-build
