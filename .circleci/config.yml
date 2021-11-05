@@ -36,8 +36,7 @@ jobs:
       - run:
           name: "Run tests and code coverage"
           command:
-            dotnet test --logger "trx;LogFileName=testresults.trx" --collect:"XPlat Code Coverage" 
-            #--settings "OffTheRecord/coverlet.runsettings"
+            dotnet test --logger "trx;LogFileName=testresults.trx" --collect:"XPlat Code Coverage" --settings ".coverlet.runsettings"
       - run:
           name: "Install coveralls.io tool"
           command:
