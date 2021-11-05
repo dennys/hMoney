@@ -82,8 +82,7 @@ namespace hMoney
                     break;
                 default:
                     Logger.Error("Invalid repeat type: " + repeatType);
-                    //TODO should raise exception here
-                    break;
+                    throw new ArgumentException("Invalid parameter " + repeatType);
             }
             return nextTransDate;
         }

@@ -229,5 +229,12 @@ namespace Api.Tests
             nextTransDate = apix.GetNextTransDate(RepeatType.REPEAT_MONTHLY_LAST_BUSINESS_DAY, Convert.ToDateTime("10/30/2021"), -1);
             Assert.AreEqual(nextTransDate, Convert.ToDateTime("10/29/2021"));
         }
+
+        [ExpectedException(typeof(ArgumentException))]
+        [TestMethod]
+        public void GetNextTransDateExceptionTest()
+        {
+            nextTransDate = apix.GetNextTransDate((RepeatType)999, Convert.ToDateTime("10/30/2021"), -1);
+        }
     }
 }
