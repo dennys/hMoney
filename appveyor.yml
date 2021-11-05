@@ -1,0 +1,30 @@
+version: 0.0.{build}
+before_build:
+- cmd: nuget restore hMoney.sln
+- choco install opencover.portable
+- choco install codecov
+#- choco install dotnetcore-sdk    
+build:
+  verbosity: minimal
+test_script:
+- cmd: >-
+    nuget install Appveyor.TestLogger -Version 2.0.0
+    
+    dotnet test --no-build --no-restore --test-adapter-path:. --logger:Appveyor hMoney.sln
+    
+    dir
+    
+    dir hMoneyVSTests
+    
+    dir hMoneyVSTests\TestResults
+    
+- OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test --test-adapter-path:. --logger:Appveyor" -filter:"+[hMoney*]* -[hMoneyVSTests*]*" -output:".\hMoney_coverage.xml" -oldstyle
+
+#- OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full hMoneyVSTests\hMoneyVSTests.csproj" -filter:"+[MyApp*]* -[MyApp.Tests*]*" -output:".\hMoney_coverage.xml"  -oldstyle
+
+#- OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:test -filter:"+[UnitTestTargetProject*]* -[hMoneyVSTests*]*" -output:".\hMoney_coverage.xml" -oldstyle
+    
+- codecov -f "hMoney_coverage.xml"
+artifacts:
+- path: hMoney
+  name: hMoney.exe
