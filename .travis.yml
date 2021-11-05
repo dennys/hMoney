@@ -1,9 +1,11 @@
 language: csharp
 mono: none
-dist: xenial
-dotnet: 3.1
+dotnet: 5.0
 install:
-  - dotnet restore
+  - export COVERALLSNET_EXEPATH=/home/travis/build/csMACnz/coveralls.net/Package/Archive/linux/csmacnz.Coveralls
+  - dotnet restore ./hMoney.sln
 script:
-  - dotnet build
-  - dotnet test 
+  - dotnet build ./hMoney.sln -c Release
+  - dotnet test ./hMoneyVSTests/hMoneyVSTestss.csproj -c Release
+  - dotnet publish ./hMoney/hMoney.csproj -f net5.0 -c Release -o "/home/travis/build/csMACnz/coveralls.net/Package/Archive/linux" -r linux-x64
+#  - dotnet test ./src/csmacnz.Coveralls.Tests.Integration/csmacnz.Coveralls.Tests.Integration.csproj -c Release
