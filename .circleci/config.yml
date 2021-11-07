@@ -33,15 +33,23 @@ jobs:
       - run:
           name: "Run Build step"
           command: dotnet.exe publish -c Release -r win10-x64
-      - run:
-          name: "Run tests and code coverage"
-          command:
-            dotnet test --logger "trx;LogFileName=testresults.trx" --collect:"XPlat Code Coverage" --settings ".coverlet.runsettings"
+      #- run:
+      #    name: "Run tests and code coverage"
+      #    command:
+      #      dotnet test --logger "trx;LogFileName=testresults.trx" --collect:"XPlat Code Coverage" --settings ".coverlet.runsettings"
       - run:
           name: "Install coveralls.io tool"
           command:
             dotnet tool install coveralls.netcore --version 2.1.0 --tool-path .      
-
+      - run:
+          name: "Run Application Tests"
+          command: dotnet.exe test -v n --results-directory:test_coverage --collect:"XPlat Code Coverage"
+      - run:
+          name: "Print Working Directory"
+          command: pwd
+      - store_artifacts:
+          path: C:\Users\circleci\project\hMoney
+          
       #- run:
       #    name: "Setup Code Climate test-reporter"
       #    command: |
