@@ -59,7 +59,7 @@ jobs:
           dir
           dir TestResults
           dir hMoney
-          dir hMoneyVSTests
+          dir hMoneyTests
                                                       
           #mv ./coverage.opencover.xml opencover.xml
           

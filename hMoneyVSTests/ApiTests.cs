@@ -15,7 +15,7 @@ namespace Api.Tests
         readonly Apix apix = new();
         DateTime nextTransDate;
 
-        [TestMethod]
+/*        [TestMethod]
         public void GetNextTrlyTestInactive()
         {
             nextTransDate = apix.GetNextTransDate(RepeatType.REPEAT_INACTIVE, Convert.ToDateTime("06/04/2021"), -1);
@@ -229,7 +229,7 @@ namespace Api.Tests
             nextTransDate = apix.GetNextTransDate(RepeatType.REPEAT_MONTHLY_LAST_BUSINESS_DAY, Convert.ToDateTime("10/30/2021"), -1);
             Assert.AreEqual(nextTransDate, Convert.ToDateTime("10/29/2021"));
         }
-
+*/
         [ExpectedException(typeof(ArgumentException))]
         [TestMethod]
         public void GetNextTransDateExceptionTest()
