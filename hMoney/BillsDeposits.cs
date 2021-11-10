@@ -27,8 +27,8 @@ namespace hMoney
         public DateTime TransDate { get; set; }
         public int FollowUpId { get; set; }
         public decimal ToTransAmount { get; set; }
-        public Boolean AutoExecuteSilent { get => autoExecuteSilent; set => autoExecuteSilent = value; }
-        public Boolean AutoExecuteManual { get => autoExecuteManual; set => autoExecuteManual = value; }
+        public Boolean AutoExecuteSilent { get; set; }
+        public Boolean AutoExecuteManual { get; set; }
 
         public RepeatType Repeats { 
             get => repeats; 

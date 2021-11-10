@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hMoney", "hMoney\hMoney.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hMoneyVSTests", "hMoneyVSTests\hMoneyVSTests.csproj", "{94B50FD8-0327-4ABE-8DF1-A61029AC6166}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hMoneyTests", "hMoneyTests\hMoneyTests.csproj", "{64E4629E-C1DE-4D3B-8F4E-CC5C77A7275C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hMoneyTests", "hMoneyTests\hMoneyTests.csproj", "{64E4629E-C1DE-4D3B-8F4E-CC5C77A7275C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

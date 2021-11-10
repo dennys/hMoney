@@ -13,9 +13,9 @@ namespace Api.Tests
     public class ApiTests
     {
         readonly Apix apix = new();
-        DateTime nextTransDate;
-
-/*        [TestMethod]
+        //DateTime nextTransDate;
+/*
+        [TestMethod]
         public void GetNextTrlyTestInactive()
         {
             nextTransDate = apix.GetNextTransDate(RepeatType.REPEAT_INACTIVE, Convert.ToDateTime("06/04/2021"), -1);
@@ -234,7 +234,7 @@ namespace Api.Tests
         [TestMethod]
         public void GetNextTransDateExceptionTest()
         {
-            nextTransDate = apix.GetNextTransDate((RepeatType)999, Convert.ToDateTime("10/30/2021"), -1);
+            apix.GetNextTransDate((RepeatType)999, Convert.ToDateTime("10/30/2021"), -1);
         }
     }
 }
