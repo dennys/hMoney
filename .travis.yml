@@ -1,7 +1,7 @@
 language: csharp
 os: windows
 mono: none
-dotnet: 5.0.102
+dotnet: 5.0.302
 install:
   - export COVERALLSNET_EXEPATH=/home/travis/build/csMACnz/coveralls.net/Package/Archive/linux/csmacnz.Coveralls
   - dotnet restore ./hMoney.sln
