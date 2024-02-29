@@ -1,7 +1,8 @@
 repo_name: dennys/hMoney
 report_id: 679d9876ff575829d57dff52758e39e1
+version: 0.1
 repo_type: Public
-timestamp: '2023-11-09T12:34:46+00:00'
+timestamp: '2024-02-29T18:00:56+00:00'
 requested_by: dennys
 provider: github
 branch: master
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1015/1200px-C_Sharp_wordmark.svg.png
+  detection_source_url: https://github.com/dennys/hMoney
   detection_source: Repo Metadata
 - name: ".NET"
   description: A free, cross-platform, open source developer platform for building
@@ -27,6 +29,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1014/IoPy1dce_400x400.png
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoneyVSTests/hMoneyVSTests.csproj
   detection_source: hMoneyVSTests/hMoneyVSTests.csproj
   last_updated_by: dennys
   last_updated_on: 2021-10-30 23:05:49.000000000 Z
@@ -41,8 +44,8 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/6403/default_91fc1f0ee315262794273aa1387eaf8fed8436e6.png
-  detection_source_url: hMoney/hMoney.csproj
-  detection_source: hMoneyVSTests/hMoneyVSTests.csproj
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoney/hMoney.csproj
+  detection_source: hMoney/hMoney.csproj
   last_updated_by: dennys
   last_updated_on: 2021-11-10 15:48:44.000000000 Z
 - name: ASP.NET Core
@@ -56,8 +59,8 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/11331/asp.net-core.png
-  detection_source_url: hMoney/hMoney.csproj
-  detection_source: hMoneyVSTests/hMoneyVSTests.csproj
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoney/hMoney.csproj
+  detection_source: hMoney/hMoney.csproj
   last_updated_by: dennys
   last_updated_on: 2021-11-10 15:48:44.000000000 Z
 - name: SQLite
@@ -69,6 +72,7 @@ tools:
   category: Data Stores
   sub_category: Databases
   image_url: https://img.stackshare.io/service/1071/sqlite.jpg
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoney/hMoney.csproj
   detection_source: hMoney/hMoney.csproj
   last_updated_by: dennys
   last_updated_on: 2021-10-24 13:45:31.000000000 Z
@@ -80,6 +84,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/10164/528389819366_e7a0672f0480b3e98d21_512.png
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/azure-pipelines.yml
   detection_source: azure-pipelines.yml
   last_updated_by: Dennys Hsieh
   last_updated_on: 2021-10-29 23:53:43.000000000 Z
@@ -91,6 +96,7 @@ tools:
   category: Monitoring
   sub_category: Logging Tools
   image_url: https://img.stackshare.io/service/20916/default_6d17162c9963bc83521ee29cf394f349c95173f3.png
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoney/hMoney.csproj
   detection_source: hMoney/hMoney.csproj
   last_updated_by: dennys
   last_updated_on: 2021-10-24 13:45:31.000000000 Z
@@ -102,6 +108,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/190/CvqrSSFs_400x400.jpg
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/.circleci/config.yml
   detection_source: ".circleci/config.yml"
   last_updated_by: Dennys Hsieh
   last_updated_on: 2021-11-07 07:14:41.000000000 Z
@@ -113,6 +120,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/dennys/hMoney
   detection_source: Repo Metadata
 - name: GitHub Actions
   description: Automate your workflow from idea to production
@@ -122,7 +130,8 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/11563/actions.png
-  detection_source: ".github/workflows/shiftleft-analysis.yml"
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/.github/workflows/build.yml
+  detection_source: ".github/workflows/build.yml"
   last_updated_by: Dennys Hsieh
   last_updated_on: 2021-11-04 01:05:22.000000000 Z
 - name: NUnit
@@ -133,6 +142,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Testing Frameworks
   image_url: https://img.stackshare.io/service/2371/jZ6MYx5Y_400x400.png
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoneyTests/hMoneyTests.csproj
   detection_source: hMoneyTests/hMoneyTests.csproj
   last_updated_by: dennys
   last_updated_on: 2021-11-07 08:06:51.000000000 Z
@@ -144,6 +154,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Package Managers
   image_url: https://img.stackshare.io/service/2637/6I3oEOP4_400x400.jpg
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoneyVSTests/hMoneyVSTests.csproj
   detection_source: hMoneyVSTests/hMoneyVSTests.csproj
   last_updated_by: dennys
   last_updated_on: 2021-10-30 23:05:49.000000000 Z
@@ -156,7 +167,8 @@ tools:
   category: Build, Test, Deploy
   sub_category: Code Review
   image_url: https://img.stackshare.io/service/2638/zIVhxKyn_400x400.png
-  detection_source: hMoneyVSTests/hMoneyVSTests.csproj
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoney/hMoney.csproj
+  detection_source: hMoney/hMoney.csproj
   last_updated_by: dennys
   last_updated_on: 2021-11-01 11:18:13.000000000 Z
 - name: Travis CI
@@ -168,6 +180,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/460/Lu6cGu0z_400x400.png
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/.travis.yml
   detection_source: ".travis.yml"
   last_updated_by: dennys
   last_updated_on: 2021-11-25 15:41:56.000000000 Z
@@ -180,6 +193,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Integrated Development Environment
   image_url: https://img.stackshare.io/service/1451/SR2hUhQN.png
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoney.sln
   detection_source: hMoney.sln
   last_updated_by: admin
   last_updated_on: 2021-09-17 09:03:55.000000000 Z
@@ -189,7 +203,8 @@ tools:
   open_source: false
   hosted_saas: false
   image_url: https://img.stackshare.io/service/9672/nlog_logo_square_normal.png
-  detection_source: hMoneyVSTests/hMoneyVSTests.csproj
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoney/hMoney.csproj
+  detection_source: hMoney/hMoney.csproj
   last_updated_by: dennys
   last_updated_on: 2021-11-02 15:34:22.000000000 Z
 - name: MSTest.TestFramework
@@ -202,7 +217,7 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/13142/default_a057bdad489be3cb053d372a68695da4ac94962d.png
-  detection_source_url: hMoneyVSTests/hMoneyVSTests.csproj
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoneyVSTests/hMoneyVSTests.csproj
   detection_source: hMoneyVSTests/hMoneyVSTests.csproj
   last_updated_by: dennys
   last_updated_on: 2021-10-30 23:05:49.000000000 Z
@@ -217,7 +232,7 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/12845/default_ccf90b566c21ad9eaa59733f297e535ea39fb3b4.png
-  detection_source_url: hMoney/hMoney.csproj
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoney/hMoney.csproj
   detection_source: hMoney/hMoney.csproj
   last_updated_by: dennys
   last_updated_on: 2021-11-10 15:48:44.000000000 Z
@@ -231,8 +246,8 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/12854/default_ccf90b566c21ad9eaa59733f297e535ea39fb3b4.png
-  detection_source_url: hMoney/hMoney.csproj
-  detection_source: hMoneyVSTests/hMoneyVSTests.csproj
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoney/hMoney.csproj
+  detection_source: hMoney/hMoney.csproj
   last_updated_by: dennys
   last_updated_on: 2021-11-10 15:48:44.000000000 Z
 - name: Microsoft.Windows.Compatibility
@@ -246,7 +261,7 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/13273/default_c09df070293865f4f6559cd9d8af76724cd749a8.png
-  detection_source_url: hMoney/hMoney.csproj
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoney/hMoney.csproj
   detection_source: hMoney/hMoney.csproj
   last_updated_by: dennys
   last_updated_on: 2021-11-10 15:48:44.000000000 Z
@@ -259,8 +274,8 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/13116/default_baa6c1c3e725b18a803052f0d13efd0ca49e5d50.png
-  detection_source_url: hMoney/hMoney.csproj
-  detection_source: hMoneyVSTests/hMoneyVSTests.csproj
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoney/hMoney.csproj
+  detection_source: hMoney/hMoney.csproj
   last_updated_by: dennys
   last_updated_on: 2021-11-02 15:34:22.000000000 Z
 - name: NLog.Extensions.Logging
@@ -274,8 +289,8 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/13244/default_43ce02ab18bb400d4d6b410ac4dc3a50f87e634a.png
-  detection_source_url: hMoney/hMoney.csproj
-  detection_source: hMoneyVSTests/hMoneyVSTests.csproj
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoney/hMoney.csproj
+  detection_source: hMoney/hMoney.csproj
   last_updated_by: dennys
   last_updated_on: 2021-11-10 15:48:44.000000000 Z
 - name: NUnit3TestAdapter
@@ -289,7 +304,7 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/13216/default_e23dabba1be2c69fbf5fc50bdc46cbffbe6ca2cb.png
-  detection_source_url: hMoneyTests/hMoneyTests.csproj
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoneyTests/hMoneyTests.csproj
   detection_source: hMoneyTests/hMoneyTests.csproj
   last_updated_by: dennys
   last_updated_on: 2021-11-07 08:06:51.000000000 Z
@@ -302,8 +317,8 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/14021/default_5cc7ff1dadffe5f694f858b281e9a8eb4358038e.png
-  detection_source_url: hMoney/hMoney.csproj
-  detection_source: hMoneyVSTests/hMoneyVSTests.csproj
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoney/hMoney.csproj
+  detection_source: hMoney/hMoney.csproj
   last_updated_by: dennys
   last_updated_on: 2021-11-01 11:18:13.000000000 Z
 - name: System.Data.SQLite.Core
@@ -316,7 +331,7 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/13011/default_971bb108ce002c2032e407a9046135e1542c46c7.png
-  detection_source_url: hMoney/hMoney.csproj
+  detection_source_url: https://github.com/dennys/hMoney/blob/master/hMoney/hMoney.csproj
   detection_source: hMoney/hMoney.csproj
   last_updated_by: dennys
   last_updated_on: 2021-11-10 15:48:44.000000000 Z
